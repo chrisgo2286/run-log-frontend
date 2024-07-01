@@ -20,11 +20,11 @@ export default function Navbar () {
     }
 
     return (
-        <nav>
+        <nav className="flex justify-between">
             <div>
                 { handleSiteLinks() }
             </div>
-            <div>
+            <div className="flex">
                 { handleUserLinks() }
             </div>
         </nav>
