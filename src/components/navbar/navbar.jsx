@@ -4,6 +4,7 @@ import {
     siteLinksLoggedIn,
     siteLinksLoggedOut 
 } from './navbarFunctions';
+import './navbar.css';
 
 export default function Navbar () {
     const user = {
@@ -20,11 +21,11 @@ export default function Navbar () {
     }
 
     return (
-        <nav className="flex justify-between">
-            <div>
+        <nav className="bg-blue-100 flex justify-between">
+            <div className="flex [&>*]:m-4">
                 { handleSiteLinks() }
             </div>
-            <div className="flex">
+            <div className="flex [&>*]:m-4">
                 { handleUserLinks() }
             </div>
         </nav>

@@ -1,5 +1,10 @@
+:root {
+  --navbarLinkHover: rgb(218, 136, 111);
+}
+
 body {
   margin: 0;
+  color: rgb(87, 85, 85);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
