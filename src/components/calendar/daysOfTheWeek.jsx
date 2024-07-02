@@ -7,7 +7,9 @@ export default function DaysOfTheWeek () {
     return (
         <section className="grid grid-cols-7">
             { daysOfWeek.map((dayName) => (
-                <div className="border border-border border-solid border-gray-200 text-center">
+                <div 
+                    key={ dayName }
+                    className="border border-border border-solid border-gray-200 text-center">
                     { dayName }
                 </div> 
             ))}        
