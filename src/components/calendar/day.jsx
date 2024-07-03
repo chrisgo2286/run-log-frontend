@@ -8,6 +8,7 @@ export default function Day ({ dayNum }) {
             <div className="text-xs">{ dayNum }</div>
             <div className="text-xs text-center">Workout</div>
             <div className="text-xs text-center">Mileage</div>
+            <div className="text-xs text-center">Time</div>
         </div>
     )
 }

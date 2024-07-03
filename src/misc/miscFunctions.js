@@ -7,31 +7,43 @@ export function getMonthNameFromNum (monthNum) {
     return monthNames[monthNum];
 }
 
-export function getArrayOfDayNums (curDate) {
+export function getArrayOfCalendarDays (curDate) {
+    let dayNums;
     const totalDays = getTotalDays(curDate);
-    const dayNums = Array.from({length: totalDays}, (x, i) => i + 1);
-
-    const firstDay = new Date(curDate.getFullYear(), curDate.getMonth(), 1);
-    const dayOfWeekFirstDay = firstDay.getDay();
-    const offsetFirstDay = dayOfWeekFirstDay; //Number of empty days to insert to array
-    for (let i = 0; i < offsetFirstDay; i++) {
-        dayNums.unshift("0");
-    }
-
-    const lastDay = new Date(curDate.getFullYear(), curDate.getMonth(), totalDays);
-    const dayOfWeekLastDay = lastDay.getDay();
-    const offsetLastDay =  6 - dayOfWeekLastDay;
-    for (let i = 0; i < offsetLastDay; i++) {
-        dayNums.push("0");
-    }
-
+    dayNums = getArrayOfDayNums(totalDays);
+    dayNums = adjustCalendarStart(curDate, dayNums);
+    dayNums = adjustCalendarEnd(curDate, totalDays, dayNums);
     return dayNums;
 }
 
-export function getTotalDays (curDate) {
+function getTotalDays (curDate) {
     return getDaysInMonth(curDate.getMonth(), curDate.getFullYear());
 }
 
-export function getDaysInMonth (month, year) {
+function getArrayOfDayNums (totalDays) {
+    return Array.from({length: totalDays}, (x, i) => i + 1);
+}
+
+function adjustCalendarStart (curDate, dayNums) {
+    const firstDay = new Date(curDate.getFullYear(), curDate.getMonth(), 1);
+    const dayOfWeek = firstDay.getDay();
+    const offset = dayOfWeek; //Number of empty days to insert to array
+    for (let i = 0; i < offset; i++) {
+        dayNums.unshift("0");
+    }
+    return dayNums;
+}
+
+function adjustCalendarEnd (curDate, totalDays, dayNums) {
+    const lastDay = new Date(curDate.getFullYear(), curDate.getMonth(), totalDays);
+    const dayOfWeek = lastDay.getDay();
+    const offset =  6 - dayOfWeek;
+    for (let i = 0; i < offset; i++) {
+        dayNums.push("0");
+    }
+    return dayNums;
+}
+
+function getDaysInMonth (month, year) {
     return new Date(year, month + 1, 0).getDate();
 }

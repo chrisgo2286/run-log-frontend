@@ -1,12 +1,12 @@
 import CalendarHeader from "./calendarHeader";
 import DaysOfTheWeek from "./daysOfTheWeek";
 import Day from "./day";
-import { getArrayOfDayNums, getMonthNameFromNum } from "../../misc/miscFunctions";
+import { getArrayOfCalendarDays, getMonthNameFromNum } from "../../misc/miscFunctions";
 
 export default function Calendar () {
     const curDate = new Date();
     const monthName = getMonthNameFromNum(curDate.getMonth());
-    const dayNums = getArrayOfDayNums(curDate);
+    const dayNums = getArrayOfCalendarDays(curDate);
 
     return (
         <main className="w-4/5 mx-auto mb-10 border border-solid border-gray-200 rounded-xl">
