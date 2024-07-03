@@ -13,7 +13,9 @@ export default function Calendar () {
             <CalendarHeader monthName={ monthName } />
             <DaysOfTheWeek />
             <div className="grid grid-cols-7 border border-solid border-gray-200">
-                { dayNums.map((dayNum) => <Day key={ dayNum } dayNum={ dayNum } /> )}
+                { dayNums.map((dayNum, ndx) => (
+                    <Day key={ dayNum + ndx } dayNum={ dayNum } /> 
+                ))}
             </div>
             
         </main>
