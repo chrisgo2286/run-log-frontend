@@ -1,4 +1,6 @@
-export default function Day ({ dayNum }) {
+export default function Day ({ dayNum, data }) {
+    console.log(data)
+    
     function handleClassName () {
         return (dayNum === "0") ? "opacity-0": "h-20 p-1 border border-solid border-gray-200";
     }

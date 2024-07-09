@@ -47,3 +47,8 @@ function adjustCalendarEnd (curDate, totalDays, dayNums) {
 function getDaysInMonth (month, year) {
     return new Date(year, month + 1, 0).getDate();
 }
+
+function getDayNumFromDateString (dateString) {
+    const newDate = new Date(dateString)
+    return newDate.getDate();
+}
