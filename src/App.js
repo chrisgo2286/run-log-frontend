@@ -6,7 +6,7 @@ import Profile from './components/profile/profile';
 import Calendar from './components/calendar/calendar';
 import Login from './components/login/login';
 import Registration from './components/registration/registration';
-
+import './App.css';
 
 export default function App() {
     return (

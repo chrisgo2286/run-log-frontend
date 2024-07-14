@@ -23,7 +23,7 @@ export default function Calendar () {
     }
     return (
         <React.Fragment>
-            <main onClick={ handleCloseModal } className={ (modalVisible) ? "relative blur-sm": "relative"}>
+            <main onClick={ handleCloseModal } className={ (modalVisible) ? "h-screen relative blur-sm": "h-screen relative"}>
                 <div className="w-4/5 mx-auto mb-10 border border-solid border-gray-200 rounded-xl">
                     <CalendarHeader period={ period } setPeriod={ setPeriod }/>
                     <DaysOfTheWeek />

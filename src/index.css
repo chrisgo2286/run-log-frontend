@@ -1,5 +1,6 @@
 :root {
   --navbarLinkHover: rgb(218, 136, 111);
+  --borderColor: rgba(168, 168, 168, 0.5);
 }
 
 body {

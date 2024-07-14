@@ -1,0 +1,9 @@
+.button, input, select, textarea {
+    box-shadow: 2px 2px rgb(128, 128, 128, .2);
+    cursor: pointer;
+}
+
+input:hover,
+textarea:hover {
+    background-color: rgb(128, 128, 128, .2);
+}

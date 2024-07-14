@@ -14,9 +14,16 @@ export default function Input ({
         setFields({ ...fields, [name]: value })
     }
 
+    function handleClassName () {
+        if (className) {
+            return "input " + className;
+        }
+        return "input";
+    }
+
     return (
         <input 
-            className={ className }
+            className={ handleClassName() }
             type={ type }
             name={ name }
             value={ value }
