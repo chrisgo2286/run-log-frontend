@@ -13,13 +13,16 @@ export default function Day ({ data, modalVisible, setModalVisible, setFields })
     function handleClick (e) {
         if (!modalVisible) {
             e.stopPropagation();
-            setFields({
-                date: data.date,
-                run_type: data.run_type,
-                distance: data.distance,
-                time: data.time,
-                comment: data.comment
-            })
+            if(data.date) {
+                setFields({
+                    date: data.date,
+                    run_type: data.run_type,
+                    distance: data.distance,
+                    time: data.time,
+                    comment: data.comment
+                })
+            }
+                
             setModalVisible(true);
         }
     }
