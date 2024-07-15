@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './select.css';
 
 export default function Select ({
@@ -10,7 +10,11 @@ export default function Select ({
     setFields,
     ...other }) {
     
-    const [ choice, setChoice ] = useState(initial);
+    const [ choice, setChoice ] = useState();
+
+    useEffect(() => {
+        setChoice(initial)
+    }, [initial])
 
     function handleChange (event) {
         const { name, value } = event.target;
@@ -28,7 +32,7 @@ export default function Select ({
             { ...other }>
             <option key={ initial } value={ initial }>{ initial }</option>
             {
-                options.map((option) => (
+                options.filter((option) => option !== initial).map((option) => (
                     <option key={ option } value={ option }>{ option }</option>
                 ))
             }

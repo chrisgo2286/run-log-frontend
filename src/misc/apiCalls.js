@@ -9,12 +9,13 @@ export async function getCalendar (month, year) {
 }
 
 export async function postRun (fields) {
-    const newFields = { ...fields, 'owner': 1 }
+    let newFields = { ...fields, 'owner': 1 }
     const result = await axios.post(url + 'runs/', newFields)
     return result.data;
 }
 
-export async function patchRun (id, fields) {
-    const result = await axios.patch(url + 'runs/' + id, fields)
+export async function patchRun (fields) {
+    let newFields = { ...fields, 'owner': 1 }
+    const result = await axios.patch(url + 'runs/' + fields.id + '/', fields)
     return result.data;
 }

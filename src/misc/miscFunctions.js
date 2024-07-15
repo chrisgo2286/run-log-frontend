@@ -22,3 +22,14 @@ export function getNextPeriod (period) {
         return {month: period.month + 1, year: period.year}
     }
 }
+
+export function clearRunModalState (setFields) {
+    setFields({
+        id: "",
+        date: "",
+        run_type: "Easy Run",
+        distance: "",
+        time: "",
+        comment: ""
+    })
+}

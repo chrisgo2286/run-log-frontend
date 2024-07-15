@@ -2,9 +2,9 @@ import Input from "../misc/input/input";
 import Select from "../misc/select/select";
 import TextArea from '../misc/textarea/textarea';
 
-export default function RunModal ({ modalVisible, fields, setFields, createNewRun }) {
+export default function RunModal ({ modalVisible, fields, setFields, submitRun }) {
     const visibleClass = "absolute flex flex-col top-1/3 left-1/3 w-1/3 border border-solid border-gray-200 bg-white rounded-md shadow-md" 
-
+    console.log(fields)
     return (
         <div className={ (modalVisible) ? visibleClass : "hidden" }>
             <div className="h-16 text-xl font-bold border-b border-b-gray-200 bg-blue-100 flex flex-col items-center justify-center">
@@ -24,7 +24,7 @@ export default function RunModal ({ modalVisible, fields, setFields, createNewRu
                 <Select 
                     className="col-span-2 mb-3 rounded-md"
                     name="run_type"
-                    initial="Easy Run"
+                    initial={ fields.run_type }
                     options={["Easy Run", "Long Run", "Intervals", "Tempo Run"]}
                     fields={ fields }
                     setFields={ setFields } />
@@ -54,7 +54,7 @@ export default function RunModal ({ modalVisible, fields, setFields, createNewRu
             </div>
             <button 
                 className="button w-20 h-8 mb-10 mx-auto border border-gray-500 rounded-md bg-green-200 hover:bg-green-300"
-                onClick={ createNewRun }>
+                onClick={ submitRun }>
                 Submit
             </button>
         </div>

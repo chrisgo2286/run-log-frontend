@@ -3,7 +3,8 @@ import CalendarHeader from "./calendarHeader";
 import DaysOfTheWeek from "./daysOfTheWeek";
 import RunModal from './runModal';
 import Day from "./day";
-import { getCalendar, postRun } from '../../misc/apiCalls';
+import { getCalendar, postRun, patchRun } from '../../misc/apiCalls';
+import { clearRunModalState } from '../../misc/miscFunctions';
 
 export default function Calendar () {
     const curDate = new Date();
@@ -13,6 +14,7 @@ export default function Calendar () {
     })
     const [ data, setData ] = useState([])
     const [ fields, setFields ] = useState({
+        id: "",
         date: "",
         run_type: "",
         distance: "",
@@ -29,27 +31,15 @@ export default function Calendar () {
     
     function handleCloseModal () {
         setModalVisible(false);
-        setFields({
-            date: "",
-            run_type: "Easy Run",
-            distance: 0,
-            time: 0,
-            comment: ""
-        })
+        clearRunModalState(setFields);
     }
 
-    function createNewRun () {
-        postRun(fields);
+    function submitRun () {
+        (fields.id === "") ? postRun(fields) : patchRun(fields);   
         setModalVisible(false);
+        clearRunModalState(setFields);
         setUpdateRequired(true);
-        setFields({
-            date: "",
-            run_type: "",
-            distance: "",
-            time: "",
-            comment: ""
-        })
-    } 
+    }
 
     return (
         <React.Fragment>
@@ -73,7 +63,7 @@ export default function Calendar () {
                 modalVisible={ modalVisible } 
                 fields={ fields }
                 setFields={ setFields } 
-                createNewRun={ createNewRun }/>            
+                submitRun={ submitRun }/>            
         </React.Fragment>
     )
 }
