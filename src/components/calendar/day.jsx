@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Day ({ data, modalVisible, setModalVisible }) {
+export default function Day ({ data, modalVisible, setModalVisible, setFields }) {
     
     function handleClassName () {
         return (data.day === "0") ? "opacity-0": "h-20 p-1 border border-solid border-gray-200 hover:bg-gray-100 cursor-pointer";
@@ -13,6 +13,13 @@ export default function Day ({ data, modalVisible, setModalVisible }) {
     function handleClick (e) {
         if (!modalVisible) {
             e.stopPropagation();
+            setFields({
+                date: data.date,
+                run_type: data.run_type,
+                distance: data.distance,
+                time: data.time,
+                comment: data.comment
+            })
             setModalVisible(true);
         }
     }

@@ -3,7 +3,7 @@ import CalendarHeader from "./calendarHeader";
 import DaysOfTheWeek from "./daysOfTheWeek";
 import RunModal from './runModal';
 import Day from "./day";
-import { getCalendar } from '../../misc/apiCalls';
+import { getCalendar, postRun } from '../../misc/apiCalls';
 
 export default function Calendar () {
     const curDate = new Date();
@@ -12,15 +12,45 @@ export default function Calendar () {
         year: curDate.getFullYear()
     })
     const [ data, setData ] = useState([])
+    const [ fields, setFields ] = useState({
+        date: "",
+        run_type: "",
+        distance: "",
+        time: "",
+        comment: ""
+    })
     const [ modalVisible, setModalVisible ] = useState(false)
+    const [ updateRequired, setUpdateRequired ] = useState(false)
 
     useEffect(() => {
         getCalendar(period.month, period.year).then(data => setData(data))
-    }, [period])
+        setUpdateRequired(false);
+    }, [period, updateRequired])
     
     function handleCloseModal () {
         setModalVisible(false);
+        setFields({
+            date: "",
+            run_type: "Easy Run",
+            distance: 0,
+            time: 0,
+            comment: ""
+        })
     }
+
+    function createNewRun () {
+        postRun(fields);
+        setModalVisible(false);
+        setUpdateRequired(true);
+        setFields({
+            date: "",
+            run_type: "",
+            distance: "",
+            time: "",
+            comment: ""
+        })
+    } 
+
     return (
         <React.Fragment>
             <main onClick={ handleCloseModal } className={ (modalVisible) ? "h-screen relative blur-sm": "h-screen relative"}>
@@ -33,12 +63,17 @@ export default function Calendar () {
                                 key={ dataItem.day + ndx } 
                                 data={ dataItem }
                                 modalVisible={ modalVisible }
-                                setModalVisible={ setModalVisible } /> 
+                                setModalVisible={ setModalVisible }
+                                setFields={ setFields } /> 
                         ))}
                     </div>
                 </div>
             </main>
-            <RunModal modalVisible={ modalVisible }/>            
+            <RunModal 
+                modalVisible={ modalVisible } 
+                fields={ fields }
+                setFields={ setFields } 
+                createNewRun={ createNewRun }/>            
         </React.Fragment>
     )
 }

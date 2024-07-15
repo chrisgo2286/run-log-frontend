@@ -1,15 +1,8 @@
-import { useState } from 'react';
 import Input from "../misc/input/input";
 import Select from "../misc/select/select";
+import TextArea from '../misc/textarea/textarea';
 
-export default function RunModal ({ modalVisible }) {
-    const [ fields, setFields ] = useState({
-        date: "",
-        run_type: "",
-        distance: "",
-        time: "",
-        comment: ""
-    })
+export default function RunModal ({ modalVisible, fields, setFields, createNewRun }) {
     const visibleClass = "absolute flex flex-col top-1/3 left-1/3 w-1/3 border border-solid border-gray-200 bg-white rounded-md shadow-md" 
 
     return (
@@ -52,9 +45,18 @@ export default function RunModal ({ modalVisible }) {
                     fields={ fields }
                     setFields={ setFields } />
                 <div className="mb-3">Comment</div>
-                <textarea className="col-span-2 mb-3 border border-gray-300 rounded-md"/>
+                <TextArea 
+                    className="col-span-2 mb-3 border border-gray-300 rounded-md"
+                    name="comment"
+                    value={ fields.value }
+                    fields={ fields }
+                    setFields={ setFields }/>
             </div>
-            <button className="button w-20 h-8 mb-10 mx-auto border border-gray-500 rounded-md bg-green-200 hover:bg-green-300">Submit</button>
+            <button 
+                className="button w-20 h-8 mb-10 mx-auto border border-gray-500 rounded-md bg-green-200 hover:bg-green-300"
+                onClick={ createNewRun }>
+                Submit
+            </button>
         </div>
     )
 }

@@ -7,3 +7,14 @@ export async function getCalendar (month, year) {
     const result = await axios.get(newUrl)
     return result.data;
 }
+
+export async function postRun (fields) {
+    const newFields = { ...fields, 'owner': 1 }
+    const result = await axios.post(url + 'runs/', newFields)
+    return result.data;
+}
+
+export async function patchRun (id, fields) {
+    const result = await axios.patch(url + 'runs/' + id, fields)
+    return result.data;
+}
