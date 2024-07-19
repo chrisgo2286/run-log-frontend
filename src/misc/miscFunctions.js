@@ -33,3 +33,7 @@ export function clearRunModalState (setFields) {
         comment: ""
     })
 }
+
+export function refreshPage () {
+    window.location.reload()
+}
