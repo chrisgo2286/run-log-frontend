@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { SelectProps } from '../miscCompTypes';
 import './select.css';
 
 export default function Select ({
@@ -8,15 +9,15 @@ export default function Select ({
     options,
     fields,
     setFields,
-    ...other }) {
+    ...other }: SelectProps) {
     
-    const [ choice, setChoice ] = useState();
+    const [ choice, setChoice ] = useState<string>();
 
     useEffect(() => {
         setChoice(initial)
     }, [initial])
 
-    function handleChange (event) {
+    function handleChange (event: React.ChangeEvent<HTMLSelectElement>): void {
         const { name, value } = event.target;
         setChoice(value);
         setFields({ ...fields, [name]: value });

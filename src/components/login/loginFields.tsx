@@ -1,7 +1,12 @@
 import React from "react";
 import InputWithIcon from "../misc/inputWithIcon/inputWithIcon";
+import { LoginFieldsProps } from "./loginTypes";
 
-export default function LoginFields ({ fields, setFields, handleSubmit }) {
+export default function LoginFields ({ 
+    fields, 
+    setFields, 
+    handleSubmit 
+    }: LoginFieldsProps) {
     return (
         <React.Fragment>
             <InputWithIcon

@@ -1,3 +1,4 @@
+import { InputProps } from '../miscCompTypes';
 import './input.css';
 
 export default function Input ({ 
@@ -7,14 +8,14 @@ export default function Input ({
     value, 
     fields, 
     setFields, 
-    ...other }) {
+    ...other }: InputProps) {
     
-    function handleChange (event) {
+    function handleChange (event: React.ChangeEvent<HTMLInputElement>): void {
         const { name, value } = event.target;
         setFields({ ...fields, [name]: value })
     }
 
-    function handleClassName () {
+    function handleClassName (): string {
         if (className) {
             return "input " + className;
         }

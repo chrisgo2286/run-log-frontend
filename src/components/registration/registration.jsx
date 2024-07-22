@@ -9,7 +9,7 @@ import NewUserFields from './newUserFields';
 import './registration.css';
 
 export default function Registration () {
-    const [user, setUser] = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
     const [credentials, setCredentials] = useState({
         username: '',

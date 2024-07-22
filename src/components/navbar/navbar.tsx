@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { ReactElement, useContext } from 'react';
 import { UserContext } from '../../misc/context';
 import { 
     userLinksLoggedIn, 
@@ -9,13 +9,13 @@ import {
 import './navbar.css';
 
 export default function Navbar () {
-    const user = useContext(UserContext)[0];
+    const { user } = useContext(UserContext);
     
-    function handleSiteLinks () {
+    function handleSiteLinks (): ReactElement {
         return (user.isLoggedIn) ? siteLinksLoggedIn(): siteLinksLoggedOut();
     }
 
-    function handleUserLinks () {
+    function handleUserLinks (): ReactElement {
         return (user.isLoggedIn) ? userLinksLoggedIn(user.username): userLinksLoggedOut();
     }
 

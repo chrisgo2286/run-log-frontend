@@ -6,18 +6,22 @@ import { clearUser } from '../../misc/userFunctions';
 
 export default function Logout () {
     
-    const [ user, setUser ] = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
 
-    async function handleLogout () {
-        if(localStorage.getItem('token') !== '') {
+    async function handleLogout (): Promise<void> {
+        if(user.isLoggedIn) {
             const response = await logoutUser();
             
-            if(response.status === 200) {
-                clearUser(user, setUser)
-                navigate('/');
+            if(response?.status === 200) {
+                handleValidLogoutResponse()
             }
         }
+    }
+
+    function handleValidLogoutResponse (): void {
+        clearUser(user, setUser)
+        navigate('/');
     }
     
     return (

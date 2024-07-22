@@ -1,17 +1,19 @@
+import { TextAreaProps } from "../miscCompTypes"
+
 export default function TextArea ({
     className,
     name,
     value,
     fields,
     setFields,
-    ...other }) {
+    ...other }: TextAreaProps) {
 
-    function handleChange (event) {
+    function handleChange (event: React.ChangeEvent<HTMLTextAreaElement>): void {
         const { name, value } = event.target;
         setFields({ ...fields, [name]: value })
     }
 
-    function handleClassName () {
+    function handleClassName (): string {
         if (className) {
             return "textarea " + className;
         }

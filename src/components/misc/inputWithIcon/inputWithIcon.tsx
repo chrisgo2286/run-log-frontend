@@ -1,17 +1,18 @@
+import { InputWithIconProps } from '../miscCompTypes';
 import './inputWithIcon.css';
 
 export default function InputWithIcon ({ 
     className,
     type, 
-    name,
-    placeholder, 
+    name, 
     value, 
     fields, 
     setFields,
-    icon, 
-    ...other }) {
+    icon,
+    placeholder, 
+    ...other }: InputWithIconProps) {
     
-    function handleChange (event) {
+    function handleChange (event: React.ChangeEvent<HTMLInputElement>): void {
         const { name, value } = event.target;
         setFields({ ...fields, [name]: value })
     }

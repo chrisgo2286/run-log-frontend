@@ -7,6 +7,7 @@ import Calendar from './components/calendar/calendar';
 import Login from './components/login/login';
 import Registration from './components/registration/registration';
 import { UserContext } from './misc/context';
+import { UserType } from './misc/miscTypes';
 import axios from 'axios';
 import './App.css';
 
@@ -19,7 +20,7 @@ export default function App() {
     let token = localStorage.getItem('token');
     let username = localStorage.getItem('username');
 
-    const [user, setUser] = useState({
+    const [user, setUser] = useState<UserType>({
         username: (username) ? username: '',
         isLoggedIn: (token) ? true: false,
         token: (token) ? token: '',
@@ -27,7 +28,7 @@ export default function App() {
 
     return (
         <React.Fragment>
-            <UserContext.Provider value={[ user, setUser ]}>
+            <UserContext.Provider value={{ user, setUser}}>
             <Router>
                 <Navbar />
                 <Routes>
