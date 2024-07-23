@@ -1,4 +1,4 @@
-export default function DaysOfTheWeek () {
+export default function DaysOfTheWeek (): JSX.Element {
     const daysOfWeek = [
         "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
         "Saturday"

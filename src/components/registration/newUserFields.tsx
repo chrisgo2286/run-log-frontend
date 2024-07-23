@@ -1,7 +1,12 @@
 import React from "react";
 import InputWithIcon from "../misc/inputWithIcon/inputWithIcon";
+import { NewUserFieldsProps } from "./registrationTypes";
 
-export default function NewUserFields ({ fields, setFields, handleSubmit }) {
+export default function NewUserFields ({ 
+    fields, 
+    setFields, 
+    handleSubmit 
+    }: NewUserFieldsProps): JSX.Element {
     return (
         <React.Fragment>
             <InputWithIcon

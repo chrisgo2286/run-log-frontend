@@ -1,4 +1,6 @@
-export default function CurrentMonthStats ({ data }) {
+import { MonthlyStatsProps, MonthlyStatsTypes } from "./profileTypes";
+
+export default function CurrentMonthStats ({ data }: MonthlyStatsProps): JSX.Element {
     return (
         <div className="w-96 h-64 border border-gray-200 rounded-md shadow-md">
             <div className="text-center font-">{ data?.current_month }</div>

@@ -18,19 +18,18 @@ export default function Login () {
     async function handleSubmit (): Promise<void> {
         const result = 'Valid' //NEED TO ADD VALIDATION
         if(result === 'Valid') {
-            handleLogin(result);
+            handleLogin();
         }
     }
 
-    async function handleLogin (result: string): Promise<void> {
+    async function handleLogin (): Promise<void> {
         const response = await loginUser(credentials);
         if(response?.status === 200) {
             handleValidLoginResponse(response.data.key);            
         } 
     }
 
-    function handleValidLoginResponse (key: string): void {
-        const token = key;
+    function handleValidLoginResponse (token: string): void {
         updateLocalStorage(token, credentials.username);
         updateUser(token, credentials.username, user, setUser);
         navigate('/');

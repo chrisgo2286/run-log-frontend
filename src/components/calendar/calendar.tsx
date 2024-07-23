@@ -2,39 +2,40 @@ import React, { useState, useEffect } from 'react';
 import CalendarHeader from "./calendarHeader";
 import DaysOfTheWeek from "./daysOfTheWeek";
 import RunModal from './runModal';
-import Day from "./day";
+import CalendarDays from './calendarDays';
 import { getCalendar, postRun, patchRun } from '../../misc/apiCalls';
 import { clearRunModalState } from '../../misc/miscFunctions';
+import { FieldsTypes, PeriodTypes, DataTypes } from './calendarTypes';
 
-export default function Calendar () {
+export default function Calendar (): JSX.Element {
     const curDate = new Date();
-    const [ period, setPeriod ] = useState({
+    const [ period, setPeriod ] = useState<PeriodTypes>({
         month: curDate.getMonth() + 1,
         year: curDate.getFullYear()
     })
-    const [ data, setData ] = useState([])
-    const [ fields, setFields ] = useState({
+    const [ data, setData ] = useState<DataTypes[]>([])
+    const [ fields, setFields ] = useState<FieldsTypes>({
         id: "",
         date: "",
-        run_type: "",
+        run_type: "Easy Run",
         distance: "",
         time: "",
         comment: ""
     })
-    const [ modalVisible, setModalVisible ] = useState(false)
-    const [ updateRequired, setUpdateRequired ] = useState(false)
+    const [ modalVisible, setModalVisible ] = useState<boolean>(false)
+    const [ updateRequired, setUpdateRequired ] = useState<boolean>(false)
 
     useEffect(() => {
         getCalendar(period.month, period.year).then(data => setData(data))
         setUpdateRequired(false);
     }, [period, updateRequired])
     
-    function handleCloseModal () {
+    function handleCloseModal (): void {
         setModalVisible(false);
         clearRunModalState(setFields);
     }
 
-    function submitRun () {
+    function submitRun (): void {
         (fields.id === "") ? postRun(fields) : patchRun(fields);   
         setModalVisible(false);
         clearRunModalState(setFields);
@@ -47,16 +48,11 @@ export default function Calendar () {
                 <div className="w-4/5 mx-auto mb-10 border border-solid border-gray-200 rounded-xl">
                     <CalendarHeader period={ period } setPeriod={ setPeriod }/>
                     <DaysOfTheWeek />
-                    <div className="grid grid-cols-7 border border-solid border-gray-200">
-                        { data.map((dataItem, ndx) => (
-                            <Day 
-                                key={ dataItem.day + ndx } 
-                                data={ dataItem }
-                                modalVisible={ modalVisible }
-                                setModalVisible={ setModalVisible }
-                                setFields={ setFields } /> 
-                        ))}
-                    </div>
+                    <CalendarDays 
+                        data={ data }
+                        modalVisible={ modalVisible }
+                        setModalVisible={ setModalVisible }
+                        setFields={ setFields } />
                 </div>
             </main>
             <RunModal 

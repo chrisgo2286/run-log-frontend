@@ -1,10 +1,10 @@
 import Input from "../misc/input/input";
 import Select from "../misc/select/select";
 import TextArea from '../misc/textarea/textarea';
+import { RunModalProps } from "./calendarTypes";
 
-export default function RunModal ({ modalVisible, fields, setFields, submitRun }) {
+export default function RunModal ({ modalVisible, fields, setFields, submitRun }: RunModalProps): JSX.Element {
     const visibleClass = "absolute flex flex-col top-1/3 left-1/3 w-1/3 border border-solid border-gray-200 bg-white rounded-md shadow-md" 
-    console.log(fields)
     return (
         <div className={ (modalVisible) ? visibleClass : "hidden" }>
             <div className="h-16 text-xl font-bold border-b border-b-gray-200 bg-blue-100 flex flex-col items-center justify-center">

@@ -6,9 +6,10 @@ import WeeklyChart from "./weeklyChart"
 import RunTypes from "./runTypes"
 import PaceChart from "./paceChart"
 import { getProfile } from '../../misc/apiCalls';
+import { ProfileDataTypes } from './profileTypes';
 
 export default function Profile () {
-    const [ data, setData ] = useState({})
+    const [ data, setData ] = useState<ProfileDataTypes>({})
     
     useEffect(() => {
         getProfile().then((data) => setData(data))

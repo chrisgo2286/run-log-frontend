@@ -1,15 +1,16 @@
 import { getMonthNameFromNum, getNextPeriod, getPreviousPeriod } from "../../misc/miscFunctions";
+import { CalendarHeaderProps } from "./calendarTypes";
 
-export default function CalendarHeader ({ period, setPeriod }) {
+export default function CalendarHeader ({ period, setPeriod }: CalendarHeaderProps): JSX.Element {
     
     const monthName = getMonthNameFromNum(period.month)
 
-    function goPreviousMonth () {
+    function goPreviousMonth (): void {
         const newPeriod = getPreviousPeriod(period)
         setPeriod(newPeriod);
     }
 
-    function goNextMonth () {
+    function goNextMonth (): void {
         const newPeriod = getNextPeriod(period)
         setPeriod(newPeriod);
     }
