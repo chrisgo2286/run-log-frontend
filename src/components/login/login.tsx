@@ -38,7 +38,11 @@ export default function Login () {
     return (
         <main className="login-page">
             <div className="login" data-cy='login'>
-                <div className="login-header">Login</div>
+                <div 
+                    className="login-header" 
+                    data-cy="login-header">
+                    Login
+                </div>
                 <LoginFields 
                     fields={ credentials } 
                     setFields={ setCredentials } 

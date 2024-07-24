@@ -3,7 +3,6 @@ import Select from "../../misc/select/select"
 import TextArea from "../../misc/textarea/textarea"
 
 export default function RunModalFields ({ fields, setFields }) {
-    console.log(fields)
     return (
         <div className="grid grid-cols-3 px-10 py-5">
             <div className="mb-3">Date</div>
