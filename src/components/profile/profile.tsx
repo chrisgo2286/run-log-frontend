@@ -17,8 +17,8 @@ export default function Profile () {
 
     return (
         <main className="flex flex-row flex-wrap justify-center py-10 gap-10 w-11/12 border border-gray-200 mx-auto">
-            <CurrentMonthStats data={ data.monthly_stats }/>
-            <CurrentYearStats data={ data.yearly_stats }/>
+            <CurrentMonthStats data={ data?.monthly_stats }/>
+            <CurrentYearStats data={ data?.yearly_stats }/>
             <MonthlyChart />
             <WeeklyChart />
             <PaceChart />     
