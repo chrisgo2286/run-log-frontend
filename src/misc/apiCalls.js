@@ -31,6 +31,11 @@ export async function patchRun (fields) {
     return result.data;
 }
 
+export async function deleteRun (id) {
+    const result = await axios.delete(url + 'runs/' + id + '/', headers)
+    return result;
+}
+
 export async function registerNewUser (fields) {
     const result = await axios.post(url + 'registration/', fields)
     return result;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CalendarHeader from "./calendarHeader";
 import DaysOfTheWeek from "./daysOfTheWeek";
-import RunModal from './runModal';
+import RunModal from './runModal/runModal';
 import CalendarDays from './calendarDays';
 import { getCalendar, postRun, patchRun } from '../../misc/apiCalls';
 import { clearRunModalState } from '../../misc/miscFunctions';

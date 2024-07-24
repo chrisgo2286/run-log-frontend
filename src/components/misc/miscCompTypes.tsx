@@ -1,10 +1,10 @@
 export type InputProps = {
-    className: string;
-    type: string;
-    name: string;
-    value: string | number;
-    fields: object;
-    setFields: React.Dispatch<React.SetStateAction<{}>>;
+    className: string,
+    type: string,
+    name: string,
+    value: string | number,
+    fields: object,
+    setFields: React.Dispatch<React.SetStateAction<{}>>
 }
 
 export type InputWithIconProps = InputProps & {

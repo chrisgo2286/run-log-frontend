@@ -9,7 +9,7 @@ import { getProfile } from '../../misc/apiCalls';
 import { ProfileDataTypes } from './profileTypes';
 
 export default function Profile () {
-    const [ data, setData ] = useState<ProfileDataTypes>({})
+    const [ data, setData ] = useState<ProfileDataTypes>()
     
     useEffect(() => {
         getProfile().then((data) => setData(data))

@@ -1,4 +1,5 @@
 import { TextAreaProps } from "../miscCompTypes"
+import './textarea.css'
 
 export default function TextArea ({
     className,

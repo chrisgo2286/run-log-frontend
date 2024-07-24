@@ -7,7 +7,7 @@ export type DayProps = {
 
 export type FieldsTypes = {
     id: string | number,
-    date: string | Date,
+    date: string,
     run_type: string,
     distance: string | number,
     time: string | number,

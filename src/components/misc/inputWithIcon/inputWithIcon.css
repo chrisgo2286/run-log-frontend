@@ -14,14 +14,14 @@
     border-radius: 5px 0px 0px 5px;
 }
 
-.input {
+.input-icon-pair .input {
     border: 1px solid black;
     border-radius: 0px 5px 5px 0px;
     padding-left: 10%;
     width: 150px;
 }
 
-.input:hover {
+.input-icon-pair .input:hover {
     background-color: var(--firstColor);
     cursor: pointer;
 }
