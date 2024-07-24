@@ -2,6 +2,7 @@ export type DayProps = {
     data: DataTypes,
     modalVisible: boolean
     setModalVisible: React.Dispatch<React.SetStateAction<boolean>>,
+    fields: FieldsTypes,
     setFields: React.Dispatch<React.SetStateAction<FieldsTypes | DataTypes>>
 }
 
@@ -32,6 +33,7 @@ export type CalendarDaysProps = {
     data: DataTypes[], 
     modalVisible: boolean,
     setModalVisible: React.Dispatch<React.SetStateAction<boolean>>,
+    fields: FieldsTypes,
     setFields: React.Dispatch<React.SetStateAction<FieldsTypes | DataTypes>>
 }
 

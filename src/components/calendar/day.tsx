@@ -4,7 +4,8 @@ import { DataObjectType, DayProps } from "./calendarTypes";
 export default function Day ({ 
     data, 
     modalVisible, 
-    setModalVisible, 
+    setModalVisible,
+    fields,
     setFields 
     }: DayProps): JSX.Element {
     
@@ -13,21 +14,31 @@ export default function Day ({
     }
 
     function handleBody (): null | JSX.Element {
-        return (data.hasOwnProperty('date')) ? <RunDetails data={ data } /> : null;
+        return (data.hasOwnProperty('id')) ? <RunDetails data={ data } /> : null;
     }
 
     function handleClick (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void {
         if (!modalVisible) {
             event.stopPropagation();
-            if (data.id) {
-                setFields(data);
-            }
+            updateFields();
             setModalVisible(true);
         }
     }
 
+    function updateFields (): void {
+        if (data.id) {
+            setFields(data);
+        } else {
+            const newFields = { ...fields, 'date': data.date }
+            setFields(newFields);
+        }
+    }
+
     return (
-        <div className={ handleClassName() } onClick={ handleClick }>
+        <div 
+            className={ handleClassName() } 
+            onClick={ handleClick }
+            data-cy={ `day-${data.day}`}>
             <div className="text-xs">{ data.day }</div>
             { handleBody() }
         </div>

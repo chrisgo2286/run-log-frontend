@@ -52,6 +52,7 @@ export default function Calendar (): JSX.Element {
                         data={ data }
                         modalVisible={ modalVisible }
                         setModalVisible={ setModalVisible }
+                        fields={ fields }
                         setFields={ setFields } />
                 </div>
             </main>
