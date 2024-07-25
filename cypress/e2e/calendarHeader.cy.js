@@ -5,17 +5,16 @@ const prevMonth = "[data-cy=calendar-header-previous-month]"
 const nextMonth = "[data-cy=calendar-header-next-month]"
 const period = "[data-cy=calendar-header-period]"
 const curDate = new Date()
-const curMonthName = getMonthNameFromNum(curDate.month + 1)
+const curMonthName = getMonthNameFromNum(curDate.getMonth() + 1)
 const curYear = curDate.getFullYear()
-const prevMonthName = getMonthNameFromNum(curDate.month)
-const prevMonthYear = curDate.setDate(0).getFullYear()
-const nextMonthName = getMonthNameFromNum(curDate.month + 2) 
-const nextMonthYear = curDate.setDate(32).getFullYear()
+const prevMonthName = getMonthNameFromNum(curDate.getMonth())
+const nextMonthName = getMonthNameFromNum(curDate.getMonth() + 2) 
+const calendarLink = "[data-cy=calendar-link]"
 
 describe("Calendar Header", () => {
     beforeEach(() => {
         cy.login()
-        cy.visit("/#/calendar")        
+        cy.get(calendarLink).click()     
     })
     
     it("Displays Correctly", () => {
@@ -30,11 +29,14 @@ describe("Calendar Header", () => {
 
     it("Previous Month returns correct period", () => {
         cy.get(prevMonth).click()
-        cy.get(period).contains(`${prevMonthName} ${prevMonthYear}`)
+        const year = new Date(curDate.setDate(0)).getFullYear()
+        cy.get(period).contains(`${prevMonthName} ${year}`)
     })
 
     it("Next Month returns correct period", () => {
         cy.get(nextMonth).click()
-        cy.get(period).contains(`${nextMonthName} ${nextMonthYear}`)
+        // let nextMonthDate = curDate.setDate(32)
+        const year = new Date(curDate.setDate(32)).getFullYear()
+        cy.get(period).contains(`${nextMonthName} ${year}`)
     })
 })

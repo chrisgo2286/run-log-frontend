@@ -1,4 +1,6 @@
 /// <reference types="cypress" />
+
+const calendarLink = "[data-cy=calendar-link]"
 const daysOfWeek = [
     "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
     "Saturday"
@@ -7,7 +9,7 @@ const daysOfWeek = [
 describe("Calendar Header", () => {
     beforeEach(() => {
         cy.login()
-        cy.visit("/#/calendar")        
+        cy.get(calendarLink).click()      
     })
 
     it("Days of Week displays correctly", () => {

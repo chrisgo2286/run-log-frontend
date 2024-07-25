@@ -5,6 +5,7 @@ import { loginUser } from '../../misc/apiCalls';
 import { updateLocalStorage, updateUser } from '../../misc/userFunctions';
 import LoginFields from './loginFields';
 import { FieldsType } from './loginTypes';
+import { refreshPage } from '../../misc/miscFunctions';
 import './login.css';
 
 export default function Login () {
@@ -33,6 +34,7 @@ export default function Login () {
         updateLocalStorage(token, credentials.username);
         updateUser(token, credentials.username, user, setUser);
         navigate('/');
+        refreshPage();
     }
 
     return (

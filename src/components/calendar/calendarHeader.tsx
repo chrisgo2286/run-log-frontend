@@ -15,6 +15,8 @@ export default function CalendarHeader ({ period, setPeriod }: CalendarHeaderPro
         setPeriod(newPeriod);
     }
 
+    const curDate = new Date()
+    console.log(new Date(curDate.setDate(0)))
     return (
         <section className="h-40 px-5 flex justify-between items-center bg-green-100 rounded-t-xl">
             <i 

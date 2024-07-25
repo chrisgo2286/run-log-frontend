@@ -51,6 +51,6 @@ export async function loginUser (credentials) {
 }
 
 export async function logoutUser () {
-    const result = await axios.post(url + 'logout/')
+    const result = await axios.post(url + 'logout/', headers)
     return result
 }
