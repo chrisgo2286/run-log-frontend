@@ -28,7 +28,7 @@ export default function Logout () {
             <div
                 className='cursor-pointer hover:text-yellow-600'
                 onClick={ handleLogout } 
-                data-cy='logout'>
+                data-cy='logout-link'>
                 Logout
             </div>
 
