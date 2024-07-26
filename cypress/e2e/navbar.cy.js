@@ -53,5 +53,11 @@ describe("Navbar", () => {
         cy.url().should('eq', calendarUrl)
     })
 
+    it("Logout link logs user out", () => {
+        cy.login()
+        cy.get(logoutLink).click()
+        cy.get(loginLink).should("exist")
+        cy.get(registerLink).should("exist")
+    })
 
 })

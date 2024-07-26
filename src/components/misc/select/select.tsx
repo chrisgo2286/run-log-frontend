@@ -29,7 +29,6 @@ export default function Select ({
             name={ name }
             value={ choice }
             onChange={ handleChange }
-            data-cy={ className }
             { ...other }>
             <option key={ initial } value={ initial }>{ initial }</option>
             {

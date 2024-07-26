@@ -28,7 +28,6 @@ export default function TextArea ({
             value={ value }
             id={ name }
             onChange={ handleChange }
-            data-cy={ className }
             { ...other }>
         </textarea>
     )
