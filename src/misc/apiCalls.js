@@ -14,8 +14,8 @@ export async function getCalendar (month, year) {
     return result.data;
 }
 
-export async function getProfile () {
-    const result = await axios.get(url + 'profile/', headers)
+export async function getMonthlyStats (month, year) {
+    const result = await axios.get(url + 'monthly_stats/', headers)
     return result.data
 }
 
