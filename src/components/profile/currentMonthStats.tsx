@@ -1,6 +1,17 @@
+import { useState } from "react";
 import { MonthlyStatsProps, MonthlyStatsTypes } from "./profileTypes";
+import { getMonthNameFromNum, getNextPeriod, getPreviousPeriod } from "../../misc/miscFunctions";
 
-export default function CurrentMonthStats ({ data }: MonthlyStatsProps): JSX.Element {
+export default function CurrentMonthStats (): JSX.Element {
+
+    const curDate = new Date()
+    
+    const [ period, setPeriod ] = useState({
+        month: curDate.getMonth(),
+        year: curDate.getFullYear()
+    })
+    const [ data, setData ] = useState<MonthlyStatsTypes>()
+
     return (
         <div className="w-96 h-64 border border-gray-200 rounded-md shadow-md">
             <div className="text-center font-">{ data?.current_month }</div>

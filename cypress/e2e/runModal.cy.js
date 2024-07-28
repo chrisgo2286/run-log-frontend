@@ -58,6 +58,7 @@ describe("RunModal", () => {
     })
 
     it("Creates and deletes a new run", () => {
+
         //Create Run
         cy.get(dayTwoLink).click()
         cy.get(dateField).type(newDateValue)
@@ -84,7 +85,6 @@ describe("RunModal", () => {
         cy.get(timeField).should('have.value', newTimeValue2)
 
         //Delete run
-        cy.get(dayTwoLink).click()
         cy.get(deleteBtn).click()
 
         //Check run deleted
