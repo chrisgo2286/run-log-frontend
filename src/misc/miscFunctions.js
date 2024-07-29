@@ -34,6 +34,39 @@ export function clearRunModalState (setFields) {
     })
 }
 
+export function formatTime (totalMinutes) {
+    const { hours, minutes } = convertMinutesToHours(totalMinutes)
+    return `${hours} hours, ${minutes} minutes`
+}
+
+export function convertMinutesToHours (totalMinutes) {
+    const hours = Math.floor(totalMinutes / 60)
+    const minutes = totalMinutes % 60
+    return { hours, minutes } 
+}
+
+export function formatWeeklyAverage (weeklyAverage) {
+    const average = Math.trunc(parseFloat(weeklyAverage))
+    return `${average} km / week`
+}
+
+export function formatMonthlyAverage (monthlyAverage) {
+    const average = Math.trunc(parseFloat(monthlyAverage))
+    return `${average} km / month`    
+}
+
+export function formatPace (averagePace) {
+    const { minutes, seconds } = convertMinutesToMinAndSec(averagePace)
+    return `${minutes}:${seconds} / km`
+}
+
+export function convertMinutesToMinAndSec (totalMinutes) {
+    const minutesInteger = Math.trunc(totalMinutes)
+    const fractionOfMinutes = totalMinutes - minutesInteger
+    const seconds = Math.round(fractionOfMinutes * 60)
+    return { 'minutes': minutesInteger, 'seconds': seconds }
+}
+
 export function refreshPage () {
     window.location.reload()
 }

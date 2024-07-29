@@ -8,25 +8,17 @@ export type ProfileDataTypes = {
 
 export type MonthlyStatsTypes = {
     current_month: string,
-    total_distance: string,
-    total_time: string,
+    distance: string,
+    time: string,
     weekly_average: string,
     average_pace: string
 }
 
 export type YearlyStatsTypes = {
     current_year: string,
-    total_distance: string,
-    total_time: string,
+    distance: string,
+    time: string,
     monthly_average: string,
     weekly_average: string,
     average_pace: string
-}
-
-export type MonthlyStatsProps = {
-    data: MonthlyStatsTypes
-}
-
-export type YearlyStatsProps = {
-    data: YearlyStatsTypes
 }

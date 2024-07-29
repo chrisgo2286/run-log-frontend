@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getMonthNameFromNum } from './miscFunctions';
 
 const url = 'http://127.0.0.1:8000/api/'
 const token = localStorage.getItem('token')
@@ -15,7 +16,14 @@ export async function getCalendar (month, year) {
 }
 
 export async function getMonthlyStats (month, year) {
-    const result = await axios.get(url + 'monthly_stats/', headers)
+    const newUrl = `${url}monthly_stats/?month=${month}&year=${year}`
+    const result = await axios.get(newUrl, headers)
+    return result.data
+}
+
+export async function getYearlyStats (year) {
+    const newUrl = `${url}yearly_stats/?year=${year}`
+    const result = await axios.get(newUrl, headers)
     return result.data
 }
 
