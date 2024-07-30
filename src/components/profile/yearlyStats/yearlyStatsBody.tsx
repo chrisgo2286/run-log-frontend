@@ -4,22 +4,23 @@ import {
     formatPace,
     formatMonthlyAverage 
     } from "../../../misc/miscFunctions";
+import { YearlyStatsBodyProp } from "./yearlyStatsTypes";
 
-export default function YearlyStatsBody ({ data }) {
+export default function YearlyStatsBody ({ data }: YearlyStatsBodyProp): JSX.Element {
     
-    function handleTime () {
+    function handleTime (): string {
         return formatTime(data?.time)
     }
 
-    function handleWeeklyAverage () {
+    function handleWeeklyAverage (): string {
         return formatWeeklyAverage(data?.weekly_average)
     }
 
-    function handleMonthlyAverage () {
+    function handleMonthlyAverage (): string {
         return formatMonthlyAverage(data?.monthly_average)
     }
 
-    function handlePace () {
+    function handlePace (): string {
         return formatPace(data?.average_pace)
     }
 

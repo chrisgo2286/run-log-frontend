@@ -1,10 +1,15 @@
-export default function YearlyStatsHeader ({ year, setYear }): JSX.Element {
+import { YearStatsHeaderProps } from "./yearlyStatsTypes"
+
+export default function YearlyStatsHeader ({ 
+    year, 
+    setYear 
+    }: YearStatsHeaderProps): JSX.Element {
     
-    function handleClickPrevious () {
+    function handleClickPrevious (): void {
         setYear(year - 1)
     }
 
-    function handleClickNext () {
+    function handleClickNext (): void {
         setYear(year + 1)
     }
     

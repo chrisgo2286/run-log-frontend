@@ -1,13 +1,18 @@
 import { getNextPeriod, getPreviousPeriod } from "../../../misc/miscFunctions"
+import { MonthlyStatsHeaderProps } from "./monthlyStatsTypes"
 
-export default function MonthlyStatsHeader ({ month, period, setPeriod }) {
+export default function MonthlyStatsHeader ({ 
+    month, 
+    period, 
+    setPeriod 
+    }: MonthlyStatsHeaderProps): JSX.Element {
     
-    function handleClickPrevous () {
+    function handleClickPrevous (): void {
         const newPeriod = getPreviousPeriod(period)
         setPeriod(newPeriod)
     }
 
-    function handleClickNext () {
+    function handleClickNext (): void {
         const newPeriod = getNextPeriod(period)
         setPeriod(newPeriod)
     }

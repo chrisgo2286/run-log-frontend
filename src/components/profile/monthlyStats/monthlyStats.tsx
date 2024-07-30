@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import { MonthlyStatsTypes } from "../profileTypes";
+import { MonthlyStatsTypes } from "./monthlyStatsTypes";
 import { getMonthlyStats } from "../../../misc/apiCalls";
 import MonthlyStatsHeader from "./monthlyStatsHeader";
 import MonthlyStatsBody from "./monthlyStatsBody";
+import { MonthlyStatsPeriod } from "./monthlyStatsTypes";
 
 export default function CurrentMonthStats (): JSX.Element {
 
     const curDate = new Date()
-    const [ period, setPeriod ] = useState({
+    const [ period, setPeriod ] = useState<MonthlyStatsPeriod>({
         month: curDate.getMonth() + 1,
         year: curDate.getFullYear()
     })

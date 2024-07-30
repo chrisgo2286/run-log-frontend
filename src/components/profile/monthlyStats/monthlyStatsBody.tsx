@@ -1,16 +1,17 @@
 import { formatTime, formatWeeklyAverage, formatPace } from "../../../misc/miscFunctions";
+import { MonthlyStatsProp } from "./monthlyStatsTypes";
 
-export default function MonthlyStatsBody ({ data }): JSX.Element {
+export default function MonthlyStatsBody ({ data }: MonthlyStatsProp): JSX.Element {
 
-    function handleTime () {
+    function handleTime (): string {
         return formatTime(data?.time)
     }
 
-    function handleWeeklyAverage () {
+    function handleWeeklyAverage (): string {
         return formatWeeklyAverage(data?.weekly_average)
     }
 
-    function handlePace () {
+    function handlePace (): string {
         return formatPace(data?.average_pace)
     }
 

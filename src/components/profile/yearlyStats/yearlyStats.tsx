@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react"
 import { getYearlyStats } from "../../../misc/apiCalls"
-import { YearlyStatsTypes } from "../profileTypes"
+import { YearlyStatsTypes } from "./yearlyStatsTypes"
 import YearlyStatsBody from "./yearlyStatsBody"
 import YearlyStatsHeader from "./yearlyStatsHeader"
 
 export default function CurrentYearStats (): JSX.Element {
     const curDate = new Date()
-    const [ year, setYear ] = useState(curDate.getFullYear())
+    const [ year, setYear ] = useState<number>(curDate.getFullYear())
     const [ data, setData ] = useState<YearlyStatsTypes>()
 
     useEffect(() => {
