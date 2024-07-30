@@ -57,7 +57,7 @@ export function formatMonthlyAverage (monthlyAverage) {
 
 export function formatPace (averagePace) {
     const { minutes, seconds } = convertMinutesToMinAndSec(averagePace)
-    return `${minutes}:${seconds} / km`
+    return ( minutes > 0 | seconds > 0 ) ? `${minutes}:${seconds} / km` : "0 min / km"
 }
 
 export function convertMinutesToMinAndSec (totalMinutes) {
