@@ -11,7 +11,7 @@ export default function CurrentYearStats (): JSX.Element {
 
     useEffect(() => {
         getYearlyStats(year).then((data) => setData(data))
-    }, [])
+    }, [year])
 
     return (
         <div className="w-96 h-64 pt-5 border border-gray-200 rounded-md shadow-md">

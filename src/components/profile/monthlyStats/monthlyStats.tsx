@@ -16,11 +16,14 @@ export default function CurrentMonthStats (): JSX.Element {
     useEffect(() => {
         getMonthlyStats(period.month, period.year)
         .then((data) => setData(data))
-    }, [])
+    }, [period])
 
     return (
         <div className="w-96 h-64 pt-5 border border-gray-200 rounded-md shadow-md">
-            <MonthlyStatsHeader month={ data?.current_month } setPeriod={ setPeriod } />
+            <MonthlyStatsHeader 
+                month={ data?.current_month } 
+                period={ period }
+                setPeriod={ setPeriod } />
             <MonthlyStatsBody data={ data } />
         </div>
     )
