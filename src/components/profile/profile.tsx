@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import MonthlyStats from "./monthlyStats/monthlyStats"
 import YearlyStats from "./yearlyStats/yearlyStats"
-import MonthlyChart from "./monthlyChart"
+import MonthlyChart from "./monthlyChart/monthlyChart"
 import WeeklyChart from "./weeklyChart"
 import RunTypes from "./runTypes"
 import PaceChart from "./paceChart"
