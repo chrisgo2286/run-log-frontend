@@ -1,3 +1,4 @@
+import { BarChart } from 'recharts';
 import { MonthlyChartBodyProp } from "./monthlyChartTypes";
 
 export default function MonthlyChartBody ({ 

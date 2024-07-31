@@ -9,10 +9,10 @@ export type MonthlyChartHeaderProps = {
 }
 
 export type MonthlyChartBodyProp = {
-    data: MonthlyChartDataTypes
+    data: DataItem[]
 }
 
-export type MonthlyChartDataTypes = {
-    label: string[],
-    distance: string[]
+export type DataItem = {
+    label: string,
+    distance: string
 }
