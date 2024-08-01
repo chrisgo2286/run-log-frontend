@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { getMonthNameFromNum } from './miscFunctions';
 
 const url = 'http://127.0.0.1:8000/api/'
 const token = localStorage.getItem('token')
