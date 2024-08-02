@@ -3,11 +3,12 @@ import { getStartOfWeekDateObj, formatDateToString } from "../../../misc/miscFun
 import { getWeeklyChartData } from "../../../misc/apiCalls";
 import WeeklyChartBody from "./weeklyChartBody";
 import WeeklyChartHeader from "./weeklyChartHeader";
+import { DataItem } from "./weeklyChartTypes";
 
-export default function WeeklyChart () {
+export default function WeeklyChart (): JSX.Element {
     const curDate = new Date()
-    const [ startDateObj, setStartDateObj ] = useState(getStartOfWeekDateObj(curDate))
-    const [ data, setData ] = useState()
+    const [ startDateObj, setStartDateObj ] = useState<Date>(getStartOfWeekDateObj(curDate))
+    const [ data, setData ] = useState<DataItem[]>()
 
     useEffect(() => {
         const dateString = formatDateToString(startDateObj)

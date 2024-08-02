@@ -1,6 +1,9 @@
 import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+import { WeeklyChartBodyProp } from './weeklyChartTypes';
 
-export default function WeeklyChartBody ({ data }) {
+export default function WeeklyChartBody ({ 
+    data 
+    }: WeeklyChartBodyProp): JSX.Element {
     
     return (
         <ResponsiveContainer width="90%" height="70%">

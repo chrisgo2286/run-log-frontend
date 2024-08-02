@@ -4,7 +4,7 @@ import YearlyStats from "./yearlyStats/yearlyStats"
 import MonthlyChart from "./monthlyChart/monthlyChart"
 import WeeklyChart from "./weeklyChart/weeklyChart"
 import RunTypes from "./runTypes"
-import PaceChart from "./paceChart"
+import RunTypeChart from './runTypeChart/runTypeChart';
 
 export default function Profile () {
     
@@ -14,7 +14,7 @@ export default function Profile () {
             <YearlyStats />
             <MonthlyChart />
             <WeeklyChart />
-            <PaceChart />     
+            <RunTypeChart />     
             <RunTypes />
         </main>
     )

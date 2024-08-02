@@ -1,13 +1,17 @@
 import { formatDateToString, incrementDate } from "../../../misc/miscFunctions";
+import { WeeklyChartHeaderProps } from "./weeklyChartTypes";
 
-export default function WeeklyChartHeader ({ startDateObj, setStartDateObj }) {
+export default function WeeklyChartHeader ({ 
+    startDateObj, 
+    setStartDateObj 
+    }: WeeklyChartHeaderProps): JSX.Element {
     
-    function handleClickPrevious () {
+    function handleClickPrevious (): void {
         const newDateObj = incrementDate(startDateObj, -7)
         setStartDateObj(newDateObj)
     }
 
-    function handleClickNext () {
+    function handleClickNext (): void {
         const newDateObj = incrementDate(startDateObj, 7)
         setStartDateObj(newDateObj)
     }
@@ -15,7 +19,7 @@ export default function WeeklyChartHeader ({ startDateObj, setStartDateObj }) {
     return (
         <div className="flex justify-between">
             <span 
-                className="material-icons"
+                className="material-icons hover:cursor-pointer"
                 onClick={ handleClickPrevious }>
                 navigate_before
             </span>
@@ -23,7 +27,7 @@ export default function WeeklyChartHeader ({ startDateObj, setStartDateObj }) {
                 Week of { formatDateToString(startDateObj) }
             </span>
             <span 
-                className="material-icons"
+                className="material-icons hover:cursor-pointer"
                 onClick={ handleClickNext }>
                 navigate_next
             </span>
