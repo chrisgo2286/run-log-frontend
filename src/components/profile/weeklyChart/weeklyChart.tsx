@@ -1,21 +1,22 @@
 import { useState, useEffect } from "react";
-import { getStartOfWeek } from "../../../misc/miscFunctions";
+import { getStartOfWeekDateObj, formatDateToString } from "../../../misc/miscFunctions";
 import { getWeeklyChartData } from "../../../misc/apiCalls";
 import WeeklyChartBody from "./weeklyChartBody";
 import WeeklyChartHeader from "./weeklyChartHeader";
 
 export default function WeeklyChart () {
     const curDate = new Date()
-    const [ startDate, setStartDate ] = useState(getStartOfWeek(curDate))
+    const [ startDateObj, setStartDateObj ] = useState(getStartOfWeekDateObj(curDate))
     const [ data, setData ] = useState()
 
     useEffect(() => {
-        getWeeklyChartData(startDate).then((data) => setData(data))
-    }, [ startDate ])
+        const dateString = formatDateToString(startDateObj)
+        getWeeklyChartData(dateString).then((data) => setData(data))
+    }, [ startDateObj ])
 
     return (
         <div className="w-96 h-64 border border-gray-200 rounded-md shadow-md">
-            <WeeklyChartHeader startDate={ startDate } setStartDate={ setStartDate } />
+            <WeeklyChartHeader startDateObj={ startDateObj } setStartDateObj={ setStartDateObj } />
             <WeeklyChartBody data={ data } />
         </div>
     )

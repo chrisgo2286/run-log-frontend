@@ -67,15 +67,23 @@ export function convertMinutesToMinAndSec (totalMinutes) {
     return { 'minutes': minutesInteger, 'seconds': seconds }
 }
 
-export function getStartOfWeek (date) {
-    let firstDayInteger = new Date()
-    const dayOfWeek = date.getDay()
-    console.log(date.getDate() - dayOfWeek)
-    firstDayInteger.setDate(date.getDate() - dayOfWeek)
-    const firstDayOfWeek = new Date(firstDayInteger)
-    return `${firstDayOfWeek.getMonth() + 1}/${firstDayOfWeek.getDate()}/${firstDayOfWeek.getFullYear()}`
+export function formatDateToString (date) {
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
 }
 
+export function getStartOfWeekDateObj (date) {
+    let firstDay = new Date()
+    const dayOfWeek = date.getDay()
+    // firstDay.setDate(date.getDate() - dayOfWeek)
+    // return new Date(firstDay)
+    return incrementDate(firstDay, -dayOfWeek)
+}
+
+export function incrementDate (date, days) {
+    date.setDate(date.getDate() + days)
+    return new Date(date)
+}
+    
 export function refreshPage () {
     window.location.reload()
 }

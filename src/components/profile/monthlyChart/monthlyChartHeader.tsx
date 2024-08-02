@@ -10,7 +10,7 @@ export default function MonthlyChartHeader ({
     setPeriod 
     }: MonthlyChartHeaderProps): JSX.Element {
     
-    function handleClickPrevous (): void {
+    function handleClickPrevious (): void {
         const newPeriod = getPreviousPeriod(period)
         setPeriod(newPeriod)
     }
@@ -28,7 +28,7 @@ export default function MonthlyChartHeader ({
         <div className="flex justify-between">
             <span 
                 className="material-icons"
-                onClick={ handleClickPrevous }>
+                onClick={ handleClickPrevious }>
                 navigate_before
             </span>
             <span className="text-4xl font-medium mb-5">{ handleMonthName() }</span>

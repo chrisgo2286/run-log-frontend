@@ -1,5 +1,14 @@
+import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+
 export default function WeeklyChartBody ({ data }) {
+    
     return (
-        <div>Chart</div>
+        <ResponsiveContainer width="90%" height="70%">
+            <BarChart data={ data }>
+                <Bar dataKey="distance" fill="#8884d8" />
+                <XAxis dataKey="label" interval={0} tickMargin={14} />
+                <YAxis interval={0} />
+            </BarChart>
+        </ResponsiveContainer>
     )
 }
