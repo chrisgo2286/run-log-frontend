@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import RunTypeChartBody from "./runTypeChartBody"
 import RunTypeChartHeader from "./runTypeChartHeader"
 import { PeriodTypes, DataItem } from './runTypeChartTypes'
+import { getRunTypeChartData } from "../../../misc/apiCalls";
 
 export default function RunTypeChart (): JSX.Element {
     
@@ -13,8 +14,9 @@ export default function RunTypeChart (): JSX.Element {
     const [ data, setData ] = useState<DataItem[]>([])
 
     useEffect(() => {
-        setData(dataSample)
-    }, [])
+        getRunTypeChartData(period.month, period.year)
+        .then((data) => setData(data))
+    }, [period])
 
     return (
         <div className="w-96 h-64 border border-gray-200 rounded-md shadow-md">

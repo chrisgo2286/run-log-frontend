@@ -38,6 +38,12 @@ export async function getWeeklyChartData (startDate) {
     return result.data
 }
 
+export async function getRunTypeChartData (month, year) {
+    const newUrl = `${url}run_type_chart/?month=${month}&year=${year}`
+    const result = await axios.get(newUrl, headers)
+    return result.data
+}
+
 export async function postRun (fields) {
     let newFields = { ...fields, 'owner': 1 }
     const result = await axios.post(url + 'runs/', newFields, headers)
