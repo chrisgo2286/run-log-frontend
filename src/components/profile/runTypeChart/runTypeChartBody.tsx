@@ -1,6 +1,10 @@
 import { PieChart, Pie, ResponsiveContainer } from 'recharts';
+import { RunTypeChartBodyProp } from './runTypeChartTypes';
 
-export default function RunTypeChartBody ({ data }) {
+export default function RunTypeChartBody ({ 
+    data 
+}: RunTypeChartBodyProp): JSX.Element {
+    
     return (
         <ResponsiveContainer width="90%" height="70%">
             <PieChart>

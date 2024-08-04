@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react'
 import RunTypeChartBody from "./runTypeChartBody"
 import RunTypeChartHeader from "./runTypeChartHeader"
+import { PeriodTypes, DataItem } from './runTypeChartTypes'
 
-export default function RunTypeChart () {
+export default function RunTypeChart (): JSX.Element {
     
     const curDate = new Date()
-    const [ period, setPeriod ] = useState({
+    const [ period, setPeriod ] = useState<PeriodTypes>({
         month: curDate.getMonth() + 1,
         year: curDate.getFullYear()
     })
-    const [ data, setData ] = useState([])
+    const [ data, setData ] = useState<DataItem[]>([])
 
     useEffect(() => {
         setData(dataSample)

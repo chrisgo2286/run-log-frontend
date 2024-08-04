@@ -3,8 +3,13 @@ import {
     getNextPeriod, 
     getMonthNameFromNum 
 } from "../../../misc/miscFunctions"
+import { RunTypeChartHeaderProps } from "./runTypeChartTypes"
 
-export default function RunTypeChartHeader ({ period, setPeriod }) {
+export default function RunTypeChartHeader ({ 
+    period, 
+    setPeriod 
+}: RunTypeChartHeaderProps): JSX.Element {
+    
     function handleClickPrevious (): void {
         const newPeriod = getPreviousPeriod(period)
         setPeriod(newPeriod)
