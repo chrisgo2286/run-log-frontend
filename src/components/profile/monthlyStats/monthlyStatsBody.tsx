@@ -17,7 +17,9 @@ export default function MonthlyStatsBody ({ data }: MonthlyStatsProp): JSX.Eleme
 
     return (
         <div>
-            <div className="text-center text-2xl">{ data?.distance } km</div>
+            <div 
+                className="text-center text-2xl"
+                >{ data?.distance } km</div>
             <div className="text-center text-2xl">{ handleTime() }</div>
             <div className="text-center text-2xl">{ handleWeeklyAverage() }</div>
             <div className="text-center text-2xl">{ handlePace() }</div>

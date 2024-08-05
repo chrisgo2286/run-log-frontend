@@ -20,7 +20,9 @@ export default function CurrentMonthStats (): JSX.Element {
     }, [period])
 
     return (
-        <div className="w-96 h-64 pt-5 border border-gray-200 rounded-md shadow-md">
+        <div 
+            className="w-96 h-64 pt-5 border border-gray-200 rounded-md shadow-md"
+            data-cy="monthly-stats">
             <MonthlyStatsHeader 
                 month={ data?.current_month } 
                 period={ period }

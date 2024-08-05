@@ -21,13 +21,19 @@ export default function MonthlyStatsHeader ({
         <div className="flex justify-between">
             <span 
                 className="material-icons"
-                onClick={ handleClickPrevous }>
+                onClick={ handleClickPrevous }
+                data-cy="monthly-stats-previous">
                 navigate_before
             </span>
-            <span className="text-4xl font-medium mb-5">{ month }</span>
+            <span 
+                className="text-4xl font-medium mb-5"
+                data-cy="monthly-stats-header">
+                { month }
+            </span>
             <span 
                 className="material-icons"
-                onClick={ handleClickNext }>
+                onClick={ handleClickNext }
+                data-cy="monthly-stats-next">
                 navigate_next
             </span>
         </div>

@@ -14,14 +14,14 @@ const timeField = "[data-cy=time-field]"
 const commentField = "[data-cy=comment-field]"
 const submitBtn = "[data-cy=modal-submit-btn]"
 const deleteBtn = "[data-cy=modal-delete-btn]"
-const dateValue = "2024-07-01"
+const dateValue = "2024-08-01"
 const runTypeValue = "Long Run"
 const distanceValue = 15
 const timeValue = 90
 const commentValue = ""
-const dateValue2 = "2024-07-02"
+const dateValue2 = "2024-08-02"
 const runTypeValue2 = "Easy Run"
-const newDateValue = "2024-07-02"
+const newDateValue = "2024-08-02"
 const newRunTypeValue = "Intervals"
 const newDistanceValue = 8
 const newTimeValue = 45
