@@ -12,7 +12,7 @@ export default function CalendarDays ({
         <div className="grid grid-cols-7 border border-solid border-gray-200">
             { data.map((dataItem, ndx) => (
                 <Day 
-                    key={ dataItem.day + ndx } 
+                    key={ (dataItem.day) ? dataItem.day + ndx: ndx } 
                     data={ dataItem }
                     modalVisible={ modalVisible }
                     setModalVisible={ setModalVisible }

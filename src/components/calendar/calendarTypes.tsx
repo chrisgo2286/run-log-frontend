@@ -2,18 +2,18 @@ export type DayProps = {
     data: DataTypes,
     modalVisible: boolean
     setModalVisible: React.Dispatch<React.SetStateAction<boolean>>,
-    fields: FieldsTypes,
-    setFields: React.Dispatch<React.SetStateAction<FieldsTypes | DataTypes>>
+    fields: DataTypes,
+    setFields: React.Dispatch<React.SetStateAction<DataTypes>>
 }
 
-export type FieldsTypes = {
-    id: string | number,
-    date: string,
-    run_type: string,
-    distance: string | number,
-    time: string | number,
-    comment: string
-}
+// export type FieldsTypes = {
+//     id: string | number,
+//     date: string,
+//     run_type: string,
+//     distance: string | number,
+//     time: string | number,
+//     comment: string
+// }
 
 export type DataTypes = {
     id?: string,
@@ -33,8 +33,8 @@ export type CalendarDaysProps = {
     data: DataTypes[], 
     modalVisible: boolean,
     setModalVisible: React.Dispatch<React.SetStateAction<boolean>>,
-    fields: FieldsTypes,
-    setFields: React.Dispatch<React.SetStateAction<FieldsTypes | DataTypes>>
+    fields: DataTypes,
+    setFields: React.Dispatch<React.SetStateAction<DataTypes>>
 }
 
 export type PeriodTypes = {
@@ -49,7 +49,7 @@ export type CalendarHeaderProps = {
 
 export type RunModalProps = {
     modalVisible: boolean,
-    fields: FieldsTypes,
-    setFields: React.Dispatch<React.SetStateAction<FieldsTypes | DataTypes>>,
+    fields: DataTypes,
+    setFields: React.Dispatch<React.SetStateAction<DataTypes>>,
     submitRun: () => void
 }

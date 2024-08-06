@@ -1,4 +1,7 @@
 import axios from 'axios';
+import { RegistrationProps } from '../components/registration/registrationTypes';
+import { DataTypes } from '../components/calendar/calendarTypes';
+import { FieldsType } from '../components/login/loginTypes';
 
 const url = 'http://127.0.0.1:8000/api/'
 const token = localStorage.getItem('token')
@@ -8,65 +11,65 @@ const headers = {
     }
 }
 
-export async function getCalendar (month, year) {
+export async function getCalendar (month: number, year: number): Promise<DataTypes[]> {
     const newUrl = url + 'calendar/?month=' + month + '&year=' + year
     const result = await axios.get(newUrl, headers)
     return result.data;
 }
 
-export async function getMonthlyStats (month, year) {
+export async function getMonthlyStats (month: number, year: number) {
     const newUrl = `${url}monthly_stats/?month=${month}&year=${year}`
     const result = await axios.get(newUrl, headers)
     return result.data
 }
 
-export async function getYearlyStats (year) {
+export async function getYearlyStats (year: number) {
     const newUrl = `${url}yearly_stats/?year=${year}`
     const result = await axios.get(newUrl, headers)
     return result.data
 }
 
-export async function getMonthlyChartData (month, year) {
+export async function getMonthlyChartData (month: number, year: number) {
     const newUrl = `${url}monthly_chart/?month=${month}&year=${year}`
     const result = await axios.get(newUrl, headers)
     return result.data
 }
 
-export async function getWeeklyChartData (startDate) {
+export async function getWeeklyChartData (startDate: string) {
     const newUrl = `${url}weekly_chart/?startDate=${startDate}`
     const result = await axios.get(newUrl, headers)
     return result.data
 }
 
-export async function getRunTypeChartData (month, year) {
+export async function getRunTypeChartData (month: number, year: number) {
     const newUrl = `${url}run_type_chart/?month=${month}&year=${year}`
     const result = await axios.get(newUrl, headers)
     return result.data
 }
 
-export async function postRun (fields) {
+export async function postRun (fields: DataTypes) {
     let newFields = { ...fields, 'owner': 1 }
     const result = await axios.post(url + 'runs/', newFields, headers)
     return result.data;
 }
 
-export async function patchRun (fields) {
+export async function patchRun (fields: DataTypes) {
     let newFields = { ...fields, 'owner': 1 }
     const result = await axios.patch(url + 'runs/' + fields.id + '/', fields, headers)
     return result.data;
 }
 
-export async function deleteRun (id) {
+export async function deleteRun (id: string) {
     const result = await axios.delete(url + 'runs/' + id + '/', headers)
     return result;
 }
 
-export async function registerNewUser (fields) {
+export async function registerNewUser (fields: RegistrationProps) {
     const result = await axios.post(url + 'registration/', fields)
     return result;
 }
 
-export async function loginUser (credentials) {
+export async function loginUser (credentials: FieldsType) {
     try {
         const result = await axios.post(url + 'login/', credentials)
         return result

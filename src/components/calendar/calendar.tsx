@@ -5,7 +5,7 @@ import RunModal from './runModal/runModal';
 import CalendarDays from './calendarDays';
 import { getCalendar, postRun, patchRun } from '../../misc/apiCalls';
 import { clearRunModalState } from '../../misc/miscFunctions';
-import { FieldsTypes, PeriodTypes, DataTypes } from './calendarTypes';
+import { PeriodTypes, DataTypes } from './calendarTypes';
 
 export default function Calendar (): JSX.Element {
     const curDate = new Date();
@@ -14,7 +14,7 @@ export default function Calendar (): JSX.Element {
         year: curDate.getFullYear()
     })
     const [ data, setData ] = useState<DataTypes[]>([])
-    const [ fields, setFields ] = useState<FieldsTypes>({
+    const [ fields, setFields ] = useState<DataTypes>({
         id: "",
         date: "",
         run_type: "Easy Run",
