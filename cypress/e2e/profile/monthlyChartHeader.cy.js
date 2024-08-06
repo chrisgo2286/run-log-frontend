@@ -6,12 +6,12 @@ import {
 } from "../../../src/misc/miscFunctions"
 
 const profileLink = "[data-cy=profile-link]"
-const prevBtn = "[data-cy=monthly-stats-previous]"
-const header = "[data-cy=monthly-stats-header]"
-const nextBtn = "[data-cy=monthly-stats-next]"
+const prevBtn = "[data-cy=monthly-chart-previous]"
+const header = "[data-cy=monthly-chart-header]"
+const nextBtn = "[data-cy=monthly-chart-next]"
 const curDate = new Date()
 
-describe("Monthly Stats Header", () => {
+describe("Monthly Chart Header", () => {
     beforeEach(() => {
         cy.login()
         cy.get(profileLink).click()

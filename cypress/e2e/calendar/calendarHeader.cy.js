@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { getMonthNameFromNum } from "../../src/misc/miscFunctions"
+import { getMonthNameFromNum } from "../../../src/misc/miscFunctions"
 
 const prevMonth = "[data-cy=calendar-header-previous-month]"
 const nextMonth = "[data-cy=calendar-header-next-month]"
