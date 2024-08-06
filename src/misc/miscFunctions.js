@@ -74,8 +74,6 @@ export function formatDateToString (date) {
 export function getStartOfWeekDateObj (date) {
     let firstDay = new Date()
     const dayOfWeek = date.getDay()
-    // firstDay.setDate(date.getDate() - dayOfWeek)
-    // return new Date(firstDay)
     return incrementDate(firstDay, -dayOfWeek)
 }
 
@@ -83,7 +81,19 @@ export function incrementDate (date, days) {
     date.setDate(date.getDate() + days)
     return new Date(date)
 }
-    
+ 
+export function getPrevMonthName (date) {
+    return getMonthNameFromNum(date.getMonth())
+}
+
+export function getNextMonthName (date) {
+    return getMonthNameFromNum(date.getMonth() + 2)
+}
+
+export function getCurrentMonthName (date) {
+    return getMonthNameFromNum(date.getMonth() + 1)
+}
+
 export function refreshPage () {
     window.location.reload()
 }
