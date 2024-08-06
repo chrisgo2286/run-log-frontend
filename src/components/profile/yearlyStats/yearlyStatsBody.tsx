@@ -26,11 +26,31 @@ export default function YearlyStatsBody ({ data }: YearlyStatsBodyProp): JSX.Ele
 
     return (
         <div>
-            <div className="text-center text-2xl">{ data?.distance } km</div>
-            <div className="text-center text-2xl">{ handleTime() }</div>
-            <div className="text-center text-2xl">{ handleWeeklyAverage() }</div>
-            <div className="text-center text-2xl">{ handleMonthlyAverage() }</div>
-            <div className="text-center text-2xl">{ handlePace() }</div>
+            <div 
+                className="text-center text-2xl"
+                data-cy="yearly-stats-distance">
+                { data?.distance } km
+            </div>
+            <div 
+                className="text-center text-2xl"
+                data-cy="yearly-stats-time">
+                { handleTime() }
+            </div>
+            <div 
+                className="text-center text-2xl"
+                data-cy="yearly-stats-weekly-average">
+                { handleWeeklyAverage() }
+            </div>
+            <div 
+                className="text-center text-2xl"
+                data-cy="yearly-stats-monthly-average">
+                { handleMonthlyAverage() }
+            </div>
+            <div 
+                className="text-center text-2xl"
+                data-cy="yearly-stats-pace">
+                { handlePace() }
+            </div>
         </div>
     )
 }

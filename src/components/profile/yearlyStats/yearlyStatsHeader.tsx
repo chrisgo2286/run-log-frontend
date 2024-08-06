@@ -17,13 +17,19 @@ export default function YearlyStatsHeader ({
         <div className="flex justify-between">
             <span 
                 className="material-icons"
-                onClick={ handleClickPrevious }>
+                onClick={ handleClickPrevious }
+                data-cy="yearly-stats-previous">
                 navigate_before
             </span>
-            <span className="text-4xl font-medium mb-5">{ year }</span>
+            <span 
+                className="text-4xl font-medium mb-5"
+                data-cy="yearly-stats-header">
+                { year }
+            </span>
             <span 
                 className="material-icons"
-                onClick={ handleClickNext }>
+                onClick={ handleClickNext }
+                data-cy="yearly-stats-next">
                 navigate_next
             </span>
         </div>
