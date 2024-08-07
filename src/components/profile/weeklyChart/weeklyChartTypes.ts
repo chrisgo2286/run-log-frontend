@@ -4,7 +4,7 @@ export type WeeklyChartHeaderProps = {
 }
 
 export type WeeklyChartBodyProp = {
-    data: DataItem[]
+    data: DataItem[] | undefined
 }
 
 export type DataItem = {

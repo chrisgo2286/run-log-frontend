@@ -1,5 +1,5 @@
 import { PeriodTypes } from "../components/calendar/calendarTypes";
-import { FieldsTypes } from "../components/calendar/calendarTypes";
+import { DataTypes } from "../components/calendar/calendarTypes";
 
 const monthNames = [
     "", "January", "February", "March", "April", "May", "June", "July", 
@@ -26,7 +26,7 @@ export function getNextPeriod (period: PeriodTypes) {
     }
 }
 
-export function clearRunModalState (setFields: React.Dispatch<React.SetStateAction<FieldsTypes>>) {
+export function clearRunModalState (setFields: React.Dispatch<React.SetStateAction<DataTypes>>) {
     setFields({
         id: "",
         date: "",

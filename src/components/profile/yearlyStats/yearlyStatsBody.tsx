@@ -9,19 +9,19 @@ import { YearlyStatsBodyProp } from "./yearlyStatsTypes";
 export default function YearlyStatsBody ({ data }: YearlyStatsBodyProp): JSX.Element {
     
     function handleTime (): string {
-        return formatTime(data?.time)
+        return formatTime((data) ? data.time: 0)
     }
 
     function handleWeeklyAverage (): string {
-        return formatWeeklyAverage(data?.weekly_average)
+        return formatWeeklyAverage((data) ? data.weekly_average: "")
     }
 
     function handleMonthlyAverage (): string {
-        return formatMonthlyAverage(data?.monthly_average)
+        return formatMonthlyAverage((data) ? data.monthly_average: "")
     }
 
     function handlePace (): string {
-        return formatPace(data?.average_pace)
+        return formatPace((data) ? data.average_pace: 0)
     }
 
     return (

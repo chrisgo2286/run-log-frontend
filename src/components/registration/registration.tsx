@@ -4,9 +4,9 @@ import { UserContext } from '../../misc/context';
 import { registerNewUser } from '../../misc/apiCalls';
 import { updateLocalStorage } from '../../misc/userFunctions';
 import { updateUser } from '../../misc/userFunctions';
-import { loginUser } from '../../misc/apiCalls';
+import { loginUser, ResponseType } from '../../misc/apiCalls';
 import NewUserFields from './newUserFields';
-import { RegistrationProps, ResponseType } from './registrationTypes';
+import { RegistrationProps } from './registrationTypes';
 import './registration.css';
 
 export default function Registration () {
@@ -38,12 +38,14 @@ export default function Registration () {
 
     async function handleUserLogin (): Promise<void> {
         const response = await requestLogin()
-        if(response?.status === 200) {
-            handleValidLoginResponse(response.data.key)
+        if (typeof response === "string") {
+            console.log(response)
+        } else if (response.status === 200) {
+            handleValidLoginResponse(response.token)
         }
     }
 
-    async function requestLogin (): Promise<ResponseType> {
+    async function requestLogin (): Promise<ResponseType | string> {
         const loginCredentials = {
             username: credentials.username,
             password: credentials.password1

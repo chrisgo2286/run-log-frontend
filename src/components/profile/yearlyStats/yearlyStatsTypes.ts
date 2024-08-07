@@ -1,14 +1,14 @@
 export type YearlyStatsTypes = {
     current_year: string,
     distance: string,
-    time: string,
+    time: number,
     monthly_average: string,
     weekly_average: string,
-    average_pace: string
+    average_pace: number
 }
 
 export type YearlyStatsBodyProp = {
-    data: YearlyStatsTypes
+    data: YearlyStatsTypes | undefined
 }
 
 export type YearStatsHeaderProps = {

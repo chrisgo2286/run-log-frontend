@@ -4,7 +4,7 @@ import { DataTypes } from '../components/calendar/calendarTypes';
 import { FieldsType } from '../components/login/loginTypes';
 import { MonthlyStatsTypes } from '../components/profile/monthlyStats/monthlyStatsTypes';
 
-type ResponseType = {
+export type ResponseType = {
     status: number,
     token: string
 }
