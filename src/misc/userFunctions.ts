@@ -1,9 +1,16 @@
-export function updateLocalStorage (token, username) {
+import { UserType } from "./miscTypes";
+
+export function updateLocalStorage (token: string, username: string): void {
     localStorage.setItem('token', token);
     localStorage.setItem('username', username);
 }
 
-export function updateUser (token, username, oldUser, setUser) {
+export function updateUser (
+    token: string, 
+    username: string, 
+    oldUser: UserType, 
+    setUser: React.Dispatch<React.SetStateAction<UserType>>
+): void {
     const newUser = {
         username: username,
         isLoggedIn: true,
@@ -12,7 +19,10 @@ export function updateUser (token, username, oldUser, setUser) {
     setUser({ ...oldUser, ...newUser });
 }
 
-export function clearUser (user, setUser) {
+export function clearUser (
+    user: UserType, 
+    setUser: React.Dispatch<React.SetStateAction<UserType>>
+) {
     localStorage.clear();
     const newUser = {
         username: '',

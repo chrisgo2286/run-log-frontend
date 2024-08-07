@@ -4,10 +4,15 @@ import { RunModalProps } from "../calendarTypes";
 import { deleteRun } from "../../../misc/apiCalls";
 import { refreshPage } from "../../../misc/miscFunctions";
 
-export default function RunModal ({ modalVisible, fields, setFields, submitRun }: RunModalProps): JSX.Element {
+export default function RunModal ({ 
+    modalVisible, 
+    fields, 
+    setFields, 
+    submitRun 
+}: RunModalProps): JSX.Element {
     const visibleClass = "absolute flex flex-col top-1/3 left-1/3 w-1/3 border border-solid border-gray-200 bg-white rounded-md shadow-md" 
 
-    async function handleDeleteRun () {
+    async function handleDeleteRun (): Promise<void> {
         if (fields.id) {
             const result = await deleteRun(fields.id)
             refreshPage()

@@ -24,7 +24,7 @@ export default function CurrentMonthStats (): JSX.Element {
             className="w-96 h-64 pt-5 border border-gray-200 rounded-md shadow-md"
             data-cy="monthly-stats">
             <MonthlyStatsHeader 
-                month={ data?.current_month } 
+                month={ (data) ? data.current_month: "1" } 
                 period={ period }
                 setPeriod={ setPeriod } />
             <MonthlyStatsBody data={ data } />

@@ -1,13 +1,13 @@
 export type MonthlyStatsTypes = {
     current_month: string,
     distance: string,
-    time: string,
+    time: number,
     weekly_average: string,
-    average_pace: string
+    average_pace: number
 }
 
 export type MonthlyStatsProp = {
-    data: MonthlyStatsTypes
+    data: MonthlyStatsTypes | undefined
 }
 
 export type MonthlyStatsPeriod = {

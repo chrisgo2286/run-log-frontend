@@ -9,7 +9,7 @@ export type MonthlyChartHeaderProps = {
 }
 
 export type MonthlyChartBodyProp = {
-    data: DataItem[]
+    data: DataItem[] | undefined
 }
 
 export type DataItem = {

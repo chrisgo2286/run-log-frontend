@@ -1,6 +1,12 @@
 import React from 'react'
+import { ModalDualButtonProps, RunModalButtonsProps, SubmitRunType } from './runModalTypes'
 
-export default function RunModalButtons ({ id, submitRun, handleDeleteRun }) {
+export default function RunModalButtons ({ 
+    id, 
+    submitRun, 
+    handleDeleteRun 
+}: RunModalButtonsProps): JSX.Element {
+
     return (
         <React.Fragment>
             { 
@@ -12,7 +18,7 @@ export default function RunModalButtons ({ id, submitRun, handleDeleteRun }) {
     )
 }
 
-const ModalSingleButton = ({ submitRun }) => (
+const ModalSingleButton = ({ submitRun }: SubmitRunType): JSX.Element => (
     <button 
         className="button w-20 h-8 mb-10 mx-auto border border-gray-500 rounded-md bg-green-200 hover:bg-green-300"
         onClick={ submitRun }
@@ -21,7 +27,10 @@ const ModalSingleButton = ({ submitRun }) => (
     </button>
 )
 
-const ModalDualButton = ({ submitRun, handleDeleteRun }) => (
+const ModalDualButton = ({ 
+    submitRun, 
+    handleDeleteRun 
+}: ModalDualButtonProps): JSX.Element => (
     <div className='mx-auto'>
         <button 
             className="button w-20 h-8 mb-10 mr-2 border border-gray-500 rounded-md bg-green-200 hover:bg-green-300"

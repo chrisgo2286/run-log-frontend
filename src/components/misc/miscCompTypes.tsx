@@ -1,10 +1,13 @@
+import { DataTypes } from "../calendar/calendarTypes";
+import { FieldsType } from "../login/loginTypes";
+
 export type InputProps = {
     className: string,
     type: string,
     name: string,
     value: string | number,
     fields: object,
-    setFields: React.Dispatch<React.SetStateAction<{}>>
+    setFields: React.Dispatch<React.SetStateAction<any>>
 }
 
 export type InputWithIconProps = InputProps & {
@@ -18,7 +21,7 @@ export type SelectProps = {
     initial: string;
     options: string[];
     fields: object;
-    setFields: React.Dispatch<React.SetStateAction<{}>>;
+    setFields: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export type TextAreaProps = {
@@ -26,5 +29,5 @@ export type TextAreaProps = {
     name: string;
     value: string | number;
     fields: object;
-    setFields: React.Dispatch<React.SetStateAction<{}>>;
+    setFields: React.Dispatch<React.SetStateAction<any>>;
 }

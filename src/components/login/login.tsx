@@ -25,8 +25,10 @@ export default function Login () {
 
     async function handleLogin (): Promise<void> {
         const response = await loginUser(credentials);
-        if(response?.status === 200) {
-            handleValidLoginResponse(response.data.key);            
+        if (typeof response === "string") {
+            console.log(response) // NEED TO ADD VALIDATION HERE!!!
+        } else if (response.status === 200) {
+            handleValidLoginResponse(response.token);            
         } 
     }
 

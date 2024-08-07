@@ -2,6 +2,12 @@ import axios from 'axios';
 import { RegistrationProps } from '../components/registration/registrationTypes';
 import { DataTypes } from '../components/calendar/calendarTypes';
 import { FieldsType } from '../components/login/loginTypes';
+import { MonthlyStatsTypes } from '../components/profile/monthlyStats/monthlyStatsTypes';
+
+type ResponseType = {
+    status: number,
+    token: string
+}
 
 const url = 'http://127.0.0.1:8000/api/'
 const token = localStorage.getItem('token')
@@ -17,7 +23,10 @@ export async function getCalendar (month: number, year: number): Promise<DataTyp
     return result.data;
 }
 
-export async function getMonthlyStats (month: number, year: number) {
+export async function getMonthlyStats (
+    month: number, 
+    year: number
+): Promise<MonthlyStatsTypes> {
     const newUrl = `${url}monthly_stats/?month=${month}&year=${year}`
     const result = await axios.get(newUrl, headers)
     return result.data
@@ -69,10 +78,10 @@ export async function registerNewUser (fields: RegistrationProps) {
     return result;
 }
 
-export async function loginUser (credentials: FieldsType) {
+export async function loginUser (credentials: FieldsType): Promise< ResponseType | string> {
     try {
         const result = await axios.post(url + 'login/', credentials)
-        return result
+        return { "status": result.status, "token": result.data.key } 
     } catch {
         return 'Invalid Credentials';
     }
