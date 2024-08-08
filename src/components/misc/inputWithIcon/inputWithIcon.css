@@ -20,8 +20,3 @@
     padding-left: 10%;
     width: 150px;
 }
-
-.input-icon-pair .input:hover {
-    background-color: var(--firstColor);
-    cursor: pointer;
-}

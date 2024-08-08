@@ -17,7 +17,7 @@ export function Validation ({ errors }: ValidationType): JSX.Element {
     }
 
     return (
-        <section className="validation" data-cy='validation'>
+        <section className="h-20" data-cy='validation'>
             {( errors.length > 0) ? displayErrors(): null }
         </section>
     )

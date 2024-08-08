@@ -21,7 +21,6 @@ export default function Login () {
 
     async function handleSubmit (): Promise<void> {
         const result = validateLoginFields(credentials)
-        console.log(result)
         if(result === 'Valid') {
             handleLogin();
         } else {
@@ -32,7 +31,7 @@ export default function Login () {
     async function handleLogin (): Promise<void> {
         const response = await loginUser(credentials);
         if (typeof response === "string") {
-            console.log(response) // NEED TO ADD VALIDATION HERE!!!
+            setErrors([response])
         } else if (response.status === 200) {
             handleValidLoginResponse(response.token);            
         } 
@@ -45,7 +44,6 @@ export default function Login () {
         refreshPage();
     }
 
-    console.log(errors)
     return (
         <main className="login-page">
             <div className="login" data-cy='login'>
