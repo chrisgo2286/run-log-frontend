@@ -8,6 +8,8 @@ import { loginUser, ResponseType } from '../../misc/apiCalls';
 import NewUserFields from './newUserFields';
 import { RegistrationProps } from './registrationTypes';
 import './registration.css';
+import { validateRegistrationFields } from './registrationValidation';
+import { Validation } from '../validation/validation';
 
 export default function Registration () {
     const { user, setUser } = useContext(UserContext);
@@ -17,9 +19,11 @@ export default function Registration () {
         password1: '',
         password2: '',
     })
+    const [errors, setErrors] = useState<string[]>([])
 
     async function handleSubmit (): Promise<void>{
-        const result = 'Valid' //Validation
+        const result = validateRegistrationFields(credentials)
+
         if(result === 'Valid') {
             const response = await registerNewUser(credentials);            
             if(response.status === 201) {
@@ -27,6 +31,8 @@ export default function Registration () {
             } else if(response.status === 204) {
                 handleUserLogin()
             }
+        } else {
+            setErrors(result)
         } 
     }
 
@@ -63,6 +69,7 @@ export default function Registration () {
         <main className="registration-page">
             <div className="registration" data-cy='registration'>
                 <div className="registration-header">Registration</div>
+                <Validation errors={ errors } />
                 <NewUserFields 
                     fields={ credentials } 
                     setFields={ setCredentials }
