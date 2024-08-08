@@ -5,6 +5,8 @@ import { loginUser } from '../../misc/apiCalls';
 import { updateLocalStorage, updateUser } from '../../misc/userFunctions';
 import LoginFields from './loginFields';
 import { FieldsType } from './loginTypes';
+import { validateLoginFields } from './loginValidation';
+import { Validation } from "../validation/validation";
 import { refreshPage } from '../../misc/miscFunctions';
 import './login.css';
 
@@ -15,11 +17,15 @@ export default function Login () {
         username: '',
         password: '',
     })
+    const [ errors, setErrors ] = useState<string[]>([])
 
     async function handleSubmit (): Promise<void> {
-        const result = 'Valid' //NEED TO ADD VALIDATION
+        const result = validateLoginFields(credentials)
+        console.log(result)
         if(result === 'Valid') {
             handleLogin();
+        } else {
+            setErrors(result)
         }
     }
 
@@ -39,9 +45,11 @@ export default function Login () {
         refreshPage();
     }
 
+    console.log(errors)
     return (
         <main className="login-page">
             <div className="login" data-cy='login'>
+                <Validation errors={ errors } />
                 <div 
                     className="login-header" 
                     data-cy="login-header">
