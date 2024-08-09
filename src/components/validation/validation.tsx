@@ -1,10 +1,11 @@
 import './validation.css';
 
-export type ValidationType = {
-    errors: string[]
+export type ValidationProps = {
+    errors: string[],
+    className: string
 }
 
-export function Validation ({ errors }: ValidationType): JSX.Element {
+export function Validation ({ errors, className }: ValidationProps): JSX.Element {
     
     function displayErrors (): JSX.Element[] | JSX.Element {
         if (errors) {
@@ -17,7 +18,7 @@ export function Validation ({ errors }: ValidationType): JSX.Element {
     }
 
     return (
-        <section className="h-20" data-cy='validation'>
+        <section className={ className } data-cy='validation'>
             {( errors.length > 0) ? displayErrors(): null }
         </section>
     )

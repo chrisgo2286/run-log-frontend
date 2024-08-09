@@ -1,6 +1,8 @@
 .validation-error {
-    color: var(--validationColor);
-    margin-left:25px;
+    color: red;
+    font-size: 12px;
+    line-height: 12px;
+    margin: 5px auto;
     font-style: italic;
     font-weight: bolder;
 }

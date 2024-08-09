@@ -1,9 +1,13 @@
 import React from 'react'
-import { ModalDualButtonProps, RunModalButtonsProps, SubmitRunType } from './runModalTypes'
+import { 
+    ModalDualButtonProps, 
+    RunModalButtonsProps, 
+    HandleSubmitRunType 
+} from './runModalTypes'
 
 export default function RunModalButtons ({ 
     id, 
-    submitRun, 
+    handleSubmitRun, 
     handleDeleteRun 
 }: RunModalButtonsProps): JSX.Element {
 
@@ -11,35 +15,35 @@ export default function RunModalButtons ({
         <React.Fragment>
             { 
                 (id) ? 
-                <ModalDualButton submitRun={ submitRun} handleDeleteRun={ handleDeleteRun } /> : 
-                <ModalSingleButton submitRun={ submitRun } />
+                <ModalDualButton handleSubmitRun={ handleSubmitRun } handleDeleteRun={ handleDeleteRun } /> : 
+                <ModalSingleButton handleSubmitRun={ handleSubmitRun } />
             }
         </React.Fragment>
     )
 }
 
-const ModalSingleButton = ({ submitRun }: SubmitRunType): JSX.Element => (
+const ModalSingleButton = ({ handleSubmitRun }: HandleSubmitRunType): JSX.Element => (
     <button 
-        className="button w-20 h-8 mb-10 mx-auto border border-gray-500 rounded-md bg-green-200 hover:bg-green-300"
-        onClick={ submitRun }
+        className="button w-20 h-8 mx-auto border border-gray-500 rounded-md bg-green-200 hover:bg-green-300"
+        onClick={ handleSubmitRun }
         data-cy="modal-submit-btn">
         Submit
     </button>
 )
 
 const ModalDualButton = ({ 
-    submitRun, 
+    handleSubmitRun, 
     handleDeleteRun 
 }: ModalDualButtonProps): JSX.Element => (
     <div className='mx-auto'>
         <button 
-            className="button w-20 h-8 mb-10 mr-2 border border-gray-500 rounded-md bg-green-200 hover:bg-green-300"
-            onClick={ submitRun }
+            className="button w-20 h-8 mr-2 border border-gray-500 rounded-md bg-green-200 hover:bg-green-300"
+            onClick={ handleSubmitRun }
             data-cy="modal-submit-btn">
             Submit
         </button>
         <button
-            className="button w-20 h-8 mb-10 ml-2 border border-gray-500 rounded-md bg-green-200 hover:bg-green-300"
+            className="button w-20 h-8 ml-2 border border-gray-500 rounded-md bg-green-200 hover:bg-green-300"
             onClick={ handleDeleteRun }
             data-cy="modal-delete-btn">
             Delete

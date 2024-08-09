@@ -6,15 +6,6 @@ export type DayProps = {
     setFields: React.Dispatch<React.SetStateAction<DataTypes>>
 }
 
-// export type FieldsTypes = {
-//     id: string | number,
-//     date: string,
-//     run_type: string,
-//     distance: string | number,
-//     time: string | number,
-//     comment: string
-// }
-
 export type DataTypes = {
     id?: string,
     run_type?: string,
@@ -51,5 +42,6 @@ export type RunModalProps = {
     modalVisible: boolean,
     fields: DataTypes,
     setFields: React.Dispatch<React.SetStateAction<DataTypes>>,
-    submitRun: () => void
+    errors: string[],
+    handleSubmitRun: () => void
 }

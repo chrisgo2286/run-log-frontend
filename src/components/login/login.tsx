@@ -47,7 +47,6 @@ export default function Login () {
     return (
         <main className="login-page">
             <div className="login" data-cy='login'>
-                <Validation errors={ errors } />
                 <div 
                     className="login-header" 
                     data-cy="login-header">
@@ -57,6 +56,7 @@ export default function Login () {
                     fields={ credentials } 
                     setFields={ setCredentials } 
                     handleSubmit={ handleSubmit }/>
+                <Validation errors={ errors } className={ "h-5" }/>
             </div>
         </main>
         

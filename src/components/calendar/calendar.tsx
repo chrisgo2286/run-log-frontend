@@ -6,6 +6,7 @@ import CalendarDays from './calendarDays';
 import { getCalendar, postRun, patchRun } from '../../misc/apiCalls';
 import { clearRunModalState } from '../../misc/miscFunctions';
 import { PeriodTypes, DataTypes } from './calendarTypes';
+import { validateRunModalFields } from './runModal/runModalValidation';
 
 export default function Calendar (): JSX.Element {
     const curDate = new Date();
@@ -24,6 +25,7 @@ export default function Calendar (): JSX.Element {
     })
     const [ modalVisible, setModalVisible ] = useState<boolean>(false)
     const [ updateRequired, setUpdateRequired ] = useState<boolean>(false)
+    const [ errors, setErrors ] = useState<string[]>([])
 
     useEffect(() => {
         getCalendar(period.month, period.year).then(data => setData(data))
@@ -33,12 +35,23 @@ export default function Calendar (): JSX.Element {
     function handleCloseModal (): void {
         setModalVisible(false);
         clearRunModalState(setFields);
+        setErrors([])
+    }
+
+    function handleSubmitRun () {
+        const result = validateRunModalFields(fields)
+        if (result === "Valid") {
+            submitRun();
+        } else {
+            setErrors(result);
+        }
     }
 
     function submitRun (): void {
         (fields.id === "") ? postRun(fields) : patchRun(fields);   
         setModalVisible(false);
         clearRunModalState(setFields);
+        setErrors([]);
         setUpdateRequired(true);
     }
 
@@ -59,8 +72,9 @@ export default function Calendar (): JSX.Element {
             <RunModal 
                 modalVisible={ modalVisible } 
                 fields={ fields }
-                setFields={ setFields } 
-                submitRun={ submitRun }/>            
+                setFields={ setFields }
+                errors={ errors } 
+                handleSubmitRun={ handleSubmitRun }/>            
         </React.Fragment>
     )
 }

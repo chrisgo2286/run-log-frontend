@@ -2,17 +2,17 @@ import { DataTypes } from "../calendarTypes"
 
 export type RunModalButtonsProps = {
     id?: string, 
-    submitRun: () => void, 
+    handleSubmitRun: () => void, 
     handleDeleteRun: () => Promise<void>
 }
 
 export type ModalDualButtonProps = {
-    submitRun: () => void,
+    handleSubmitRun: () => void,
     handleDeleteRun: () => Promise<void>
 }
 
-export type SubmitRunType = {
-    submitRun: () => void
+export type HandleSubmitRunType = {
+    handleSubmitRun: () => void
 }
 
 export type RunModalFieldsProps = {

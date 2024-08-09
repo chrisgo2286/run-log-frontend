@@ -69,11 +69,11 @@ export default function Registration () {
         <main className="registration-page">
             <div className="registration" data-cy='registration'>
                 <div className="registration-header">Registration</div>
-                <Validation errors={ errors } />
                 <NewUserFields 
                     fields={ credentials } 
                     setFields={ setCredentials }
                     handleSubmit={ handleSubmit }/>
+                <Validation errors={ errors } className={ "h-5" } />
             </div>
         </main>
         

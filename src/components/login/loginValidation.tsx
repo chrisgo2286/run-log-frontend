@@ -14,7 +14,6 @@ export function validateLoginFields (credentials: FieldsType) {
     const result = LoginSchema.safeParse(credentials)
     if (result.success) {
         return "Valid"
-    } else {
-        return result.error.issues.map((issue) => issue.message)
     }
+    return result.error.issues.map((issue) => issue.message)
 }

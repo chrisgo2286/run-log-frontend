@@ -3,12 +3,14 @@ import RunModalButtons from "./runModalButtons";
 import { RunModalProps } from "../calendarTypes";
 import { deleteRun } from "../../../misc/apiCalls";
 import { refreshPage } from "../../../misc/miscFunctions";
+import { Validation } from "../../validation/validation";
 
 export default function RunModal ({ 
     modalVisible, 
     fields, 
-    setFields, 
-    submitRun 
+    setFields,
+    errors, 
+    handleSubmitRun 
 }: RunModalProps): JSX.Element {
     const visibleClass = "absolute flex flex-col top-1/3 left-1/3 w-1/3 border border-solid border-gray-200 bg-white rounded-md shadow-md" 
 
@@ -27,8 +29,9 @@ export default function RunModal ({
                 setFields={ setFields } />
             <RunModalButtons 
                 id={ fields.id } 
-                submitRun={ submitRun }
-                handleDeleteRun={ handleDeleteRun } />           
+                handleSubmitRun={ handleSubmitRun }
+                handleDeleteRun={ handleDeleteRun } />
+            <Validation errors={ errors } className={ "h-14 mx-auto" }/>           
         </div>
     )
 }
