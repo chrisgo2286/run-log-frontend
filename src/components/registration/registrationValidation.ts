@@ -11,6 +11,13 @@ const RegistrationSchema = z.object({
     password2: z
         .string()
         .min(1, { message: "Please renter your Password!"})
+}).superRefine(({ password1, password2 }, ctx) => {
+    if (password1 !== password2) {
+        ctx.addIssue({
+            code: "custom",
+            message: "The passwords do not match!",
+        })
+    }
 })
 
 export function validateRegistrationFields (credentials: RegistrationProps) {

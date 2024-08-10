@@ -14,6 +14,7 @@ const timeField = "[data-cy=time-field]"
 const commentField = "[data-cy=comment-field]"
 const submitBtn = "[data-cy=modal-submit-btn]"
 const deleteBtn = "[data-cy=modal-delete-btn]"
+const validation = "[data-cy=validation]"
 const dateValue = "2024-08-01"
 const runTypeValue = "Long Run"
 const distanceValue = 15
@@ -26,7 +27,7 @@ const newRunTypeValue = "Intervals"
 const newDistanceValue = 8
 const newTimeValue = 45
 const newTimeValue2 = 50
-const newCommentValue = "8 x 200RP" 
+const newCommentValue = "8 x 200RP"
 
 describe("RunModal", () => {
     beforeEach(() => {
@@ -55,6 +56,13 @@ describe("RunModal", () => {
         cy.get(runTypeField).should('have.value', runTypeValue2)
         cy.get(submitBtn).should('exist')
         cy.get(deleteBtn).should('not.exist')
+    })
+
+    it("Empty fields should return correct error messages", () => {
+        cy.get(dayTwoLink).click()
+        cy.get(submitBtn).click()
+        cy.get(validation).should("include.text", "Please enter a Distance!")
+        cy.get(validation).should("include.text", "Please enter a Time!")
     })
 
     it("Creates and deletes a new run", () => {
