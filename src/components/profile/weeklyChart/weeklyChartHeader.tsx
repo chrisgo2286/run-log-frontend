@@ -1,5 +1,6 @@
-import { formatDateToString, incrementDate } from "../../../misc/miscFunctions";
+import { incrementDate } from "../../../misc/miscFunctions";
 import { WeeklyChartHeaderProps } from "./weeklyChartTypes";
+import "../profile.css";
 
 export default function WeeklyChartHeader ({ 
     startDateObj, 
@@ -17,17 +18,17 @@ export default function WeeklyChartHeader ({
     }
     
     return (
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-4">
             <span 
-                className="material-icons hover:cursor-pointer"
+                className="arrow material-icons"
                 onClick={ handleClickPrevious }>
                 navigate_before
             </span>
             <span className="text-2xl font-medium mb-5" >
-                Week of { formatDateToString(startDateObj) }
+                Weekly Distance
             </span>
             <span 
-                className="material-icons hover:cursor-pointer"
+                className="arrow material-icons"
                 onClick={ handleClickNext }>
                 navigate_next
             </span>

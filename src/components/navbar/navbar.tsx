@@ -20,7 +20,7 @@ export default function Navbar () {
     }
 
     return (
-        <nav className="bg-blue-100 flex justify-between mb-10">
+        <nav className="bg-blue-100 flex justify-between">
             <div className="flex [&>*]:m-4">
                 { handleSiteLinks() }
             </div>

@@ -3,3 +3,8 @@ export type UserType = {
     isLoggedIn: boolean;
     token: string;
 }
+
+export type ResponseType = {
+    status: number,
+    token: string
+}

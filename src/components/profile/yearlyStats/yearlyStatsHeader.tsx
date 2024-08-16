@@ -1,4 +1,5 @@
-import { YearStatsHeaderProps } from "./yearlyStatsTypes"
+import { YearStatsHeaderProps } from "./yearlyStatsTypes";
+import "../profile.css";
 
 export default function YearlyStatsHeader ({ 
     year, 
@@ -16,18 +17,18 @@ export default function YearlyStatsHeader ({
     return (
         <div className="flex justify-between">
             <span 
-                className="material-icons"
+                className="arrow material-icons"
                 onClick={ handleClickPrevious }
                 data-cy="yearly-stats-previous">
                 navigate_before
             </span>
             <span 
-                className="text-4xl font-medium mb-5"
+                className="text-2xl font-medium mb-5"
                 data-cy="yearly-stats-header">
-                { year }
+                { year } Stats YTD
             </span>
             <span 
-                className="material-icons"
+                className="arrow material-icons"
                 onClick={ handleClickNext }
                 data-cy="yearly-stats-next">
                 navigate_next

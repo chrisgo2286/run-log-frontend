@@ -4,11 +4,6 @@ export type RegistrationProps = {
     password2: string;
 }
 
-export type ResponseType = {
-    data: { key: string };
-    status: number;
-}
-
 export type NewUserFieldsProps = {
     fields: RegistrationProps,
     setFields: React.Dispatch<React.SetStateAction<RegistrationProps>>,

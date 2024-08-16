@@ -3,11 +3,7 @@ import { RegistrationProps } from '../components/registration/registrationTypes'
 import { DataTypes } from '../components/calendar/calendarTypes';
 import { FieldsType } from '../components/login/loginTypes';
 import { MonthlyStatsTypes } from '../components/profile/monthlyStats/monthlyStatsTypes';
-
-export type ResponseType = {
-    status: number,
-    token: string
-}
+import { ResponseType } from './miscTypes';
 
 const url = 'http://127.0.0.1:8000/api/'
 const token = localStorage.getItem('token')

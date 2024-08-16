@@ -1,5 +1,5 @@
-import { DataTypes } from "../calendar/calendarTypes";
-import { FieldsType } from "../login/loginTypes";
+import { LinkProps } from "react-router-dom";
+import { HTMLProps } from "react";
 
 export type InputProps = {
     className: string,
@@ -30,4 +30,18 @@ export type TextAreaProps = {
     value: string | number;
     fields: object;
     setFields: React.Dispatch<React.SetStateAction<any>>;
+}
+
+export type CardProps = {
+    headlineText: string,
+    detailText: string,
+    link: JSX.Element
+}
+
+export type CardSectionProp = {
+    text: string
+}
+
+export type CardFooterProp = {
+    link: JSX.Element
 }

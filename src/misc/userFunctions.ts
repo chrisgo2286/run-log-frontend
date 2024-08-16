@@ -22,7 +22,7 @@ export function updateUser (
 export function clearUser (
     user: UserType, 
     setUser: React.Dispatch<React.SetStateAction<UserType>>
-) {
+): void {
     localStorage.clear();
     const newUser = {
         username: '',

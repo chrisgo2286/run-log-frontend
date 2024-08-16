@@ -1,7 +1,16 @@
-import { formatTime, formatWeeklyAverage, formatPace } from "../../../misc/miscFunctions";
+import { 
+    formatDistance,
+    formatTime, 
+    formatWeeklyAverage, 
+    formatPace 
+} from "../../../misc/miscFunctions";
 import { MonthlyStatsProp } from "./monthlyStatsTypes";
 
 export default function MonthlyStatsBody ({ data }: MonthlyStatsProp): JSX.Element {
+
+    function handleDistance (): string {
+        return formatDistance( (data) ? parseFloat(data.distance): 0)
+    }
 
     function handleTime (): string {
         return formatTime( (data) ? data.time: 0 )
@@ -20,7 +29,7 @@ export default function MonthlyStatsBody ({ data }: MonthlyStatsProp): JSX.Eleme
             <div 
                 className="text-center text-2xl"
                 data-cy="monthly-stats-distance">
-                { data?.distance } km
+                { handleDistance() }
             </div>
             <div 
                 className="text-center text-2xl"

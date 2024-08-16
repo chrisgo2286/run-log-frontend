@@ -1,4 +1,5 @@
 import { 
+    formatDistance,
     formatTime, 
     formatWeeklyAverage, 
     formatPace,
@@ -8,6 +9,10 @@ import { YearlyStatsBodyProp } from "./yearlyStatsTypes";
 
 export default function YearlyStatsBody ({ data }: YearlyStatsBodyProp): JSX.Element {
     
+    function handleDistance (): string {
+        return formatDistance((data) ? parseFloat(data.distance): 0)
+    }
+
     function handleTime (): string {
         return formatTime((data) ? data.time: 0)
     }
@@ -29,7 +34,7 @@ export default function YearlyStatsBody ({ data }: YearlyStatsBodyProp): JSX.Ele
             <div 
                 className="text-center text-2xl"
                 data-cy="yearly-stats-distance">
-                { data?.distance } km
+                { handleDistance() }
             </div>
             <div 
                 className="text-center text-2xl"

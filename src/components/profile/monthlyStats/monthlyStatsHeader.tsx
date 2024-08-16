@@ -1,5 +1,6 @@
 import { getNextPeriod, getPreviousPeriod } from "../../../misc/miscFunctions"
 import { MonthlyStatsHeaderProps } from "./monthlyStatsTypes"
+import "../profile.css";
 
 export default function MonthlyStatsHeader ({ 
     month, 
@@ -20,18 +21,18 @@ export default function MonthlyStatsHeader ({
     return (
         <div className="flex justify-between">
             <span 
-                className="material-icons"
+                className="arrow material-icons"
                 onClick={ handleClickPrevous }
                 data-cy="monthly-stats-previous">
                 navigate_before
             </span>
             <span 
-                className="text-4xl font-medium mb-5"
+                className="text-2xl font-medium mb-5"
                 data-cy="monthly-stats-header">
-                { month }
+                { month } Stats
             </span>
             <span 
-                className="material-icons"
+                className="arrow material-icons"
                 onClick={ handleClickNext }
                 data-cy="monthly-stats-next">
                 navigate_next

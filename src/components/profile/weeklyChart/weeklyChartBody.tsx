@@ -9,7 +9,7 @@ export default function WeeklyChartBody ({
         <ResponsiveContainer width="90%" height="70%">
             <BarChart data={ data }>
                 <Bar dataKey="distance" fill="#8884d8" />
-                <XAxis dataKey="label" interval={0} tickMargin={14} />
+                <XAxis dataKey="label" interval={0} tickMargin={5} />
                 <YAxis interval={0} />
             </BarChart>
         </ResponsiveContainer>

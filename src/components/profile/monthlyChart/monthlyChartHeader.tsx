@@ -1,8 +1,5 @@
-import { 
-    getPreviousPeriod, 
-    getNextPeriod, 
-    getMonthNameFromNum 
-    } from "../../../misc/miscFunctions"
+import "../profile.css";
+import { getPreviousPeriod, getNextPeriod } from "../../../misc/miscFunctions"
 import { MonthlyChartHeaderProps } from "./monthlyChartTypes"
 
 export default function MonthlyChartHeader ({ 
@@ -19,26 +16,22 @@ export default function MonthlyChartHeader ({
         const newPeriod = getNextPeriod(period)
         setPeriod(newPeriod)
     }
-    
-    function handleMonthName (): string {
-        return getMonthNameFromNum(period.month)
-    }
 
     return (
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-4">
             <span 
-                className="material-icons hover:cursor-pointer"
+                className="arrow material-icons"
                 onClick={ handleClickPrevious }
                 data-cy="monthly-chart-previous">
                 navigate_before
             </span>
             <span 
-                className="text-4xl font-medium mb-5"
+                className="text-2xl font-medium mb-5"
                 data-cy="monthly-chart-header">
-                { handleMonthName() }
+                Monthly Distance
             </span>
             <span 
-                className="material-icons hover:cursor-pointer"
+                className="arrow material-icons"
                 onClick={ handleClickNext }
                 data-cy="monthly-chart-next">
                 navigate_next

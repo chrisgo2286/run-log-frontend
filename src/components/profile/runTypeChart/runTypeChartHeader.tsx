@@ -4,6 +4,7 @@ import {
     getMonthNameFromNum 
 } from "../../../misc/miscFunctions"
 import { RunTypeChartHeaderProps } from "./runTypeChartTypes"
+import "../profile.css";
 
 export default function RunTypeChartHeader ({ 
     period, 
@@ -27,13 +28,13 @@ export default function RunTypeChartHeader ({
     return (
         <div className="flex justify-between">
             <span 
-                className="material-icons hover:cursor-pointer"
+                className="arrow material-icons"
                 onClick={ handleClickPrevious }>
                 navigate_before
             </span>
-            <span className="text-4xl font-medium mb-5">{ handleMonthName() }</span>
+            <span className="text-2xl font-medium mb-5">{ handleMonthName() }</span>
             <span 
-                className="material-icons hover:cursor-pointer"
+                className="arrow material-icons"
                 onClick={ handleClickNext }>
                 navigate_next
             </span>

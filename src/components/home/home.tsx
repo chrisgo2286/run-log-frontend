@@ -1,7 +1,13 @@
+import Hero from "./hero";
+import Services from "./services";
+import Footer from "./footer";
+
 export default function Home (): JSX.Element {
     return (
         <main>
-            Home
+            <Hero />
+            <Services />
+            <Footer />
         </main>
     )
 }
