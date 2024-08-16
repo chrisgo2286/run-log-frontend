@@ -8,6 +8,7 @@ export default function CalendarDays ({
     fields, 
     setFields 
 }: CalendarDaysProps) {
+
     return (
         <div className="grid grid-cols-7 border border-solid border-gray-200">
             { data.map((dataItem, ndx) => (

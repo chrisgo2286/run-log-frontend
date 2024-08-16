@@ -10,7 +10,32 @@ export default function Day ({
     }: DayProps): JSX.Element {
     
     function handleClassName (): string {
-        return (data.day === "0") ? "opacity-0": "h-20 p-1 border border-solid border-gray-200 hover:bg-gray-100 cursor-pointer";
+
+        const isFutureDate = checkIfFutureDate()
+        if (data.day === "0") {
+            return "opacity-0";
+        } else if (isFutureDate === true) {
+            return "bg-gray-100 h-20 p-1 border border-solid border-gray-200 hover:bg-gray-200 cursor-pointer"
+        } else {
+            return "h-20 p-1 border border-solid border-gray-200 hover:bg-gray-100 cursor-pointer"
+        }
+    }
+
+    function checkIfFutureDate (): boolean {
+        const curDate = new Date()
+    
+        if(data.date) {
+            const dataDate = dateStringToObject(data.date)
+            if(dataDate >= curDate) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function dateStringToObject (dateString: string): Date {
+        const dateArray = dateString.split("-")
+        return new Date(parseInt(dateArray[0]), parseInt(dateArray[1]) - 1, parseInt(dateArray[2]))
     }
 
     function handleBody (): null | JSX.Element {
