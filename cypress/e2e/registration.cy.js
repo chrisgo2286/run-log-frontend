@@ -23,15 +23,16 @@ describe('Registration Page', () => {
         cy.get(password1Field).type(password).should('have.value', password)
         cy.get(password2Field).type(password).should('have.value', password)
     })
-    // it('User receives error message for empty fields', () => {
-    //     cy.get(registrationBtn).click()
-    //     cy.get(validation).should('include.text', 'Please enter your username!')
-    //     cy.get(validation).should('include.text', 'Please enter your password twice!')
-    // })
-    // it('User receives error message for mismatched passwords', () => {
-    //     cy.get(password1Field).type(password)
-    //     cy.get(password2Field).type(username)
-    //     cy.get(registrationBtn).click()
-    //     cy.get(validation).should('include.text', 'Passwords need to match!')
-    // })
+    it('User receives error message for empty fields', () => {
+        cy.get(registrationBtn).click()
+        cy.get(validation).should('include.text', 'Please enter a Username!')
+        cy.get(validation).should('include.text', 'Please enter a Password!')
+        cy.get(validation).should('include.text', 'Please reenter your Password!')
+    })
+    it('User receives error message for mismatched passwords', () => {
+        cy.get(password1Field).type(password)
+        cy.get(password2Field).type(username)
+        cy.get(registrationBtn).click()
+        cy.get(validation).should('include.text', 'The passwords do not match!')
+    })
 })

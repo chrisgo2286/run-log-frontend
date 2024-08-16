@@ -34,17 +34,17 @@ describe('Login Page', () => {
         cy.url().should('eq', homeUrl)
     })
 
-    // it('User receives error message for empty credentials', () => {
-    //     cy.get(loginBtn).click()
-    //     cy.get(validation).should('include.text', 'Please enter your username!')
-    //     cy.get(validation).should('include.text', 'Please enter your password!')
-    // })
+    it('User receives error message for empty credentials', () => {
+        cy.get(loginBtn).click()
+        cy.get(validation).should('include.text', 'Please enter your Username!')
+        cy.get(validation).should('include.text', 'Please enter your Password!')
+    })
 
-    // it('User receives error message for incorrect credentials', () => {
-    //     cy.get(usernameField).type(invalidUsername)
-    //     cy.get(passwordField).type(password)
-    //     cy.get(loginBtn).click()
-    //     cy.get(validation).should('have.text', 'You have entered invalid credentials!')
-    // })
+    it('User receives error message for incorrect credentials', () => {
+        cy.get(usernameField).type(invalidUsername)
+        cy.get(passwordField).type(password)
+        cy.get(loginBtn).click()
+        cy.get(validation).should('include.text', 'You have entered invalid credentials!')
+    })
     
 })
