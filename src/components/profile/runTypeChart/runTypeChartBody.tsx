@@ -1,6 +1,5 @@
 import { PieChart, Pie, ResponsiveContainer, Cell } from 'recharts';
 import { DataItem, RunTypeChartBodyProp } from './runTypeChartTypes';
-import { formatDistance } from '../../../misc/miscFunctions';
 
 export default function RunTypeChartBody ({ 
     data 
