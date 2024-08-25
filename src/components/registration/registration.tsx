@@ -12,7 +12,7 @@ import './registration.css';
 import { validateRegistrationFields } from './registrationValidation';
 import { Validation } from '../validation/validation';
 
-export default function Registration () {
+export default function Registration (): JSX.Element {
     const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
     const [credentials, setCredentials] = useState<RegistrationProps>({

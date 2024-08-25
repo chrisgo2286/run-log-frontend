@@ -10,7 +10,7 @@ import { Validation } from "../validation/validation";
 import { refreshPage } from '../../misc/miscFunctions';
 import './login.css';
 
-export default function Login () {
+export default function Login (): JSX.Element {
     const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
     const [ credentials, setCredentials ] = useState<FieldsType>({
