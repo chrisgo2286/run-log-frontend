@@ -1,25 +1,23 @@
 import { z } from "zod";
-import { DataTypes } from "../calendarTypes";
+import { RunDataTypes } from "../calendarTypes";
 
 const RunModalSchema = z.object({
-    id: z
-        .string()
-        .optional(),
     date: z
         .string()
-        .min(1, { message: "Please enter a Date!"}),
+        .min(1, { message: "Please enter a Date!" }),
     run_type: z
         .string()
         .min(1, { message: "Please enter a Run Type!" }),
     distance: z
         .string()
         .min(1, { message: "Please enter a Distance!" }),
-    time: z
-        .string()
-        .min(1, { message: "Please enter a Time!"})
+    hours: z.string(),
+    minutes: z.string(),
+    seconds: z.string(),
+    comment: z.string()
 })
 
-export function validateRunModalFields (fields: DataTypes) {
+export function validateRunModalFields (fields: RunDataTypes) {
     const result = RunModalSchema.safeParse(fields)
     if (result.success) {
         return "Valid"

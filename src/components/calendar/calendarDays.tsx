@@ -10,7 +10,7 @@ export default function CalendarDays ({
 }: CalendarDaysProps) {
 
     return (
-        <div className="grid grid-cols-7 border border-solid border-gray-200">
+        <div className="grid grid-cols-7">
             { data.map((dataItem, ndx) => (
                 <Day 
                     key={ (dataItem.day) ? dataItem.day + ndx: ndx } 

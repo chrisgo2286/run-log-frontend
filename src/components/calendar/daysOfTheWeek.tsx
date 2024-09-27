@@ -10,7 +10,7 @@ export default function DaysOfTheWeek (): JSX.Element {
                 <div 
                     key={ dayName }
                     data-cy={ `${dayName}` }
-                    className="border border-border border-solid border-gray-200 text-center">
+                    className="border border-solid border-gray-200 text-center">
                     { dayName }
                 </div> 
             ))}        

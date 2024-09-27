@@ -1,4 +1,4 @@
-import { DataTypes } from "../calendarTypes"
+import { RunDataTypes } from "../calendarTypes"
 
 export type RunModalButtonsProps = {
     id?: string, 
@@ -16,13 +16,13 @@ export type HandleSubmitRunType = {
 }
 
 export type RunModalFieldsProps = {
-    fields: DataTypes,
-    setFields: React.Dispatch<React.SetStateAction<DataTypes>>
+    fields: RunDataTypes,
+    setFields: React.Dispatch<React.SetStateAction<RunDataTypes>>
 }
 
 export type RunModalProps = {
     modalVisible: boolean,
-    fields: DataTypes, 
-    setFields: React.Dispatch<React.SetStateAction<DataTypes>>, 
+    fields: RunDataTypes, 
+    setFields: React.Dispatch<React.SetStateAction<RunDataTypes>>, 
     submitRun: () => void
 }

@@ -1,31 +1,38 @@
 export type DayProps = {
-    data: DataTypes,
+    data: RunDataTypes,
     modalVisible: boolean
     setModalVisible: React.Dispatch<React.SetStateAction<boolean>>,
-    fields: DataTypes,
-    setFields: React.Dispatch<React.SetStateAction<DataTypes>>
+    fields: RunDataTypes,
+    setFields: React.Dispatch<React.SetStateAction<RunDataTypes>>
 }
 
 export type DataTypes = {
+    runData: RunDataTypes[],
+    weeklyTotals: string[]
+}
+
+export type RunDataTypes = {
     id?: string,
     run_type?: string,
     date?: string,
     day?: string,
     distance?: string,
-    time?: string,
+    hours?: string,
+    minutes?: string,
+    seconds?: string,
     comment?: string
 }
 
-export type DataObjectType = {
-    data: DataTypes
+export type RunDataObjectType = {
+    data: RunDataTypes
 }
 
 export type CalendarDaysProps = {
-    data: DataTypes[], 
+    data: RunDataTypes[], 
     modalVisible: boolean,
     setModalVisible: React.Dispatch<React.SetStateAction<boolean>>,
-    fields: DataTypes,
-    setFields: React.Dispatch<React.SetStateAction<DataTypes>>
+    fields: RunDataTypes,
+    setFields: React.Dispatch<React.SetStateAction<RunDataTypes>>
 }
 
 export type PeriodTypes = {
@@ -40,8 +47,8 @@ export type CalendarHeaderProps = {
 
 export type RunModalProps = {
     modalVisible: boolean,
-    fields: DataTypes,
-    setFields: React.Dispatch<React.SetStateAction<DataTypes>>,
+    fields: RunDataTypes,
+    setFields: React.Dispatch<React.SetStateAction<RunDataTypes>>,
     errors: string[],
     handleSubmitRun: () => void
 }

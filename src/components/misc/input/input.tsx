@@ -7,7 +7,8 @@ export default function Input ({
     name, 
     value, 
     fields, 
-    setFields, 
+    setFields,
+    placeholder,
     ...other }: InputProps) {
     
     function handleChange (event: React.ChangeEvent<HTMLInputElement>): void {
@@ -30,6 +31,7 @@ export default function Input ({
             value={ value }
             id={ name }
             onChange={ handleChange }
+            placeholder={ placeholder }
             { ...other }>
         </input>
     )

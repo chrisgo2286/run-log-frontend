@@ -15,7 +15,7 @@ export default function RunModalFields ({
                 Date
             </div>
             <Input
-                className="col-span-2 mb-3 rounded-md"
+                className="col-span-2 mb-3 rounded-md pl-4"
                 type="date"
                 name="date"
                 value={ (fields.date) ? fields.date: "" }
@@ -28,7 +28,7 @@ export default function RunModalFields ({
                 Run Type
             </div>
             <Select 
-                className="col-span-2 mb-3 rounded-md"
+                className="col-span-2 mb-3 rounded-md pl-4"
                 name="run_type"
                 initial={ (fields.run_type) ? fields.run_type: "Easy Run" }
                 options={["Easy Run", "Long Run", "Intervals", "Tempo Run"]}
@@ -41,7 +41,7 @@ export default function RunModalFields ({
                 Distance
             </div>
             <Input 
-                className="col-span-2 mb-3 rounded-md"
+                className="col-span-2 mb-3 rounded-md pl-4"
                 type="number"
                 name="distance"
                 value={ (fields.distance) ? fields.distance: "" }
@@ -53,21 +53,42 @@ export default function RunModalFields ({
                 data-cy="time-label">
                 Time
             </div>
-            <Input 
-                className="col-span-2 mb-3 rounded-md"
-                type="number"
-                name="time"
-                value={ (fields.time) ? fields.time: "" }
-                fields={ fields }
-                setFields={ setFields } 
-                data-cy="time-field" />
+            <div className="flex flex-row col-span-2 mb-3">
+                <Input
+                    className="w-1/3 rounded-md text-center"
+                    type="number"
+                    name="hours"
+                    value={ (fields.hours) ? fields.hours: ""}
+                    fields={ fields }
+                    setFields={ setFields }
+                    placeholder="hh"
+                    data-cy="hours-field" />
+                <Input
+                    className="w-1/3 rounded-md text-center"
+                    type="number"
+                    name="minutes"
+                    value={ (fields.minutes) ? fields.minutes: ""}
+                    fields={ fields }
+                    setFields={ setFields }
+                    placeholder="mm"
+                    data-cy="minutes-field" />
+                <Input
+                    className="w-1/3 rounded-md text-center"
+                    type="number"
+                    name="seconds"
+                    value={ (fields.seconds) ? fields.seconds: ""}
+                    fields={ fields }
+                    setFields={ setFields }
+                    placeholder="ss"
+                    data-cy="seconds-field" />
+            </div>
             <div 
                 className="mb-3"
                 data-cy="comment-label">
                 Comment
             </div>
             <TextArea 
-                className="col-span-2 mb-3 border border-gray-300 rounded-md"
+                className="col-span-2 mb-3 border border-gray-300 rounded-md pl-4"
                 name="comment"
                 value={ (fields.comment) ? fields.comment: "" }
                 fields={ fields }

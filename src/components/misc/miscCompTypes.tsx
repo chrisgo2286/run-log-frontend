@@ -7,7 +7,8 @@ export type InputProps = {
     name: string,
     value: string | number,
     fields: object,
-    setFields: React.Dispatch<React.SetStateAction<any>>
+    setFields: React.Dispatch<React.SetStateAction<any>>,
+    placeholder?: string
 }
 
 export type InputWithIconProps = InputProps & {

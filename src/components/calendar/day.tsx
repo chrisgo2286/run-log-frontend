@@ -1,5 +1,5 @@
-import React, { ReactElement } from "react";
-import { DataObjectType, DayProps } from "./calendarTypes";
+import React from "react";
+import { RunDataObjectType, DayProps } from "./calendarTypes";
 
 export default function Day ({ 
     data, 
@@ -70,12 +70,20 @@ export default function Day ({
     )
 }
 
-function RunDetails ({ data }: DataObjectType): JSX.Element {
+function RunDetails ({ data }: RunDataObjectType): JSX.Element {
+
+    function formatTime () {
+        const hours = ( data.hours ) ? `${ data.hours }:` : ""
+        const minutes = `${ data.minutes }:`
+        const seconds = ( data.seconds ) ? `${ data.seconds }` : "00"
+        return `${ hours }${ minutes }${ seconds }`
+    }
+
     return (
         <React.Fragment>
             <div className="text-xs text-center">{ data.run_type }</div>
             <div className="text-xs text-center">{ data.distance }km</div>
-            <div className="text-xs text-center">{ data.time }min</div>
+            <div className="text-xs text-center">{ formatTime() }</div>
         </React.Fragment>
     )
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { RegistrationProps } from '../components/registration/registrationTypes';
-import { DataTypes } from '../components/calendar/calendarTypes';
+import { DataTypes, RunDataTypes } from '../components/calendar/calendarTypes';
 import { FieldsType } from '../components/login/loginTypes';
 import { MonthlyStatsTypes } from '../components/profile/monthlyStats/monthlyStatsTypes';
 import { ResponseType } from './miscTypes';
@@ -13,7 +13,7 @@ const headers = {
     }
 }
 
-export async function getCalendar (month: number, year: number): Promise<DataTypes[]> {
+export async function getCalendar (month: number, year: number): Promise<DataTypes> {
     const newUrl = url + 'calendar/?month=' + month + '&year=' + year
     const result = await axios.get(newUrl, headers)
     return result.data;
@@ -52,15 +52,15 @@ export async function getRunTypeChartData (month: number, year: number) {
     return result.data
 }
 
-export async function postRun (fields: DataTypes) {
+export async function postRun (fields: RunDataTypes) {
     let newFields = { ...fields, 'owner': 1 }
     const result = await axios.post(url + 'runs/', newFields, headers)
     return result.data;
 }
 
-export async function patchRun (fields: DataTypes) {
+export async function patchRun (fields: RunDataTypes) {
     let newFields = { ...fields, 'owner': 1 }
-    const result = await axios.patch(url + 'runs/' + fields.id + '/', fields, headers)
+    const result = await axios.patch(url + 'runs/' + newFields.id + '/', newFields, headers)
     return result.data;
 }
 

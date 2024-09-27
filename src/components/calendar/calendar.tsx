@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import CalendarHeader from "./calendarHeader";
-import DaysOfTheWeek from "./daysOfTheWeek";
+import CalendarBody from './calendarBody';
 import RunModal from './runModal/runModal';
-import CalendarDays from './calendarDays';
 import { getCalendar, postRun, patchRun } from '../../misc/apiCalls';
 import { clearRunModalState } from '../../misc/miscFunctions';
-import { PeriodTypes, DataTypes } from './calendarTypes';
+import { PeriodTypes, DataTypes, RunDataTypes } from './calendarTypes';
 import { validateRunModalFields } from './runModal/runModalValidation';
 
 export default function Calendar (): JSX.Element {
@@ -14,15 +13,21 @@ export default function Calendar (): JSX.Element {
         month: curDate.getMonth() + 1,
         year: curDate.getFullYear()
     })
-    const [ data, setData ] = useState<DataTypes[]>([])
-    const [ fields, setFields ] = useState<DataTypes>({
+    const [ data, setData ] = useState<DataTypes>({
+        runData: [],
+        weeklyTotals: []
+    })
+    const [ fields, setFields ] = useState<RunDataTypes>({
         id: "",
         date: "",
         run_type: "Easy Run",
         distance: "",
-        time: "",
+        hours: "",
+        minutes: "",
+        seconds: "",
         comment: ""
     })
+
     const [ modalVisible, setModalVisible ] = useState<boolean>(false)
     const [ updateRequired, setUpdateRequired ] = useState<boolean>(false)
     const [ errors, setErrors ] = useState<string[]>([])
@@ -39,20 +44,34 @@ export default function Calendar (): JSX.Element {
     }
 
     function handleSubmitRun () {
-        const result = validateRunModalFields(fields)
+        const newFields = cleanInput();
+        const result = validateRunModalFields(newFields)
         if (result === "Valid") {
-            submitRun();
+            submitRun(newFields);
         } else {
             setErrors(result);
         }
     }
 
-    function submitRun (): void {
-        (fields.id === "") ? postRun(fields) : patchRun(fields);   
+    function submitRun (newFields: RunDataTypes): void {
+        (fields.id === "") ? postRun(newFields) : patchRun(newFields);   
         setModalVisible(false);
         clearRunModalState(setFields);
         setErrors([]);
         setUpdateRequired(true);
+    }
+
+    function cleanInput (): RunDataTypes {
+        return {
+            id: fields.id,
+            date: fields.date,
+            run_type: fields.run_type,
+            distance: (fields.distance) ? fields.distance.toString() : "0",
+            hours: (fields.hours) ? fields.hours.toString() : "0",
+            minutes: (fields.minutes) ? fields.minutes.toString() : "0",
+            seconds: (fields.seconds) ? fields.seconds.toString() : "0",
+            comment: fields.comment
+        }
     }
 
     return (
@@ -60,13 +79,12 @@ export default function Calendar (): JSX.Element {
             <main onClick={ handleCloseModal } className={ (modalVisible) ? "h-screen relative blur-sm": "h-screen relative"}>
                 <div className="w-4/5 mx-auto mb-10 border border-solid border-gray-200 rounded-xl">
                     <CalendarHeader period={ period } setPeriod={ setPeriod }/>
-                    <DaysOfTheWeek />
-                    <CalendarDays 
+                    <CalendarBody 
                         data={ data }
                         modalVisible={ modalVisible }
                         setModalVisible={ setModalVisible }
                         fields={ fields }
-                        setFields={ setFields } />
+                        setFields={ setFields }/>                        
                 </div>
             </main>
             <RunModal 
