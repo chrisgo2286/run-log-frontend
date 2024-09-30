@@ -9,6 +9,9 @@ module.exports = {
         100: "25rem",
         120: "30rem",
         140: "35rem"
+      },
+      colors: {
+        "site-font-color": "var(--siteFontColor)"
       }
     },
   },

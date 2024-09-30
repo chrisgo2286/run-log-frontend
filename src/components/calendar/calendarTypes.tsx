@@ -47,6 +47,8 @@ export type CalendarHeaderProps = {
 
 export type RunModalProps = {
     modalVisible: boolean,
+    deleteModalVisible: boolean,
+    setDeleteModalVisible: React.Dispatch<React.SetStateAction<boolean>>,
     fields: RunDataTypes,
     setFields: React.Dispatch<React.SetStateAction<RunDataTypes>>,
     errors: string[],

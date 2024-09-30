@@ -8,14 +8,14 @@ import {
 export default function RunModalButtons ({ 
     id, 
     handleSubmitRun, 
-    handleDeleteRun 
+    handleDeleteClicked 
 }: RunModalButtonsProps): JSX.Element {
 
     return (
         <React.Fragment>
             { 
                 (id) ? 
-                <ModalDualButton handleSubmitRun={ handleSubmitRun } handleDeleteRun={ handleDeleteRun } /> : 
+                <ModalDualButton handleSubmitRun={ handleSubmitRun } handleDeleteClicked={ handleDeleteClicked } /> : 
                 <ModalSingleButton handleSubmitRun={ handleSubmitRun } />
             }
         </React.Fragment>
@@ -33,7 +33,7 @@ const ModalSingleButton = ({ handleSubmitRun }: HandleSubmitRunType): JSX.Elemen
 
 const ModalDualButton = ({ 
     handleSubmitRun, 
-    handleDeleteRun 
+    handleDeleteClicked 
 }: ModalDualButtonProps): JSX.Element => (
     <div className='mx-auto'>
         <button 
@@ -44,7 +44,7 @@ const ModalDualButton = ({
         </button>
         <button
             className="button w-20 h-8 ml-2 border border-gray-500 rounded-md bg-green-200 hover:bg-green-300"
-            onClick={ handleDeleteRun }
+            onClick={ handleDeleteClicked }
             data-cy="modal-delete-btn">
             Delete
         </button>

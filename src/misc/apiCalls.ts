@@ -3,7 +3,7 @@ import { RegistrationProps } from '../components/registration/registrationTypes'
 import { DataTypes, RunDataTypes } from '../components/calendar/calendarTypes';
 import { FieldsType } from '../components/login/loginTypes';
 import { MonthlyStatsTypes } from '../components/profile/monthlyStats/monthlyStatsTypes';
-import { ResponseType } from './miscTypes';
+import { ResponseType, StatusType } from './miscTypes';
 
 const url = 'http://127.0.0.1:8000/api/'
 const token = localStorage.getItem('token')
@@ -64,9 +64,10 @@ export async function patchRun (fields: RunDataTypes) {
     return result.data;
 }
 
-export async function deleteRun (id: string) {
+export async function deleteRun (id: string): Promise<StatusType> {
     const result = await axios.delete(url + 'runs/' + id + '/', headers)
-    return result;
+    console.log(result)
+    return { "status": result.status };
 }
 
 export async function registerNewUser (fields: RegistrationProps) {

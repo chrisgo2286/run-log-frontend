@@ -3,12 +3,12 @@ import { RunDataTypes } from "../calendarTypes"
 export type RunModalButtonsProps = {
     id?: string, 
     handleSubmitRun: () => void, 
-    handleDeleteRun: () => Promise<void>
+    handleDeleteClicked: () => void
 }
 
 export type ModalDualButtonProps = {
     handleSubmitRun: () => void,
-    handleDeleteRun: () => Promise<void>
+    handleDeleteClicked: () => void
 }
 
 export type HandleSubmitRunType = {
@@ -22,6 +22,8 @@ export type RunModalFieldsProps = {
 
 export type RunModalProps = {
     modalVisible: boolean,
+    deleteModalVisible: boolean,
+    setDeleteModalVisible: React.Dispatch<React.SetStateAction<boolean>>,
     fields: RunDataTypes, 
     setFields: React.Dispatch<React.SetStateAction<RunDataTypes>>, 
     submitRun: () => void

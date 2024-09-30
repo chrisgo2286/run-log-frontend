@@ -29,6 +29,7 @@ export default function Calendar (): JSX.Element {
     })
 
     const [ modalVisible, setModalVisible ] = useState<boolean>(false)
+    const [ deleteModalVisible, setDeleteModalVisible ] = useState<boolean>(false)
     const [ updateRequired, setUpdateRequired ] = useState<boolean>(false)
     const [ errors, setErrors ] = useState<string[]>([])
 
@@ -39,6 +40,7 @@ export default function Calendar (): JSX.Element {
     
     function handleCloseModal (): void {
         setModalVisible(false);
+        setDeleteModalVisible(false);
         clearRunModalState(setFields);
         setErrors([])
     }
@@ -88,7 +90,9 @@ export default function Calendar (): JSX.Element {
                 </div>
             </main>
             <RunModal 
-                modalVisible={ modalVisible } 
+                modalVisible={ modalVisible }
+                deleteModalVisible={ deleteModalVisible }
+                setDeleteModalVisible={ setDeleteModalVisible } 
                 fields={ fields }
                 setFields={ setFields }
                 errors={ errors } 
