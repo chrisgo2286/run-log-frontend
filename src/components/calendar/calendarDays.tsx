@@ -1,24 +1,17 @@
 import Day from "./day";
-import { CalendarDaysProps } from "./calendarTypes";
+import { useContext } from "react";
+import { DataContext } from "../../misc/context";
 
-export default function CalendarDays ({ 
-    data, 
-    modalVisible, 
-    setModalVisible, 
-    fields, 
-    setFields 
-}: CalendarDaysProps) {
+export default function CalendarDays (): JSX.Element {
+
+    const { data } = useContext(DataContext)
 
     return (
         <div className="grid grid-cols-7">
-            { data.map((dataItem, ndx) => (
+            { data.runData.map((dataItem, ndx) => (
                 <Day 
                     key={ (dataItem.day) ? dataItem.day + ndx: ndx } 
-                    data={ dataItem }
-                    modalVisible={ modalVisible }
-                    setModalVisible={ setModalVisible }
-                    fields={ fields }
-                    setFields={ setFields } /> 
+                    data={ dataItem } /> 
             ))}
         </div>
     )

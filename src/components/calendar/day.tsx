@@ -1,13 +1,17 @@
-import React from "react";
-import { RunDataObjectType, DayProps } from "./calendarTypes";
+import React, { useContext } from "react";
+import { RunDataObjectType, RunDataTypes } from "./calendarTypes";
+import { CurrentWindowContext, RunFieldsContext } from "../../misc/context";
+
+export type DayProps = {
+    data: RunDataTypes,
+}
 
 export default function Day ({ 
-    data, 
-    modalVisible, 
-    setModalVisible,
-    fields,
-    setFields 
+    data
     }: DayProps): JSX.Element {
+    
+    const { runFields, setRunFields } = useContext(RunFieldsContext)
+    const { currentWindow, setCurrentWindow } = useContext(CurrentWindowContext)
     
     function handleClassName (): string {
 
@@ -43,19 +47,19 @@ export default function Day ({
     }
 
     function handleClick (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void {
-        if (!modalVisible) {
+        if (currentWindow !== "runModal") {
             event.stopPropagation();
             updateFields();
-            setModalVisible(true);
+            setCurrentWindow("runModal");
         }
     }
 
     function updateFields (): void {
         if (data.id) {
-            setFields(data);
+            setRunFields(data);
         } else {
-            const newFields = { ...fields, 'date': data.date }
-            setFields(newFields);
+            const newFields = { ...runFields, 'date': data.date }
+            setRunFields(newFields);
         }
     }
 

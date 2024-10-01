@@ -1,23 +1,23 @@
+import { useContext } from "react";
 import Button from "../../misc/button/button";
+import { CurrentWindowContext } from "../../../misc/context";
 
 type DeleteModalProp = {
-    deleteModalVisible: boolean,
-    setDeleteModalVisible: React.Dispatch<React.SetStateAction<boolean>>,
     handleDeleteRun: () => void
 }
 
 export default function DeleteModal ({ 
-    deleteModalVisible,
-    setDeleteModalVisible,
     handleDeleteRun
 }: DeleteModalProp): JSX.Element {
     
+    const { currentWindow, setCurrentWindow } = useContext(CurrentWindowContext)
+
     function handleClassName (): string {
-        return (deleteModalVisible) ? classNameVisible: classNameInvisible; 
+        return (currentWindow === "deleteRunModal") ? classNameVisible: classNameInvisible; 
     }
 
     function handleBack (): void {
-        setDeleteModalVisible(false)
+        setCurrentWindow("runModal")
     }
     
     return (

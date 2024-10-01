@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import { getMonthNameFromNum, getNextPeriod, getPreviousPeriod } from "../../misc/miscFunctions";
-import { CalendarHeaderProps } from "./calendarTypes";
+import { PeriodContext } from "../../misc/context";
 
-export default function CalendarHeader ({ period, setPeriod }: CalendarHeaderProps): JSX.Element {
+export default function CalendarHeader (): JSX.Element {
     
+    const { period, setPeriod } = useContext(PeriodContext)
     const monthName = getMonthNameFromNum(period.month)
 
     function goPreviousMonth (): void {

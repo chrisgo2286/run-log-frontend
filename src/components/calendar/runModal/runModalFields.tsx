@@ -1,12 +1,12 @@
+import { useContext } from "react"
+import { RunFieldsContext } from "../../../misc/context"
 import Input from "../../misc/input/input"
 import Select from "../../misc/select/select"
 import TextArea from "../../misc/textarea/textarea"
-import { RunModalFieldsProps } from "./runModalTypes"
 
-export default function RunModalFields ({ 
-    fields, 
-    setFields 
-}: RunModalFieldsProps): JSX.Element {
+export default function RunModalFields (): JSX.Element {
+    const { runFields, setRunFields } = useContext(RunFieldsContext)
+
     return (
         <div className="grid grid-cols-3 px-10 py-5">
             <div 
@@ -18,9 +18,9 @@ export default function RunModalFields ({
                 className="col-span-2 mb-3 rounded-md pl-4"
                 type="date"
                 name="date"
-                value={ (fields.date) ? fields.date: "" }
-                fields={ fields }
-                setFields={ setFields } 
+                value={ (runFields.date) ? runFields.date: "" }
+                fields={ runFields }
+                setFields={ setRunFields } 
                 data-cy="date-field"/>
             <div 
                 className="mb-3"
@@ -30,10 +30,10 @@ export default function RunModalFields ({
             <Select 
                 className="col-span-2 mb-3 rounded-md pl-4"
                 name="run_type"
-                initial={ (fields.run_type) ? fields.run_type: "Easy Run" }
+                initial={ (runFields.run_type) ? runFields.run_type: "Easy Run" }
                 options={["Easy Run", "Long Run", "Intervals", "Tempo Run"]}
-                fields={ fields }
-                setFields={ setFields } 
+                fields={ runFields }
+                setFields={ setRunFields } 
                 data-cy="run-type-field"/>
             <div 
                 className="mb-3"
@@ -44,9 +44,9 @@ export default function RunModalFields ({
                 className="col-span-2 mb-3 rounded-md pl-4"
                 type="number"
                 name="distance"
-                value={ (fields.distance) ? fields.distance: "" }
-                fields={ fields }
-                setFields={ setFields }
+                value={ (runFields.distance) ? runFields.distance: "" }
+                fields={ runFields }
+                setFields={ setRunFields }
                 data-cy="distance-field" />
             <div 
                 className="mb-3"
@@ -58,27 +58,27 @@ export default function RunModalFields ({
                     className="w-1/3 rounded-md text-center"
                     type="number"
                     name="hours"
-                    value={ (fields.hours) ? fields.hours: ""}
-                    fields={ fields }
-                    setFields={ setFields }
+                    value={ (runFields.hours) ? runFields.hours: ""}
+                    fields={ runFields }
+                    setFields={ setRunFields }
                     placeholder="hh"
                     data-cy="hours-field" />
                 <Input
                     className="w-1/3 rounded-md text-center"
                     type="number"
                     name="minutes"
-                    value={ (fields.minutes) ? fields.minutes: ""}
-                    fields={ fields }
-                    setFields={ setFields }
+                    value={ (runFields.minutes) ? runFields.minutes: ""}
+                    fields={ runFields }
+                    setFields={ setRunFields }
                     placeholder="mm"
                     data-cy="minutes-field" />
                 <Input
                     className="w-1/3 rounded-md text-center"
                     type="number"
                     name="seconds"
-                    value={ (fields.seconds) ? fields.seconds: ""}
-                    fields={ fields }
-                    setFields={ setFields }
+                    value={ (runFields.seconds) ? runFields.seconds: ""}
+                    fields={ runFields }
+                    setFields={ setRunFields }
                     placeholder="ss"
                     data-cy="seconds-field" />
             </div>
@@ -90,9 +90,9 @@ export default function RunModalFields ({
             <TextArea 
                 className="col-span-2 mb-3 border border-gray-300 rounded-md pl-4"
                 name="comment"
-                value={ (fields.comment) ? fields.comment: "" }
-                fields={ fields }
-                setFields={ setFields }
+                value={ (runFields.comment) ? runFields.comment: "" }
+                fields={ runFields }
+                setFields={ setRunFields }
                 data-cy="comment-field" />
         </div>
     )
