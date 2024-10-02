@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
-import CalendarHeader from "./calendarHeader";
-import CalendarBody from './calendarBody';
 import RunModal from './runModal/runModal';
 import { postRun, patchRun } from '../../misc/apiCalls';
 import { clearRunModalState } from '../../misc/miscFunctions';
 import { RunDataTypes } from './calendarTypes';
 import { validateRunModalFields } from './runModal/runModalValidation';
-import { useGetPeriod, useGetCalendar } from '../../misc/hooks';
-import { CurrentWindowContext, DataContext, PeriodContext, RunErrorsContext, RunFieldsContext } from '../../misc/context';
+import { useGetCalendar, useGetPeriod } from '../../misc/hooks';
+import Calendar from './calendar/calendar';
+import { 
+    CurrentWindowContext, 
+    DataContext, 
+    RunErrorsContext, 
+    RunFieldsContext, 
+    PeriodContext 
+} from '../../misc/context';
 
 export type CurrentWindowTypes = "calendar" | "runModal" | "deleteRunModal"
 
-export default function Calendar (): JSX.Element {
+export default function CalendarPage (): JSX.Element {
+    
     const { period, setPeriod } = useGetPeriod()
     const { data, setUpdateRequired } = useGetCalendar(period)
     const [ runFields, setRunFields ] = useState<RunDataTypes>(blankRunFields)
@@ -26,19 +32,13 @@ export default function Calendar (): JSX.Element {
 
     function handleSubmitRun () {
         const newFields = cleanInput();
-        const result = validateRunModalFields(newFields)
-        if (result === "Valid") {
-            submitRun(newFields);
-        } else {
-            setRunErrors(result);
-        }
+        const result = validateRunModalFields(newFields);
+        ( result === "Valid" ) ? submitRun(newFields) : setRunErrors(result);
     }
 
     function submitRun (newFields: RunDataTypes): void {
         (runFields.id === "") ? postRun(newFields) : patchRun(newFields);   
-        setCurrentWindow("calendar")
-        clearRunModalState(setRunFields);
-        setRunErrors([]);
+        handleCloseModal()
         setUpdateRequired(true);
     }
 
@@ -58,23 +58,21 @@ export default function Calendar (): JSX.Element {
     return (
         <React.Fragment>
             <RunFieldsContext.Provider value={{ runFields, setRunFields }}>
-            <CurrentWindowContext.Provider value={{ currentWindow, setCurrentWindow }}>
-            <main onClick={ handleCloseModal } className={ (currentWindow !== "calendar") ? "h-screen relative blur-sm": "h-screen relative"}>
-                <div className="w-4/5 mx-auto mb-10 border border-solid border-gray-200 rounded-xl">
-                    <DataContext.Provider value={{ data, setUpdateRequired }}>
+                <CurrentWindowContext.Provider value={{ currentWindow, setCurrentWindow }}>
                     <PeriodContext.Provider value={{ period, setPeriod }}>
-                        <CalendarHeader />
-                        <CalendarBody />
-                    </PeriodContext.Provider>            
-                    </DataContext.Provider>
-                                    
-                </div>
-            </main>
-            <RunErrorsContext.Provider value={{ runErrors, setRunErrors }}>
-                <RunModal handleSubmitRun={ handleSubmitRun }/>
-            </RunErrorsContext.Provider>
-            </CurrentWindowContext.Provider>
-            </RunFieldsContext.Provider>            
+                        <DataContext.Provider value={{ data, setUpdateRequired }}>
+                               
+                            <Calendar handleCloseModal={ handleCloseModal }/>
+                        
+                        </DataContext.Provider>
+                    </PeriodContext.Provider>     
+                    <RunErrorsContext.Provider value={{ runErrors, setRunErrors }}>
+                        
+                        <RunModal handleSubmitRun={ handleSubmitRun }/>           
+                    
+                    </RunErrorsContext.Provider>
+                </CurrentWindowContext.Provider>
+            </RunFieldsContext.Provider>   
         </React.Fragment>
     )
 }

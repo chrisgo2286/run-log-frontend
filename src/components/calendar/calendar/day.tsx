@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { RunDataObjectType, RunDataTypes } from "./calendarTypes";
-import { CurrentWindowContext, RunFieldsContext } from "../../misc/context";
+import { RunDataObjectType, RunDataTypes } from "../calendarTypes";
+import { CurrentWindowContext, RunFieldsContext } from "../../../misc/context";
 
 export type DayProps = {
     data: RunDataTypes,

@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { DataContext } from "../../misc/context"
+import { DataContext } from "../../../misc/context"
 
 export default function WeeklyTotals (): JSX.Element {
 

@@ -1,7 +1,8 @@
 import { createContext } from "react";
 import { UserType } from "./miscTypes";
 import { DataTypes, PeriodTypes, RunDataTypes } from "../components/calendar/calendarTypes";
-import { blankRunFields, CurrentWindowTypes } from "../components/calendar/calendar";
+import { blankRunFields } from "../components/calendar/calendarPage";
+import { CurrentWindowTypes } from "../components/calendar/calendarPage";
 
 export type UserContextType = {
     user: UserType,

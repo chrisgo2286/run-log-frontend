@@ -3,7 +3,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Home from './components/home/home';
 import Profile from './components/profile/profile';
-import Calendar from './components/calendar/calendar';
+import Calendar from './components/calendar/calendarPage';
 import Login from './components/login/login';
 import Registration from './components/registration/registration';
 import { UserContext } from './misc/context';

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { getMonthNameFromNum, getNextPeriod, getPreviousPeriod } from "../../misc/miscFunctions";
-import { PeriodContext } from "../../misc/context";
+import { getMonthNameFromNum, getNextPeriod, getPreviousPeriod } from "../../../misc/miscFunctions";
+import { PeriodContext } from "../../../misc/context";
 
 export default function CalendarHeader (): JSX.Element {
     

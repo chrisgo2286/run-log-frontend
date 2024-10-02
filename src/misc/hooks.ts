@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { PeriodTypes, DataTypes } from "../components/calendar/calendarTypes";
+import { PeriodTypes, DataTypes, RunDataTypes } from "../components/calendar/calendarTypes";
 import { getCalendar } from "./apiCalls";
 
 type UseGetCalendarReturnType = {
