@@ -1,6 +1,11 @@
 import "../profile.css";
 import { getPreviousPeriod, getNextPeriod } from "../../../misc/miscFunctions"
-import { MonthlyChartHeaderProps } from "./monthlyChartTypes"
+import { PeriodTypes } from "../../calendar/calendarTypes";
+
+type MonthlyChartHeaderProps = {
+    period: PeriodTypes,
+    setPeriod: React.Dispatch<React.SetStateAction<PeriodTypes>>
+}
 
 export default function MonthlyChartHeader ({ 
     period, 

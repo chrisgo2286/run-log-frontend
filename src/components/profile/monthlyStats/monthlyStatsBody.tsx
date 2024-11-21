@@ -4,7 +4,11 @@ import {
     formatWeeklyAverage, 
     formatPace 
 } from "../../../misc/miscFunctions";
-import { MonthlyStatsProp } from "./monthlyStatsTypes";
+import { MonthlyStatsTypes } from "./monthlyStats";
+
+type MonthlyStatsProp = {
+    data: MonthlyStatsTypes | undefined
+}
 
 export default function MonthlyStatsBody ({ data }: MonthlyStatsProp): JSX.Element {
 

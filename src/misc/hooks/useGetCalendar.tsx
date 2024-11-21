@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { PeriodTypes, DataTypes, RunDataTypes } from "../components/calendar/calendarTypes";
-import { getCalendar } from "./apiCalls";
+import { useState, useEffect } from "react"
+import { DataTypes, PeriodTypes } from "../../components/calendar/calendarTypes"
+import { getCalendar } from "../apiCalls"
 
 type UseGetCalendarReturnType = {
     data: DataTypes, 
@@ -21,18 +21,4 @@ export function useGetCalendar (period: PeriodTypes): UseGetCalendarReturnType {
     }, [period, updateRequired])    
 
     return { data, setUpdateRequired }
-}
-
-type UseGetPeriodReturnType = {
-    period: PeriodTypes,
-    setPeriod: React.Dispatch<React.SetStateAction<PeriodTypes>>
-}
-
-export function useGetPeriod (): UseGetPeriodReturnType {
-    const curDate = new Date();
-    const [ period, setPeriod ] = useState<PeriodTypes>({
-        month: curDate.getMonth() + 1,
-        year: curDate.getFullYear()
-    })
-    return { period, setPeriod }
 }

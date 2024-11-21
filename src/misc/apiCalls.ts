@@ -2,8 +2,9 @@ import axios from 'axios';
 import { RegistrationProps } from '../components/registration/registrationTypes';
 import { DataTypes, RunDataTypes } from '../components/calendar/calendarTypes';
 import { FieldsType } from '../components/login/loginTypes';
-import { MonthlyStatsTypes } from '../components/profile/monthlyStats/monthlyStatsTypes';
+import { MonthlyStatsTypes } from '../components/profile/monthlyStats/monthlyStats';
 import { ResponseType, StatusType } from './miscTypes';
+import { DataItem } from '../components/profile/monthlyChart/monthlyChart';
 
 const url = 'http://127.0.0.1:8000/api/'
 const token = localStorage.getItem('token')
@@ -34,7 +35,8 @@ export async function getYearlyStats (year: number) {
     return result.data
 }
 
-export async function getMonthlyChartData (month: number, year: number) {
+export async function getMonthlyChartData (
+    month: number, year: number): Promise<DataItem[]> {
     const newUrl = `${url}monthly_chart/?month=${month}&year=${year}`
     const result = await axios.get(newUrl, headers)
     return result.data

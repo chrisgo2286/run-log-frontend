@@ -1,23 +1,20 @@
-import { useState, useEffect } from "react";
-import { MonthlyStatsTypes } from "./monthlyStatsTypes";
-import { getMonthlyStats } from "../../../misc/apiCalls";
 import MonthlyStatsHeader from "./monthlyStatsHeader";
 import MonthlyStatsBody from "./monthlyStatsBody";
-import { MonthlyStatsPeriod } from "./monthlyStatsTypes";
+import { useGetPeriod } from "../../../misc/hooks/useGetPeriod";
+import { useGetMonthlyStatsData } from "../../../misc/hooks/useGetMonthlyStatsData";
+
+export type MonthlyStatsTypes = {
+    current_month: string,
+    distance: string,
+    time: number,
+    weekly_average: string,
+    average_pace: number
+}
 
 export default function CurrentMonthStats (): JSX.Element {
 
-    const curDate = new Date()
-    const [ period, setPeriod ] = useState<MonthlyStatsPeriod>({
-        month: curDate.getMonth() + 1,
-        year: curDate.getFullYear()
-    })
-    const [ data, setData ] = useState<MonthlyStatsTypes>()
-
-    useEffect(() => {
-        getMonthlyStats(period.month, period.year)
-        .then((data) => setData(data))
-    }, [period])
+    const { period, setPeriod } = useGetPeriod()    
+    const { data } = useGetMonthlyStatsData(period)
 
     return (
         <div 

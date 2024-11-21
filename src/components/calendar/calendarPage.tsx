@@ -4,7 +4,8 @@ import { postRun, patchRun } from '../../misc/apiCalls';
 import { clearRunModalState } from '../../misc/miscFunctions';
 import { RunDataTypes } from './calendarTypes';
 import { validateRunModalFields } from './runModal/runModalValidation';
-import { useGetCalendar, useGetPeriod } from '../../misc/hooks';
+import { useGetCalendar } from '../../misc/hooks/useGetCalendar';
+import { useGetPeriod } from '../../misc/hooks/useGetPeriod';
 import Calendar from './calendar/calendar';
 import { 
     CurrentWindowContext, 

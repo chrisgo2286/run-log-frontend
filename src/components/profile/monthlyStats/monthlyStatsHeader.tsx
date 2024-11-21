@@ -1,6 +1,12 @@
 import { getNextPeriod, getPreviousPeriod } from "../../../misc/miscFunctions"
-import { MonthlyStatsHeaderProps } from "./monthlyStatsTypes"
 import "../profile.css";
+import { PeriodTypes } from "../../calendar/calendarTypes";
+
+type MonthlyStatsHeaderProps = {
+    month: string,
+    period: PeriodTypes,
+    setPeriod: React.Dispatch<React.SetStateAction<PeriodTypes>>
+}
 
 export default function MonthlyStatsHeader ({ 
     month, 

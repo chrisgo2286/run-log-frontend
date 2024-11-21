@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import MonthlyStats from "./monthlyStats/monthlyStats"
 import YearlyStats from "./yearlyStats/yearlyStats"
 import MonthlyChart from "./monthlyChart/monthlyChart"

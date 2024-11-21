@@ -1,22 +1,17 @@
-import { useState, useEffect } from "react";
-import { getMonthlyChartData } from "../../../misc/apiCalls";
-import { DataItem, PeriodTypes } from "./monthlyChartTypes";
 import MonthlyChartHeader from "./monthlyChartHeader";
 import MonthlyChartBody from "./monthlyChartBody";
+import { useGetPeriod } from "../../../misc/hooks/useGetPeriod";
+import { useGetMonthlyChart } from "../../../misc/hooks/useGetMonthlyChart";
+
+export type DataItem = {
+    label: string,
+    distance: string
+}
 
 export default function MonthlyChart () {
     
-    const curDate = new Date()
-    const [ period, setPeriod ] = useState<PeriodTypes>({
-        month: curDate.getMonth() + 1,
-        year: curDate.getFullYear()
-    })
-    const [ data, setData ] = useState<DataItem[]>()
-    
-    useEffect(() => {
-        getMonthlyChartData(period.month, period.year)
-        .then((data) => setData(data))
-    }, [period])
+    const { period, setPeriod } = useGetPeriod()
+    const { data } = useGetMonthlyChart(period)
 
     return (
         <div className="w-96 h-64 border border-gray-200 rounded-md shadow-md">

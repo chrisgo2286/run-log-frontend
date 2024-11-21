@@ -5,7 +5,11 @@ import {
     formatPace,
     formatMonthlyAverage 
     } from "../../../misc/miscFunctions";
-import { YearlyStatsBodyProp } from "./yearlyStatsTypes";
+import { YearlyStatsTypes } from "./yearlyStats";
+
+export type YearlyStatsBodyProp = {
+    data: YearlyStatsTypes | undefined
+}
 
 export default function YearlyStatsBody ({ data }: YearlyStatsBodyProp): JSX.Element {
     

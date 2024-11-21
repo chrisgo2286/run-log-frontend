@@ -1,5 +1,9 @@
-import { YearStatsHeaderProps } from "./yearlyStatsTypes";
 import "../profile.css";
+
+export type YearStatsHeaderProps = {
+    year: number,
+    setYear: React.Dispatch<React.SetStateAction<number>>
+}
 
 export default function YearlyStatsHeader ({ 
     year, 
