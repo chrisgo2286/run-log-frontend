@@ -5,7 +5,7 @@ export default function TrainingDay ({
 }: { data: TrainingBlockItemTypes}): JSX.Element {
     
     return (
-        <div>
+        <div className="h-28 w-28 border border-gray-200">
             <div>
                 <span>{ data.date }</span>
                 <span>{ data.day }</span>

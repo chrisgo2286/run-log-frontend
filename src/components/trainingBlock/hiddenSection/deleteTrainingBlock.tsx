@@ -1,5 +1,5 @@
 export default function DeleteTrainingBlock () {
     return (
-        <div></div>
+        <div>DELETE TRAINING BLOCK</div>
     )
 }

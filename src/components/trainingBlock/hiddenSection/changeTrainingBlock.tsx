@@ -1,5 +1,5 @@
 export default function ChangeTrainingBlock () {
     return (
-        <div></div>
+        <div>CHANGE TRAINING BLOCK</div>
     )
 }

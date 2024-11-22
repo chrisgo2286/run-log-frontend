@@ -1,5 +1,5 @@
 export default function NewTrainingBlock () {
     return (
-        <div></div>
+        <div>NEW TRAINING BLOCK</div>
     )
 }
