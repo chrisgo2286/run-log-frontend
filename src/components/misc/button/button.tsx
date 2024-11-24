@@ -1,26 +1,26 @@
 type ButtonTypes =  {
     children: string,
-    className?: string
-    onClick: () => void
+    className?: string,
+    onClick: () => void,
+    dataCy?: string
 }
 
 export default function Button ({
     children,
     className,
-    onClick
+    onClick,
+    dataCy,
 }: ButtonTypes): JSX.Element {
     
     const classNames = [
-        "bg-green-200",
+        "border border-gray-400",
         "flex",
         "flex-col",
         "justify-center",
         "items-center",
-        "bg-third-color",
-        "rounded",
+        "rounded-md",
         "w-36",
         "h-6",
-        "shadow-custom",
         "hover:bg-green-300",
         "hover:cursor-pointer"
     ].join(" ")
@@ -31,7 +31,8 @@ export default function Button ({
     return (
         <div 
             className={ handleClassNames() }
-            onClick={ onClick } >
+            onClick={ onClick } 
+            data-cy={ dataCy }>
             { children }
         </div>
     )
