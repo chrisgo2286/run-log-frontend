@@ -26,7 +26,7 @@ export function siteLinksLoggedIn () {
             <Link to='/'>Home</Link>
             <Link to='/profile' data-cy='profile-link'>Profile</Link>
             <Link to='/calendar' data-cy="calendar-link">Calendar</Link>
-            <Link to='/trainingBlock' data-cy="training-block-link">Training Blocks</Link>
+            <Link to='/trainingBlockList' data-cy="training-block-list-link">Training Blocks</Link>
         </React.Fragment>
     )
 }

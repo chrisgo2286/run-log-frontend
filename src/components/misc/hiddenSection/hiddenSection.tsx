@@ -1,11 +1,10 @@
 import { useState } from "react";
-import ExpandIcon from "../../misc/expandIcon/expandIcon";
-import ChangeTrainingBlock from "./changeTrainingBlock";
-import DeleteTrainingBlock from "./deleteTrainingBlock";
-import NewTrainingBlock from "./newTrainingBlock";
+import ExpandIcon from "../expandIcon/expandIcon";
 import "./hiddenSection.css"
 
-export default function HiddenSection () {
+export default function HiddenSection ({ 
+    children 
+}: {children?: JSX.Element}): JSX.Element {
     const [ filtersVisible, setFiltersVisible ] = useState<boolean>(false)
 
     function handleExpandIconClick (): void {
@@ -22,9 +21,7 @@ export default function HiddenSection () {
                 { filtersVisible ? "expand_less" : "expand_more" }
             </ExpandIcon>
             <div className={ (!filtersVisible) ? "filter-container collapsed":"filter-container" }>
-                <NewTrainingBlock />
-                <DeleteTrainingBlock />
-                <ChangeTrainingBlock />
+                { children }
             </div>
                             
         </section>

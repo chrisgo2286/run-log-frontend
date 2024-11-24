@@ -1,5 +1,10 @@
-import { InputWithIconProps } from '../miscCompTypes';
+import { InputProps } from '../input/input';
 import './inputWithIcon.css';
+
+export type InputWithIconProps = InputProps & {
+    icon: string;
+    placeholder: string;
+}
 
 export default function InputWithIcon ({ 
     className,

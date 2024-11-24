@@ -1,5 +1,14 @@
-import { TextAreaProps } from "../miscCompTypes"
 import './textarea.css'
+
+type TextAreaProps = {
+    className: string;
+    name: string;
+    value: string | number | undefined;
+    fields: object;
+    setFields: React.Dispatch<React.SetStateAction<any>>
+    placeholder?: string,
+    dataCy?: string;
+}
 
 export default function TextArea ({
     className,
@@ -7,6 +16,8 @@ export default function TextArea ({
     value,
     fields,
     setFields,
+    placeholder,
+    dataCy,
     ...other }: TextAreaProps) {
 
     function handleChange (event: React.ChangeEvent<HTMLTextAreaElement>): void {
@@ -28,6 +39,8 @@ export default function TextArea ({
             value={ value }
             id={ name }
             onChange={ handleChange }
+            placeholder={ placeholder }
+            data-cy={ dataCy }
             { ...other }>
         </textarea>
     )

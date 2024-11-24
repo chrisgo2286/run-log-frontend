@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react"
-import TrainingBlockBody from "../../components/trainingBlock/trainingBlock/trainingBlockBody"
 
 export type TrainingBlockDataTypes = {
     cycles: string[],
-    trainingData: TrainingBlockItemTypes[][]
+    trainingData: TrainingBlockDayTypes[][]
 }
 
-export type TrainingBlockItemTypes = {
+export type TrainingBlockDayTypes = {
     date: string,
     day: string,
     id?: string,
@@ -17,9 +16,39 @@ export type TrainingBlockItemTypes = {
     seconds?: string
 }
 
+export type TrainingBlockTypes = {
+    id?: number,
+    athlete?: string,
+    title: string,
+    startDate: string,
+    endDate: string,
+    cycleLength: string,
+    goals?: string
+}
+
+type UseGetTrainingBlocksReturnTypes = {
+    trainingBlocks: TrainingBlockTypes[], 
+    setTrainingUpdateReq: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+type UseGetTrainingBlockDataReturnTypes = {
+    data: TrainingBlockDataTypes, 
+    setUpdateRequired: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export function UseGetTrainingBlocks (): UseGetTrainingBlocksReturnTypes {
+    const [ trainingBlocks, setTrainingBlocks ] = useState<TrainingBlockTypes[]>([])
+    const [ trainingUpdateReq, setTrainingUpdateReq ] = useState<boolean>(false)
+    useEffect(() => {
+        setTrainingBlocks(trainingBlocksDummyData)
+    },[trainingUpdateReq])
+
+    return { trainingBlocks, setTrainingUpdateReq }
+}
+
 export function UseGetTrainingBlockData (
     trainingBlockId: number
-): { data: TrainingBlockDataTypes, setUpdateRequired: React.Dispatch<React.SetStateAction<boolean>> } {
+): UseGetTrainingBlockDataReturnTypes {
 
     const [ data, setData ] = useState<TrainingBlockDataTypes>({
         cycles: [],
@@ -32,11 +61,42 @@ export function UseGetTrainingBlockData (
             setData(dummyData2)
             setUpdateRequired(false)
         }
-    }, [updateRequired])
+    }, [trainingBlockId, updateRequired])
     
     return { data, setUpdateRequired }
 }
 
+const trainingBlocksDummyData: TrainingBlockTypes[] = [
+    {
+        id: 1,
+        athlete: "Christian Go",
+        title: "Fall Training Block - Short",
+        startDate: "11/3/2024",
+        endDate: "11/16/2024",
+        cycleLength: "4",
+        goals: (
+            `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut 
+            efficitur ante ac aliquam porttitor. Integer sodales orci sapien, 
+            at gravida sem lobortis tincidunt. Curabitur gravida lorem fringilla
+            lorem tristique semper. Etiam dui lorem, lobortis ut eros a, 
+            blandit suscipit sapien. Nullam at ligula vitae ante cursus 
+            imperdiet. Donec eu est volutpat, pretium sapien id, ornare magna.`
+        )
+    },
+    {
+        id: 2,
+        athlete: "Christian Go",
+        title: "Fall Training Block - Long",
+        startDate: "11/3/2024",
+        endDate: "11/30/2024",
+        cycleLength: "7",
+        goals: (
+            `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut 
+            efficitur ante ac aliquam porttitor. Integer sodales orci sapien, 
+            at gravida sem lobortis tincidunt.`
+        )
+    }
+]
 const dummyData1 = {
     cycles: [
         "11/3/2024 - 11/6/2024",

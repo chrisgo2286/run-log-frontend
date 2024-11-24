@@ -1,10 +1,9 @@
 import { useContext } from "react"
-import { TrainingBlockContext } from "../../../misc/context"
+import { TrainingBlockDataContext } from "../../misc/context"
 import TrainingDay from "./trainingDay"
 
 export default function TrainingDays () {
-    const { data } = useContext(TrainingBlockContext)
-    console.log(data)
+    const { data } = useContext(TrainingBlockDataContext)
     return (
         <div>
             { data.trainingData.map((trainingRow, ndx) => (

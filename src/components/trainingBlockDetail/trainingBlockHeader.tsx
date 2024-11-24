@@ -1,4 +1,4 @@
-import { NextArrow, PrevArrow } from "../../misc/arrow/arrow"
+import { NextArrow, PrevArrow } from "../misc/arrow/arrow"
 
 export default function TrainingBlockHeader () {
     function handleClick (direction: string): void {

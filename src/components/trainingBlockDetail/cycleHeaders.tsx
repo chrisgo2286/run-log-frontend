@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { TrainingBlockContext } from "../../../misc/context"
+import { TrainingBlockDataContext } from "../../misc/context"
 
 export default function CycleHeaders () {
-    const { data } = useContext(TrainingBlockContext)
+    const { data } = useContext(TrainingBlockDataContext)
 
     return (
         <div className="flex flex-col">

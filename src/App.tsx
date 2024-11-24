@@ -4,7 +4,8 @@ import Navbar from './components/navbar/navbar';
 import Home from './components/home/home';
 import Profile from './components/profile/profile';
 import Calendar from './components/calendar/calendarPage';
-import TrainingBlock from "./components/trainingBlock/trainingBlock/trainingBlock"    
+import TrainingBlockListPage from './components/trainingBlockList/trainingBlockListPage';
+import TrainingBlockDetail from './components/trainingBlockDetail/trainingBlockDetail';
 import Login from './components/login/login';
 import Registration from './components/registration/registration';
 import { UserContext } from './misc/context';
@@ -35,7 +36,8 @@ export default function App() {
                 <Routes>
                     <Route path='/' element={ <Home /> } />
                     <Route path='/calendar' element={ <Calendar /> } />
-                    <Route path="/trainingBlock" element={ <TrainingBlock /> } />
+                    <Route path="/trainingBlockList" element={ <TrainingBlockListPage /> } />
+                    <Route path="/trainingBlockDetail/:id" element={ <TrainingBlockDetail /> } />
                     <Route path='/profile' element={ <Profile /> } />
                     <Route path='/login' element={ <Login /> } />
                     <Route path='/registration' element={ <Registration /> } />

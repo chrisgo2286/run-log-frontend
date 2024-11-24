@@ -1,8 +1,8 @@
-import { TrainingBlockItemTypes } from "../../../misc/hooks/useGetTrainingBlockData";
+import { TrainingBlockDayTypes } from "../../misc/hooks/trainingBlockHooks";
 
 export default function TrainingDay ({ 
     data 
-}: { data: TrainingBlockItemTypes}): JSX.Element {
+}: { data: TrainingBlockDayTypes}): JSX.Element {
     
     return (
         <div className="h-28 w-28 border border-gray-200">
@@ -15,7 +15,7 @@ export default function TrainingDay ({
     )
 }
 
-function runData (data: TrainingBlockItemTypes) {
+function runData (data: TrainingBlockDayTypes) {
     return (
         <>
             <div>{ data.type }</div>
