@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { getTrainingBlockFromId } from "../miscFunctions"
 
 export type TrainingBlockDataTypes = {
     cycles: string[],
@@ -56,15 +57,34 @@ export function UseGetTrainingBlockData (
     })    
     const [ updateRequired, setUpdateRequired ] = useState<boolean>(false)
 
-    useEffect(() => {
-        if (trainingBlockId > 0) {
-            setData(dummyData2)
-            setUpdateRequired(false)
-        }
+    useEffect(() => {     
+        setData(dummyData2)
+        setUpdateRequired(false)
     }, [trainingBlockId, updateRequired])
     
     return { data, setUpdateRequired }
 }
+
+export function UseGetTrainingBlock (
+    id: number, 
+    trainingBlocks: TrainingBlockTypes[]
+): TrainingBlockTypes {
+
+    const [ trainingBlock, setTrainingBlock ] = useState<TrainingBlockTypes>({
+        title: "",
+        startDate: "",
+        endDate: "",
+        cycleLength: "",
+        goals: ""
+    })
+    useEffect(() => {
+        const currentTrainingBlock = getTrainingBlockFromId(id, trainingBlocks)
+        setTrainingBlock(currentTrainingBlock)
+    }, [id, trainingBlocks])
+
+    return trainingBlock
+}
+    
 
 const trainingBlocksDummyData: TrainingBlockTypes[] = [
     {
@@ -98,12 +118,7 @@ const trainingBlocksDummyData: TrainingBlockTypes[] = [
     }
 ]
 const dummyData1 = {
-    cycles: [
-        "11/3/2024 - 11/6/2024",
-        "11/7/2024 - 11/10/2024",
-        "11/11/2024 - 11/14/2024",
-        "11/15/2024 - 11/16/2024"
-    ],
+    cycles: ["1", "2", "3", "4"],
     trainingData: [
         [
             { 
@@ -203,12 +218,7 @@ const dummyData1 = {
 }
 
 const dummyData2 = {
-    cycles: [
-        "11/3/2024 - 11/9/2024",
-        "11/10/2024 - 11/16/2024",
-        "11/17/2024 - 11/23/2024",
-        "11/24/2024 - 11/30/2024"
-    ],
+    cycles: ["1", "2", "3", "4"],
     trainingData: [
         [
             { 

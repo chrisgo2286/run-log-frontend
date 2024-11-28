@@ -1,20 +1,31 @@
 import { useState } from "react"
 import TrainingBlockBody from "./trainingBlockBody"
 import TrainingBlockHeader from "./trainingBlockHeader"
-import HiddenSection from "../misc/hiddenSection/hiddenSection"
-import { UseGetTrainingBlockData } from "../../misc/hooks/trainingBlockHooks"
-import { TrainingBlockDataContext } from "../../misc/context"
+import { UseGetTrainingBlock, UseGetTrainingBlockData, UseGetTrainingBlocks } from "../../misc/hooks/trainingBlockHooks"
+import { TrainingBlockDataContext, TrainingBlockContext } from "../../misc/context"
+import { getTrainingBlockFromId } from "../../misc/miscFunctions"
+import UpdateTrainingBlock from "./updateTrainingBlock"
 
 export default function TrainingBlockDetail () {
-    const [ currentId, setCurrentId ] = useState<number>(0)
-    const { data, setUpdateRequired } = UseGetTrainingBlockData(currentId)
+    const id = window.location.href.split("trainingBlockDetail/")[1]
+    const { trainingBlocks, setTrainingUpdateReq } = UseGetTrainingBlocks()
+    const { data, setUpdateRequired } = UseGetTrainingBlockData(parseInt(id))
+    const [ errors, setErrors ] = useState<string[]>([])
+    const trainingBlock = UseGetTrainingBlock(parseInt(id), trainingBlocks)
+    
+    function getTitle () {
+        const result = getTrainingBlockFromId(parseInt(id), trainingBlocks)
+        return ( result ) ? result.title : ""
+    }
 
     return (
         <main className="w-screen">
             <div className="max-w-screen-lg mx-auto my-10 border border-gray-200">
-                <HiddenSection />
+                <UpdateTrainingBlock 
+                    trainingBlock={ trainingBlock }
+                    setTrainingUpdateReq={ setTrainingUpdateReq } />
                 <TrainingBlockDataContext.Provider value={{ data, setUpdateRequired }}>
-                    <TrainingBlockHeader />
+                    <TrainingBlockHeader title={ getTitle() }/>
                     <TrainingBlockBody />
                 </TrainingBlockDataContext.Provider>         
             </div>

@@ -3,7 +3,7 @@ import { UserType } from "./miscTypes";
 import { DataTypes, PeriodTypes, RunDataTypes } from "../components/calendar/calendarTypes";
 import { blankRunFields } from "../components/calendar/calendarPage";
 import { CurrentWindowTypes } from "../components/calendar/calendarPage";
-import { TrainingBlockDataTypes } from "./hooks/trainingBlockHooks";
+import { TrainingBlockDataTypes, TrainingBlockTypes } from "./hooks/trainingBlockHooks";
 
 export type UserContextType = {
     user: UserType,
@@ -83,4 +83,12 @@ export const TrainingBlockDataContext = createContext<TrainingBlockDataContextTy
         trainingData: []
     },
     setUpdateRequired: () => console.log("Ooops, default value used!")
+})
+
+export const TrainingBlockContext = createContext<TrainingBlockTypes>({
+    title: "",
+    startDate: "",
+    endDate: "",
+    cycleLength: "",
+    goals: ""
 })

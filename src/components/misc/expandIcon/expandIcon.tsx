@@ -1,10 +1,10 @@
 type ExpandIconTypes = {
-    children: string,
+    iconType: string,
     handleClick: () => void
 }
 
 export default function ExpandIcon ({ 
-    children, 
+    iconType,
     handleClick 
 }: ExpandIconTypes): JSX.Element {
     return (
@@ -13,7 +13,7 @@ export default function ExpandIcon ({
                 className="material-icons"
                 data-cy="expand-icon"
                 onClick={ handleClick }>
-                { children }
+                { iconType }
             </i>
         </span>
     )

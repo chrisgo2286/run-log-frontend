@@ -1,5 +1,6 @@
 import { PeriodTypes } from "../components/calendar/calendarTypes";
 import { RunDataTypes } from "../components/calendar/calendarTypes";
+import { TrainingBlockTypes } from "./hooks/trainingBlockHooks";
 
 const monthNames = [
     "", "January", "February", "March", "April", "May", "June", "July", 
@@ -112,4 +113,20 @@ export function getCurrentMonthName (date: Date): string {
 
 export function refreshPage (): void {
     window.location.reload()
+}
+
+export function getTrainingBlockFromId (
+    id: number, 
+    trainingBlocks: TrainingBlockTypes[]
+): TrainingBlockTypes {
+    
+    const result =  trainingBlocks.find((trainingBlock) => trainingBlock.id === id)
+    const defaultValue = {
+        title: "",
+        startDate: "",
+        endDate: "",
+        cycleLength: "",
+        goals: ""
+    }
+    return (result) ? result : defaultValue
 }
