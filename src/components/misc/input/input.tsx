@@ -26,6 +26,7 @@ export default function Input ({
     dataCy,
     ...other }: InputProps) {
     
+    const baseClassName = "hover:bg-gray-200 hover:cursor-pointer indent-2 text-sm"
     function handleChange (event: React.ChangeEvent<HTMLInputElement>): void {
         const { name, value } = event.target;
         setFields({ ...fields, [name]: value })
@@ -33,9 +34,9 @@ export default function Input ({
 
     function handleClassName (): string {
         if (className) {
-            return "input " + className;
+            return `${ baseClassName } ${ className }`
         }
-        return "input";
+        return baseClassName;
     }
 
     return (

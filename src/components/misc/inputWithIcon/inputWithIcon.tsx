@@ -3,7 +3,6 @@ import './inputWithIcon.css';
 
 export type InputWithIconProps = InputProps & {
     icon: string;
-    placeholder: string;
 }
 
 export default function InputWithIcon ({ 
@@ -13,8 +12,11 @@ export default function InputWithIcon ({
     value, 
     fields, 
     setFields,
+    onFocus,
+    onBlur,
     icon,
-    placeholder, 
+    placeholder,
+    dataCy, 
     ...other }: InputWithIconProps) {
     
     function handleChange (event: React.ChangeEvent<HTMLInputElement>): void {

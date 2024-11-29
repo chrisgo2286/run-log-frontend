@@ -21,10 +21,10 @@ export default function NewTrainingBlock ({
 
     return (
         <HiddenSection text="Add Training Block">
-            <div className="rounded-md py-5">
+            <div className="rounded-md">
                 <TrainingBlockFields fields={ fields } setFields={ setFields } />
                 <Button
-                    className="h-8 max-w-30 bg-green-100 mx-auto"
+                    className="h-8 max-w-30 bg-green-100 mx-auto mb-5"
                     onClick={ handleSubmit }
                     dataCy="submit-btn">
                     Submit

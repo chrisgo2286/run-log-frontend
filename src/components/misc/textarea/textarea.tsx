@@ -1,6 +1,4 @@
-import './textarea.css'
-
-type TextAreaProps = {
+export type TextAreaProps = {
     className: string;
     name: string;
     value: string | number | undefined;
@@ -20,6 +18,7 @@ export default function TextArea ({
     dataCy,
     ...other }: TextAreaProps) {
 
+    const baseClassName = "hover:bg-gray-200 hover:cursor-pointer indent-2 text-xs"
     function handleChange (event: React.ChangeEvent<HTMLTextAreaElement>): void {
         const { name, value } = event.target;
         setFields({ ...fields, [name]: value })
@@ -27,9 +26,9 @@ export default function TextArea ({
 
     function handleClassName (): string {
         if (className) {
-            return "textarea " + className;
+            return `${ baseClassName } ${ className }`;
         }
-        return "textarea ";
+        return baseClassName;
     }
 
     return (

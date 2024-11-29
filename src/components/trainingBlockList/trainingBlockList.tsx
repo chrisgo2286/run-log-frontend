@@ -20,7 +20,7 @@ export default function TrainingBlockList ({
 
 function Headers (): JSX.Element {
     return (
-        <div className="grid grid-cols-5 font-bold border-b border-gray-200 h-8 text-center">
+        <div className="grid grid-cols-5 font-bold text-xs sm:text-sm border-b border-gray-200 h-8 text-center">
             <div>Title</div>
             <div>Start Date</div>
             <div>End Date</div>
