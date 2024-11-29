@@ -94,14 +94,7 @@ const trainingBlocksDummyData: TrainingBlockTypes[] = [
         startDate: "11/3/2024",
         endDate: "11/16/2024",
         cycleLength: "4",
-        goals: (
-            `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut 
-            efficitur ante ac aliquam porttitor. Integer sodales orci sapien, 
-            at gravida sem lobortis tincidunt. Curabitur gravida lorem fringilla
-            lorem tristique semper. Etiam dui lorem, lobortis ut eros a, 
-            blandit suscipit sapien. Nullam at ligula vitae ante cursus 
-            imperdiet. Donec eu est volutpat, pretium sapien id, ornare magna.`
-        )
+        goals: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur ante ac aliquam porttitor. Integer sodales orci sapien, at gravida sem lobortis tincidunt. Curabitur gravida lorem fringilla"
     },
     {
         id: 2,
@@ -110,11 +103,7 @@ const trainingBlocksDummyData: TrainingBlockTypes[] = [
         startDate: "11/3/2024",
         endDate: "11/30/2024",
         cycleLength: "7",
-        goals: (
-            `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut 
-            efficitur ante ac aliquam porttitor. Integer sodales orci sapien, 
-            at gravida sem lobortis tincidunt.`
-        )
+        goals: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur ante ac aliquam porttitor. Integer sodales orci sapien, at gravida sem lobortis tincidunt"
     }
 ]
 const dummyData1 = {
@@ -126,7 +115,7 @@ const dummyData1 = {
                 day: "SU", 
                 id: "1", 
                 type: "Easy Run", 
-                distance: "10", 
+                distance: "15", 
                 minutes: "58", 
                 seconds: "20"
             },

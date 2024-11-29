@@ -18,7 +18,7 @@ export default function TextAreaLabelPair ({
         <div className="grid grid-rows-6 h-16 w-80">
             <span className="row-span-2 border border-gray-500 rounded-t-md text-xs text-center">{ label }</span>
             <TextArea
-                className="row-span-4 border-b border-l border-r border-gray-500 rounded-b-md"
+                className="row-span-4 border-b border-l border-r border-gray-500 rounded-b-md leading-none"
                 name={ name }
                 value={ value }
                 fields={ fields }

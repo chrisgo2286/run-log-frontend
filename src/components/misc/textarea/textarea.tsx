@@ -18,7 +18,7 @@ export default function TextArea ({
     dataCy,
     ...other }: TextAreaProps) {
 
-    const baseClassName = "hover:bg-gray-200 hover:cursor-pointer indent-2 text-xs"
+    const baseClassName = "hover:bg-gray-200 hover:cursor-pointer p-1 tracking-tight text-xs"
     function handleChange (event: React.ChangeEvent<HTMLTextAreaElement>): void {
         const { name, value } = event.target;
         setFields({ ...fields, [name]: value })
