@@ -1,16 +1,23 @@
 import { TrainingBlockTypes } from "../../misc/hooks/trainingBlockHooks"
 import TrainingBlockListItem from "./trainingBlockListItem"
 
+type TrainingBlockListProps = {
+    trainingBlocks: TrainingBlockTypes[],
+    setTrainingUpdateReq: React.Dispatch<React.SetStateAction<boolean>>
+}
 export default function TrainingBlockList ({ 
-    trainingBlocks 
-}: { trainingBlocks: TrainingBlockTypes[] }): JSX.Element {
+    trainingBlocks,
+    setTrainingUpdateReq
+}: TrainingBlockListProps): JSX.Element {
     
     return (
         <div className="max-w-screen-lg mx-auto mt-5 px-10">
             <Headers />
             { trainingBlocks.map((trainingBlock, ndx) => (
                 <div key={ ndx }>
-                    <TrainingBlockListItem data={ trainingBlock } />
+                    <TrainingBlockListItem 
+                        data={ trainingBlock } 
+                        setTrainingUpdateReq={ setTrainingUpdateReq }/>
                 </div>
             ))}
         </div>

@@ -1,21 +1,27 @@
 import { useState, useEffect } from "react"
 import { getTrainingBlockFromId } from "../miscFunctions"
+import { getTrainingBlocks } from "../apiCalls"
 
 export type TrainingBlockDataTypes = {
     cycles: string[],
     trainingData: TrainingBlockDayTypes[][]
 }
 
-export type TrainingBlockDayTypes = {
+export type TrainingBlockDayTypes = RunTypes & {
+    day: string
+}
+
+export type RunTypes = {
     date: string,
-    day: string,
     id?: string,
     type?: string,
     distance?: string,
     hours?: string,
     minutes?: string,
-    seconds?: string
+    seconds?: string,
+    comments?: string
 }
+
 
 export type TrainingBlockTypes = {
     id?: number,
@@ -40,8 +46,11 @@ type UseGetTrainingBlockDataReturnTypes = {
 export function UseGetTrainingBlocks (): UseGetTrainingBlocksReturnTypes {
     const [ trainingBlocks, setTrainingBlocks ] = useState<TrainingBlockTypes[]>([])
     const [ trainingUpdateReq, setTrainingUpdateReq ] = useState<boolean>(false)
+
     useEffect(() => {
-        setTrainingBlocks(trainingBlocksDummyData)
+        getTrainingBlocks().then((data) => setTrainingBlocks(data))
+        setTrainingUpdateReq(false)
+    
     },[trainingUpdateReq])
 
     return { trainingBlocks, setTrainingUpdateReq }
@@ -117,7 +126,8 @@ const dummyData1 = {
                 type: "Easy Run", 
                 distance: "15", 
                 minutes: "58", 
-                seconds: "20"
+                seconds: "20",
+                comments: "Loris Ipsum"
             },
             { 
                 date: "11/4", 
@@ -126,7 +136,8 @@ const dummyData1 = {
                 type: "Easy Run", 
                 distance: "5", 
                 minutes: "27", 
-                seconds: "25"
+                seconds: "25",
+                comments: "Loris Ipsum"
             },    
             { 
                 date: "11/5", 
@@ -135,7 +146,8 @@ const dummyData1 = {
                 type: "Easy Run", 
                 distance: "10", 
                 minutes: "58", 
-                seconds: "20"
+                seconds: "20",
+                comments: "Loris Ipsum"
             },
             { 
                 date: "11/6", 
@@ -144,7 +156,8 @@ const dummyData1 = {
                 type: "Easy Run", 
                 distance: "10", 
                 minutes: "58", 
-                seconds: "20"
+                seconds: "20",
+                comments: "Loris Ipsum"
             }
         ],
         [
@@ -155,7 +168,8 @@ const dummyData1 = {
                 type: "Easy Run", 
                 distance: "10", 
                 minutes: "58", 
-                seconds: "20"
+                seconds: "20",
+                comments: "Loris Ipsum"
             },
             { 
                 date: "11/8", 
@@ -164,7 +178,8 @@ const dummyData1 = {
                 type: "Easy Run", 
                 distance: "10", 
                 minutes: "58", 
-                seconds: "20"
+                seconds: "20",
+                comments: "Loris Ipsum"
             },
             { 
                 date: "11/9", 
@@ -217,7 +232,8 @@ const dummyData2 = {
                 type: "Easy Run", 
                 distance: "10", 
                 minutes: "58", 
-                seconds: "20"
+                seconds: "20",
+                comments: "Loris Ipsum"
             },
             { 
                 date: "11/4", 
@@ -226,7 +242,8 @@ const dummyData2 = {
                 type: "Easy Run", 
                 distance: "5", 
                 minutes: "27", 
-                seconds: "25"
+                seconds: "25",
+                comments: "Loris Ipsum"
             },    
             { 
                 date: "11/5", 
@@ -235,7 +252,8 @@ const dummyData2 = {
                 type: "Easy Run", 
                 distance: "10", 
                 minutes: "58", 
-                seconds: "20"
+                seconds: "20",
+                comments: "Loris Ipsum"
             },
             { 
                 date: "11/6", 
@@ -244,7 +262,8 @@ const dummyData2 = {
                 type: "Easy Run", 
                 distance: "10", 
                 minutes: "58", 
-                seconds: "20"
+                seconds: "20",
+                comments: "Loris Ipsum"
             },
             { 
                 date: "11/7", 
@@ -253,7 +272,8 @@ const dummyData2 = {
                 type: "Easy Run", 
                 distance: "10", 
                 minutes: "58", 
-                seconds: "20"
+                seconds: "20",
+                comments: "Loris Ipsum"
             },
             { 
                 date: "11/8", 
@@ -262,7 +282,8 @@ const dummyData2 = {
                 type: "Easy Run", 
                 distance: "10", 
                 minutes: "58", 
-                seconds: "20"
+                seconds: "20",
+                comments: "Loris Ipsum"
             },
             { 
                 date: "11/9", 

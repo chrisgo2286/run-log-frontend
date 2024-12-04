@@ -1,12 +1,3 @@
-export type SelectProps = {
-    className?: string;
-    name: string;
-    initial: string;
-    options: string[];
-    fields: object;
-    setFields: React.Dispatch<React.SetStateAction<any>>;
-}
-
 export type CardProps = {
     headlineText: string,
     detailText: string,

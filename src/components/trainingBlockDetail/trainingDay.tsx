@@ -1,11 +1,26 @@
+import { useNavigate } from "react-router-dom";
 import { TrainingBlockDayTypes } from "../../misc/hooks/trainingBlockHooks";
+import { navToRunDetail } from "../../misc/navFunctions";
 
+type TrainingDayProps = {
+    data: TrainingBlockDayTypes,
+    trainingBlockId: string
+}
 export default function TrainingDay ({ 
-    data 
-}: { data: TrainingBlockDayTypes}): JSX.Element {
+    data,
+    trainingBlockId 
+}: TrainingDayProps): JSX.Element {
     
+    const navigate = useNavigate()
+    
+    function handleClick () {
+        navToRunDetail(navigate, data, trainingBlockId)
+    }
+
     return (
-        <div className="text-xs h-24 w-28 border border-gray-200 pl-1 pt-1 grid grid-rows-12">
+        <div 
+            className="text-xs h-24 w-28 border border-gray-200 pl-1 pt-1 grid grid-rows-12 hover:bg-gray-200 hover:cursor-pointer"
+            onClick={ handleClick }>
             <div className="row-span-1">
                 <span>{ data.date } </span>
                 <span>({ data.day })</span>

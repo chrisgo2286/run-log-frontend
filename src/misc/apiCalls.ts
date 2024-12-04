@@ -5,12 +5,22 @@ import { FieldsType } from '../components/login/loginTypes';
 import { MonthlyStatsTypes } from '../components/profile/monthlyStats/monthlyStats';
 import { ResponseType, StatusType } from './miscTypes';
 import { DataItem } from '../components/profile/monthlyChart/monthlyChart';
+import { TrainingBlockTypes } from './hooks/trainingBlockHooks';
 
 const url = 'http://127.0.0.1:8000/api/'
 const token = localStorage.getItem('token')
 const headers = {
     headers: {
         Authorization: 'Token ' + token
+    }
+}
+
+function createHeaders () {
+    const token = localStorage.getItem('token')
+    return {
+        headers: {
+            Authorization: 'Token ' + token
+        }
     }
 }
 
@@ -54,6 +64,30 @@ export async function getRunTypeChartData (month: number, year: number) {
     return result.data
 }
 
+export async function getTrainingBlocks (): Promise<TrainingBlockTypes[]> {
+    const result = await axios.get(`${url}trainingBlocks/`, createHeaders())
+    return result.data
+}
+
+export async function postTrainingBlock (fields: TrainingBlockTypes): Promise<StatusType> {
+    const newFields = { ...fields, "owner": 1 }
+    const result = await axios.post(url + "trainingBlocks/", newFields, createHeaders())
+    return { status: result.status }
+}
+
+export async function patchTrainingBlock (fields: TrainingBlockTypes, id: string): Promise<StatusType> {
+    const newFields = { ...fields, "owner": 1 }
+    const newUrl = `${url}trainingBlocks/${id}/`
+    const result = await axios.patch(newUrl, newFields, createHeaders())
+    return { status: result.status }
+}
+
+export async function deleteTrainingBlock (id: number): Promise<StatusType> {
+    const newUrl = `${url}trainingBlocks/${id}/`
+    const result = await axios.delete(newUrl, createHeaders())
+    return { status: result.status }
+}
+
 export async function postRun (fields: RunDataTypes) {
     let newFields = { ...fields, 'owner': 1 }
     const result = await axios.post(url + 'runs/', newFields, headers)
@@ -68,7 +102,6 @@ export async function patchRun (fields: RunDataTypes) {
 
 export async function deleteRun (id: string): Promise<StatusType> {
     const result = await axios.delete(url + 'runs/' + id + '/', headers)
-    console.log(result)
     return { "status": result.status };
 }
 

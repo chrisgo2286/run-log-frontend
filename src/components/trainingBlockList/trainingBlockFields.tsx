@@ -60,7 +60,7 @@ export default function TrainingBlockFields ({
                     onBlur={() => setEndDateType("text")}
                     label="End Date" />
                 <TextAreaLabelPair
-                    className="h-17 border border-gray-400 rounded-md pl-2 row-span-2 col-span-2"
+                    className="h-17 border border-gray-400 rounded-md row-span-2 col-span-2"
                     name="goals"
                     value={ fields.goals }
                     fields={ fields }

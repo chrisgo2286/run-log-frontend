@@ -1,6 +1,14 @@
 import { useState, useEffect } from 'react';
-import { SelectProps } from '../miscCompTypes';
-import './select.css';
+
+export type SelectProps = {
+    className?: string,
+    name: string,
+    initial: string,
+    options: string[],
+    fields: object,
+    setFields: React.Dispatch<React.SetStateAction<any>>,
+    dataCy?: string
+}
 
 export default function Select ({
     className,
@@ -9,6 +17,7 @@ export default function Select ({
     options,
     fields,
     setFields,
+    dataCy,
     ...other }: SelectProps) {
     
     const [ choice, setChoice ] = useState<string>();

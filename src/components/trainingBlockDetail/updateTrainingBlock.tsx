@@ -3,17 +3,19 @@ import { TrainingBlockTypes } from "../../misc/hooks/trainingBlockHooks";
 import TrainingBlockFields from "../trainingBlockList/trainingBlockFields";
 import HiddenSection from "../misc/hiddenSection/hiddenSection";
 import Button from "../misc/button/button";
+import { patchTrainingBlock } from "../../misc/apiCalls";
 
 type UpdateTrainingBlockProps = {
-    trainingBlock: TrainingBlockTypes
-    setTrainingUpdateReq: React.Dispatch<React.SetStateAction<boolean>>,
+    trainingBlock: TrainingBlockTypes,
+    trainingBlockId: string,
+    setTrainingUpdateReq: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function UpdateTrainingBlock ({ 
     trainingBlock,
+    trainingBlockId,
     setTrainingUpdateReq,
 }: UpdateTrainingBlockProps): JSX.Element {
-
     const [ fields, setFields ] = useState<TrainingBlockTypes>({
         title: "",
         startDate: "",
@@ -24,11 +26,14 @@ export default function UpdateTrainingBlock ({
     
     useEffect(() => {
         setFields(trainingBlock)
-        console.log("UseEffectRun")
     }, [trainingBlock])
 
-    function handleUpdate () {
-        console.log(fields)
+    async function handleUpdate () {
+        //need to validate fields
+        const result = await patchTrainingBlock(fields, trainingBlockId)
+        if (result.status === 200) {
+            setTrainingUpdateReq(true)
+        }
     } 
 
     return (

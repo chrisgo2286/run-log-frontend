@@ -23,10 +23,14 @@ export default function TrainingBlockDetail () {
             <div className="max-w-screen-lg mx-auto my-10 border border-gray-200">
                 <UpdateTrainingBlock 
                     trainingBlock={ trainingBlock }
+                    trainingBlockId={ id }
                     setTrainingUpdateReq={ setTrainingUpdateReq } />
                 <TrainingBlockDataContext.Provider value={{ data, setUpdateRequired }}>
-                    <TrainingBlockHeader title={ getTitle() }/>
-                    <TrainingBlockBody />
+                    <TrainingBlockHeader 
+                        title={ getTitle() }
+                        trainingBlocks={ trainingBlocks }
+                        setTrainingUpdateReq={ setTrainingUpdateReq }/>
+                    <TrainingBlockBody trainingBlockId={ id }/>
                 </TrainingBlockDataContext.Provider>         
             </div>
         </main>

@@ -14,8 +14,9 @@ export default function TextAreaLabelPair ({
     label
 }: TextAreaLabelPairProps): JSX.Element {
 
+    const baseClassName = "grid grid-rows-6 h-16 w-80"
     return (
-        <div className="grid grid-rows-6 h-16 w-80">
+        <div className={ `${baseClassName} ${className}`}>
             <span className="row-span-2 border border-gray-500 rounded-t-md text-xs text-center">{ label }</span>
             <TextArea
                 className="row-span-4 border-b border-l border-r border-gray-500 rounded-b-md leading-none"

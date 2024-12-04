@@ -8,6 +8,7 @@ import TrainingBlockListPage from './components/trainingBlockList/trainingBlockL
 import TrainingBlockDetail from './components/trainingBlockDetail/trainingBlockDetail';
 import Login from './components/login/login';
 import Registration from './components/registration/registration';
+import RunDetail from './components/trainingBlockDetail/runDetail/runDetail';
 import { UserContext } from './misc/context';
 import { UserType } from './misc/miscTypes';
 import axios from 'axios';
@@ -41,6 +42,7 @@ export default function App() {
                     <Route path='/profile' element={ <Profile /> } />
                     <Route path='/login' element={ <Login /> } />
                     <Route path='/registration' element={ <Registration /> } />
+                    <Route path="/runDetail" element={  <RunDetail /> } />
                 </Routes>
             </Router>
             </UserContext.Provider>

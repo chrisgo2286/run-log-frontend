@@ -3,20 +3,27 @@ import { useState } from "react";
 import { TrainingBlockTypes } from "../../misc/hooks/trainingBlockHooks";
 import TrainingBlockFields from "./trainingBlockFields";
 import HiddenSection from "../misc/hiddenSection/hiddenSection";
+import { postTrainingBlock } from "../../misc/apiCalls";
+
+const defaultFields = {
+    title: "",
+    startDate: "",
+    endDate: "",
+    cycleLength: "",
+    goals: ""
+}
 
 export default function NewTrainingBlock ({ 
     setTrainingUpdateReq
 }: { setTrainingUpdateReq: React.Dispatch<React.SetStateAction<boolean>>}): JSX.Element {
-    const [ fields, setFields ] = useState<TrainingBlockTypes>({
-        title: "",
-        startDate: "",
-        endDate: "",
-        cycleLength: "",
-        goals: ""
-    })
+    const [ fields, setFields ] = useState<TrainingBlockTypes>(defaultFields)
 
-    function handleSubmit () {
-        console.log("TrainingBlockSubmitted!")
+    async function handleSubmit () {
+        const result = await postTrainingBlock(fields)
+        if (result.status === 201) {
+            setTrainingUpdateReq(true)
+            setFields(defaultFields)
+        }
     } 
 
     return (
