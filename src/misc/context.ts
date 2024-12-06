@@ -79,7 +79,6 @@ type TrainingBlockDataContextType = {
 
 export const TrainingBlockDataContext = createContext<TrainingBlockDataContextType>({
     data: {
-        cycles: [],
         trainingData: []
     },
     setUpdateRequired: () => console.log("Ooops, default value used!")

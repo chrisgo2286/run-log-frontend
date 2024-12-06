@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react"
 import { getTrainingBlockFromId } from "../miscFunctions"
-import { getTrainingBlocks } from "../apiCalls"
+import { getTrainingBlockData, getTrainingBlocks } from "../apiCalls"
 
 export type TrainingBlockDataTypes = {
-    cycles: string[],
     trainingData: TrainingBlockDayTypes[][]
 }
 
@@ -61,13 +60,12 @@ export function UseGetTrainingBlockData (
 ): UseGetTrainingBlockDataReturnTypes {
 
     const [ data, setData ] = useState<TrainingBlockDataTypes>({
-        cycles: [],
         trainingData: []
     })    
     const [ updateRequired, setUpdateRequired ] = useState<boolean>(false)
 
     useEffect(() => {     
-        setData(dummyData2)
+        getTrainingBlockData(trainingBlockId).then((data) => setData(data))
         setUpdateRequired(false)
     }, [trainingBlockId, updateRequired])
     
@@ -116,7 +114,6 @@ const trainingBlocksDummyData: TrainingBlockTypes[] = [
     }
 ]
 const dummyData1 = {
-    cycles: ["1", "2", "3", "4"],
     trainingData: [
         [
             { 

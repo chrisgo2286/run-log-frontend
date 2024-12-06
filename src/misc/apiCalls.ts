@@ -5,7 +5,7 @@ import { FieldsType } from '../components/login/loginTypes';
 import { MonthlyStatsTypes } from '../components/profile/monthlyStats/monthlyStats';
 import { ResponseType, StatusType } from './miscTypes';
 import { DataItem } from '../components/profile/monthlyChart/monthlyChart';
-import { TrainingBlockTypes } from './hooks/trainingBlockHooks';
+import { TrainingBlockDataTypes, TrainingBlockTypes } from './hooks/trainingBlockHooks';
 
 const url = 'http://127.0.0.1:8000/api/'
 const token = localStorage.getItem('token')
@@ -80,6 +80,11 @@ export async function patchTrainingBlock (fields: TrainingBlockTypes, id: string
     const newUrl = `${url}trainingBlocks/${id}/`
     const result = await axios.patch(newUrl, newFields, createHeaders())
     return { status: result.status }
+}
+
+export async function getTrainingBlockData (id: number): Promise<TrainingBlockDataTypes> {
+    const result = await axios.get(`${url}training_block_data/?id=${id}`, createHeaders())
+    return { trainingData: result.data }
 }
 
 export async function deleteTrainingBlock (id: number): Promise<StatusType> {
