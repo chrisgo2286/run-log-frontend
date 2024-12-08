@@ -21,10 +21,7 @@ export default function TrainingDay ({
         <div 
             className="text-xs h-24 w-28 border border-gray-200 pl-1 pt-1 grid grid-rows-12 hover:bg-gray-200 hover:cursor-pointer"
             onClick={ handleClick }>
-            <div className="row-span-1">
-                <span>{ data.date } </span>
-                <span>({ data.day })</span>
-            </div>
+            <div className="row-span-1">{ data.label }</div>
             { (data.id) ? runData(data) : null}
         </div>
     )
@@ -33,7 +30,7 @@ export default function TrainingDay ({
 function runData (data: TrainingBlockDayTypes) {
     return (
         <div className="flex flex-col justify-center items-center row-span-11 mb-2">
-            <div>{ data.type } ({data.distance})</div>
+            <div>{ data.run_type } ({data.distance})</div>
         </div>
         
     

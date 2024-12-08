@@ -7,13 +7,13 @@ export type TrainingBlockDataTypes = {
 }
 
 export type TrainingBlockDayTypes = RunTypes & {
-    day: string
+    label: string
 }
 
 export type RunTypes = {
     date: string,
     id?: string,
-    type?: string,
+    run_type?: string,
     distance?: string,
     hours?: string,
     minutes?: string,

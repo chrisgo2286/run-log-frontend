@@ -16,13 +16,22 @@ export default function RunDetailFields ({
         <div>
             <SelectLabelPair
                 className="mt-5"
-                name="type"
-                initial="Easy Run"
-                options={[ "Easy Run", "Long Run", "Intervals", "Tempo" ]}
+                name="run_type"
+                initial={ (fields.run_type) ? fields.run_type: "Easy Run" }
+                options={[ "Easy Run", "Long Run", "Intervals", "Tempo Run" ]}
                 fields={ fields }
                 setFields={ setFields }
                 dataCy="run-type"
                 label="Type" />
+            <InputLabelPair
+                className="mt-5"
+                type="date"
+                name="date"
+                value={ fields.date }
+                fields={ fields }
+                setFields={ setFields }
+                dataCy="run-date" 
+                label="Date"/> 
             <InputLabelPair
                 className="mt-5"
                 type="number"

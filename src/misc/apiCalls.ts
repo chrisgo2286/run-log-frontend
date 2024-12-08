@@ -93,16 +93,16 @@ export async function deleteTrainingBlock (id: number): Promise<StatusType> {
     return { status: result.status }
 }
 
-export async function postRun (fields: RunDataTypes) {
+export async function postRun (fields: RunDataTypes): Promise<StatusType> {
     let newFields = { ...fields, 'owner': 1 }
-    const result = await axios.post(url + 'runs/', newFields, headers)
-    return result.data;
+    const result = await axios.post(url + 'runs/', newFields, createHeaders())
+    return { status: result.status };
 }
 
-export async function patchRun (fields: RunDataTypes) {
+export async function patchRun (fields: RunDataTypes): Promise<StatusType> {
     let newFields = { ...fields, 'owner': 1 }
-    const result = await axios.patch(url + 'runs/' + newFields.id + '/', newFields, headers)
-    return result.data;
+    const result = await axios.patch(url + 'runs/' + newFields.id + '/', newFields, createHeaders())
+    return { status: result.status };
 }
 
 export async function deleteRun (id: string): Promise<StatusType> {
