@@ -17,7 +17,7 @@ export default function TrainingBlockFields ({
     const [ endDateType, setEndDateType ] = useState<string>("text")
 
     return (
-        <div className="rounded-md py-5">
+        <div className="rounded-md pb-5">
             <div className="flex flex-row flex-wrap justify-center items-center px-5 mt-5 gap-2">    
                 <InputLabelPair
                     className={ baseInputClass }

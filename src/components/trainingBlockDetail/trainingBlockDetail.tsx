@@ -10,7 +10,6 @@ export default function TrainingBlockDetail () {
     const id = window.location.href.split("trainingBlockDetail/")[1]
     const { trainingBlocks, setTrainingUpdateReq } = UseGetTrainingBlocks()
     const { data, setUpdateRequired } = UseGetTrainingBlockData(parseInt(id))
-    const [ errors, setErrors ] = useState<string[]>([])
     const trainingBlock = UseGetTrainingBlock(parseInt(id), trainingBlocks)
     
     function getTitle () {
@@ -24,7 +23,7 @@ export default function TrainingBlockDetail () {
                 <UpdateTrainingBlock 
                     trainingBlock={ trainingBlock }
                     trainingBlockId={ id }
-                    setTrainingUpdateReq={ setTrainingUpdateReq } />
+                    trainingBlocks={ trainingBlocks } />
                 <TrainingBlockDataContext.Provider value={{ data, setUpdateRequired }}>
                     <TrainingBlockHeader 
                         title={ getTitle() }
