@@ -4,6 +4,8 @@ import Button from "../../misc/button/button"
 import { RunTypes } from "../../../misc/hooks/trainingBlockHooks"
 import RunDetailFields from "./runDetailFields"
 import { patchRun, postRun } from "../../../misc/apiCalls"
+import { validateRun } from "./runValidation"
+import { Validation } from "../../validation/validation"
 
 export default function RunDetail (): JSX.Element {
     const navigate = useNavigate()
@@ -13,15 +15,20 @@ export default function RunDetail (): JSX.Element {
         date: (data.date) ? data.date: "",
         run_type: (data.run_type) ? data.run_type : "Easy Run",
         distance: (data.distance) ? data.distance : "",
-        hours: (data.hours) ? data.hours : 0,
-        minutes: (data.minutes) ? data.minutes : 0,
-        seconds: (data.seconds) ? data.seconds : 0,
+        hours: (data.hours) ? data.hours : "",
+        minutes: (data.minutes) ? data.minutes : "",
+        seconds: (data.seconds) ? data.seconds : "",
         comments: (data.comments) ? data.comments: "",
     })
+    const [ errors, setErrors ] = useState<string[]>([])
 
     function handleSubmit (): void {
-        //NEED TO VALIDATE FIELDS
-        (fields.id) ? updateRun() : createRun()
+        const result = validateRun(fields)
+        if (result === "Valid") {
+            (fields.id) ? updateRun() : createRun();
+        } else if (typeof result !== "string") {
+            setErrors(result)
+        }
     }
 
     async function updateRun (): Promise<void> {
@@ -29,7 +36,7 @@ export default function RunDetail (): JSX.Element {
         if (result.status === 200) {
             navigate(`/trainingBlockDetail/${trainingBlockId}`)  
         } else {
-            //SET ERRORS
+            setErrors(["There was an error updating this run!"])
         }
     }
 
@@ -38,7 +45,7 @@ export default function RunDetail (): JSX.Element {
         if (result.status === 201) {
             navigate(`/trainingBlockDetail/${trainingBlockId}`)    
         } else {
-            //SET ERRORS
+            setErrors(["There was an error creating this run!"])
         }
     }
 
@@ -50,6 +57,10 @@ export default function RunDetail (): JSX.Element {
         <main className="">
             <div className="border border-gray-200 w-120 flex flex-col justify-center items-center mx-auto mt-5 rounded-md p-5">
                 <div className="">Add Run</div>
+                <Validation
+                    className=""
+                    errors={ errors } />
+
                 <RunDetailFields fields={ fields } setFields={ setFields } />
                 <div className="flex mt-5">
                     <Button 
