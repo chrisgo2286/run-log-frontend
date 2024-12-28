@@ -69,7 +69,11 @@ export default function Registration (): JSX.Element {
     return (
         <main className="registration-page">
             <div className="registration" data-cy='registration'>
-                <div className="registration-header">Registration</div>
+                <div 
+                    className="registration-header" 
+                    data-cy="registration-header">
+                    Registration
+                </div>
                 <NewUserFields 
                     fields={ credentials } 
                     setFields={ setCredentials }
