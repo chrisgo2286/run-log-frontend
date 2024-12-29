@@ -6,7 +6,7 @@ export default function TrainingBlockListPage () {
     const { trainingBlocks, setTrainingUpdateReq } = UseGetTrainingBlocks()
     
     return (
-        <main className="w-screen">
+        <main className="w-screen pt-16">
             <div className="max-w-screen-lg mx-auto mt-5">
                 <NewTrainingBlock 
                     trainingBlocks={ trainingBlocks }

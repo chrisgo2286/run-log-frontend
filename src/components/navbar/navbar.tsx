@@ -1,4 +1,4 @@
-import { ReactElement, useContext } from 'react';
+import React, { ReactElement, useContext } from 'react';
 import { UserContext } from '../../misc/context';
 import { 
     userLinksLoggedIn, 
@@ -7,8 +7,9 @@ import {
     siteLinksLoggedOut 
 } from './navbarFunctions';
 import './navbar.css';
+import MobileNavbar from './mobileNavbar';
 
-export default function Navbar () {
+export default function Navbar (): JSX.Element {
     const { user } = useContext(UserContext);
     
     function handleSiteLinks (): ReactElement {
@@ -20,13 +21,17 @@ export default function Navbar () {
     }
 
     return (
-        <nav className="bg-blue-100 flex justify-between">
-            <div className="flex [&>*]:m-4">
-                { handleSiteLinks() }
-            </div>
-            <div className="flex [&>*]:m-4">
-                { handleUserLinks() }
-            </div>
-        </nav>
+        <React.Fragment>
+            <nav className="hidden sm:flex fixed top-0 w-screen bg-blue-100 justify-between">
+                <div className="flex [&>*]:m-4">
+                    { handleSiteLinks() }
+                </div>
+                <div className="flex [&>*]:m-4">
+                    { handleUserLinks() }
+                </div>
+            </nav>
+            <MobileNavbar />
+        </React.Fragment>
+        
     )
 }

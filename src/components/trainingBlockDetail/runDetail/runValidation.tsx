@@ -4,7 +4,8 @@ import { RunTypes } from "../../../misc/hooks/trainingBlockHooks";
 const RunSchema = z.object({
     id: z
         .number()
-        .optional(),
+        .optional()
+        .or(z.string()),
     date: z
         .string()
         .regex(/\d\d\d\d-\d\d-\d\d/, { message: "Please enter a valid date!"}),
@@ -36,7 +37,6 @@ const RunSchema = z.object({
 export function validateRun (
     fields: RunTypes,
 ): string | string[] {
-    console.log(fields)
     const result = RunSchema.safeParse(fields)
     if (result.success) {
         return "Valid"
