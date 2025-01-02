@@ -22,11 +22,11 @@ export default function Navbar (): JSX.Element {
 
     return (
         <React.Fragment>
-            <nav className="hidden sm:flex fixed top-0 w-screen bg-blue-100 justify-between">
-                <div className="flex [&>*]:m-4">
+            <nav className="hidden sm:flex fixed top-0 w-screen h-10 bg-blue-100 justify-between">
+                <div className="flex [&>*]:my-2 [&>*]:ml-6">
                     { handleSiteLinks() }
                 </div>
-                <div className="flex [&>*]:m-4">
+                <div className="flex [&>*]:my-2 [&>*]:mr-6">
                     { handleUserLinks() }
                 </div>
             </nav>

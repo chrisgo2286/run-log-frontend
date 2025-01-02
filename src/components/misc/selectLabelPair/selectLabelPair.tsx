@@ -21,7 +21,7 @@ export default function SelectLabelPair ({
                 { label }
             </span>
             <Select 
-                className="col-span-4 w-full border-t border-r border-b border-gray-500 rounded-r-md text-xs"
+                className="col-span-4 w-full border-t border-r border-b border-gray-500 rounded-r-md text-xs hover:bg-gray-200 hover:cursor-pointer"
                 name={ name }
                 initial={ initial }
                 options={ options }

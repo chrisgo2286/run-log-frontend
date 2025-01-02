@@ -13,7 +13,7 @@ export default function RunDetailFields ({
     setFields
 }: RunFieldsProps): JSX.Element {
     return (
-        <div>
+        <div className="flex flex-col items-center">
             <SelectLabelPair
                 className="mt-5"
                 name="run_type"

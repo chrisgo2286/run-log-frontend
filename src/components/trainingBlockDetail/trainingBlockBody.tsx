@@ -8,7 +8,7 @@ export default function TrainingBlockBody ({ trainingBlockId }: { trainingBlockI
     return (
         <div className="flex flex-col justify-center items-left">
             { data.trainingData.map((trainingCycle, ndx) => (
-                <div key={ ndx } className="flex mt-5 border-2 border-gray-500">
+                <div key={ ndx } className="flex mt-5 border-2 border-gray-500 rounded-md">
                     <CycleHeader number={ ndx + 1 } />
                     
                     <div className="flex flex-wrap">

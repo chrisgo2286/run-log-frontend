@@ -7,7 +7,7 @@ export default function TrainingBlockListPage () {
     
     return (
         <main className="w-screen pt-16">
-            <div className="max-w-screen-lg mx-auto mt-5">
+            <div className="max-w-screen-lg mx-auto">
                 <NewTrainingBlock 
                     trainingBlocks={ trainingBlocks }
                     setTrainingUpdateReq={ setTrainingUpdateReq }/>

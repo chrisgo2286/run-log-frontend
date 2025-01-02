@@ -18,8 +18,8 @@ export default function TrainingBlockDetail () {
     }
 
     return (
-        <main className="w-screen pt-12">
-            <div className="max-w-screen-lg mx-auto my-10 border border-gray-200">
+        <main className="w-screen pt-16">
+            <div className="max-w-screen-lg mx-auto border border-gray-200">
                 <UpdateTrainingBlock 
                     trainingBlock={ trainingBlock }
                     trainingBlockId={ id }
