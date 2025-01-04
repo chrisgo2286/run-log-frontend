@@ -7,7 +7,10 @@ const TrainingBlockSchema = z.object({
         .min(1, { message: "Please enter a title!" }),
     cycleLength: z
         .string()
-        .min(1, { message: "Please enter the cycle length"}),
+        .min(1, { message: "Please enter the cycle length!"})
+        .refine((value) => parseInt(value) <= 14, {
+            message: "Max cycle length is 14!"
+        }),
     startDate: z
         .string()
         .min(1, { message: "Please choose a start date!" }),

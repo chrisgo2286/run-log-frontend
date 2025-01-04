@@ -11,7 +11,7 @@ export default function TrainingBlockDetail () {
     const { trainingBlocks, setTrainingUpdateReq } = UseGetTrainingBlocks()
     const { data, setUpdateRequired } = UseGetTrainingBlockData(parseInt(id))
     const trainingBlock = UseGetTrainingBlock(parseInt(id), trainingBlocks)
-    
+    console.log(data)
     function getTitle () {
         const result = getTrainingBlockFromId(parseInt(id), trainingBlocks)
         return ( result ) ? result.title : ""

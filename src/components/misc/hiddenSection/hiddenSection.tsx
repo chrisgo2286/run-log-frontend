@@ -22,7 +22,10 @@ export default function HiddenSection ({
     
     return (
         <section className={ handleClassName() }>
-            <div className="h-10 hover:bg-gray-200 hover:cursor-pointer" onClick={ handleExpandClick }>
+            <div 
+                className="h-10 hover:bg-gray-200 hover:cursor-pointer" 
+                onClick={ handleExpandClick }
+                data-cy="expand-icon">
                 <i className="absolute material-icons leading-10">{ filtersVisible ? "expand_less" : "expand_more" }</i>
                 <div className="text-center leading-10">{ text }</div>
             </div>

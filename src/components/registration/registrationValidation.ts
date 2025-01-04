@@ -4,13 +4,13 @@ import { RegistrationProps } from "./registrationTypes";
 const RegistrationSchema = z.object({
     username: z
         .string()
-        .min(1, { message: "Please enter a Username" }),
+        .min(1, { message: "Please enter a Username!" }),
     password1: z
         .string()
         .min(1, { message: "Please enter a Password!"}),
     password2: z
         .string()
-        .min(1, { message: "Please renter your Password!"})
+        .min(1, { message: "Please re-enter your Password!"})
 }).superRefine(({ password1, password2 }, ctx) => {
     if (password1 !== password2) {
         ctx.addIssue({

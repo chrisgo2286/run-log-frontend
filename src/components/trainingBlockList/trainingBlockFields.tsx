@@ -65,10 +65,9 @@ export default function TrainingBlockFields ({
                     value={ fields.goals }
                     fields={ fields }
                     setFields={ setFields }
-                    dataCy="goals=textarea" 
+                    dataCy="goals-textarea" 
                     label="Goals" />
             </div>
-
         </div>
         
     )    

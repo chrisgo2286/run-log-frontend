@@ -15,9 +15,9 @@ export default function RunDetail (): JSX.Element {
         date: (data.date) ? data.date: "",
         run_type: (data.run_type) ? data.run_type : "Easy Run",
         distance: (data.distance) ? data.distance : "",
-        hours: (data.hours) ? data.hours : "",
-        minutes: (data.minutes) ? data.minutes : "",
-        seconds: (data.seconds) ? data.seconds : "",
+        hours: (data.hours) ? data.hours : 0,
+        minutes: (data.minutes) ? data.minutes : 0,
+        seconds: (data.seconds) ? data.seconds : 0,
         comments: (data.comments) ? data.comments: "",
     })
     const [ errors, setErrors ] = useState<string[]>([])
