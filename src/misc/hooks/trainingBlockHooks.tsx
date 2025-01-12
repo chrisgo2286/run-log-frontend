@@ -3,6 +3,7 @@ import { getTrainingBlockFromId } from "../miscFunctions"
 import { getTrainingBlockData, getTrainingBlocks } from "../apiCalls"
 
 export type TrainingBlockDataTypes = {
+    totals: string[],
     trainingData: TrainingBlockDayTypes[][]
 }
 
@@ -60,6 +61,7 @@ export function UseGetTrainingBlockData (
 ): UseGetTrainingBlockDataReturnTypes {
 
     const [ data, setData ] = useState<TrainingBlockDataTypes>({
+        totals: [],
         trainingData: []
     })    
     const [ updateRequired, setUpdateRequired ] = useState<boolean>(false)
@@ -114,7 +116,8 @@ const trainingBlocksDummyData: TrainingBlockTypes[] = [
     }
 ]
 const dummyData1 = {
-    trainingData: [
+    "totals": [ 20, 20, 30, 40 ],
+    "trainingData": [
         [
             { 
                 date: "11/3", 

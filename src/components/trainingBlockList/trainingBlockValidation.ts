@@ -19,6 +19,7 @@ const TrainingBlockSchema = z.object({
         .min(1, { message: "Please choose an end date!"}),
     goals: z
         .string()
+        .optional()
 }).refine((data) => data.startDate < data.endDate, 
     { message: "End date must come after start date!"}
 )

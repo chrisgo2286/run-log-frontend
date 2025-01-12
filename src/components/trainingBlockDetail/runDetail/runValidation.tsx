@@ -8,7 +8,7 @@ const RunSchema = z.object({
         .or(z.string()),
     date: z
         .string()
-        .regex(/\d\d\d\d-\d\d-\d\d/, { message: "Please enter a valid date!"}),
+        .regex(/^\d\d\d\d-\d\d-\d\d/, { message: "Please enter a valid date!"}),
     run_type: z
         .string()
         .min(1, { message: "Please enter a run type!" }),
@@ -19,7 +19,7 @@ const RunSchema = z.object({
     hours: z
         .string()
         .optional()
-        .or(z.number()),
+        .or(z.number().optional()),
     minutes: z
         .string()
         .optional()
@@ -27,11 +27,11 @@ const RunSchema = z.object({
     seconds: z
         .string()
         .optional()
-        .or(z.number()),
+        .or(z.number().optional()),
     comments: z
         .string()
         .optional(),
-}).refine((data) => data.hours !== "" || data.minutes !== "" || data.seconds !== "", 
+}).refine((data) => data.hours !== 0 || data.minutes !== 0 || data.seconds !== 0, 
     { message: "Please enter a time!"})
 
 export function validateRun (

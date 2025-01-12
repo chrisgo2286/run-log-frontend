@@ -38,6 +38,7 @@ export default function Select ({
             name={ name }
             value={ choice }
             onChange={ handleChange }
+            data-cy={ dataCy }
             { ...other }>
             <option key={ initial } value={ initial }>{ initial }</option>
             {

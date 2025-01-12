@@ -84,7 +84,7 @@ export async function patchTrainingBlock (fields: TrainingBlockTypes, id: string
 
 export async function getTrainingBlockData (id: number): Promise<TrainingBlockDataTypes> {
     const result = await axios.get(`${url}training_block_data/?id=${id}`, createHeaders())
-    return { trainingData: result.data }
+    return result.data
 }
 
 export async function deleteTrainingBlock (id: number): Promise<StatusType> {

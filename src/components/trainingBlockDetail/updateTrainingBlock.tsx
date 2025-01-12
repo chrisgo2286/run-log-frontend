@@ -33,6 +33,7 @@ export default function UpdateTrainingBlock ({
     }, [trainingBlock])
 
     function handleUpdate (): void {
+        console.log(trainingBlocks)
         const result = validateUpdateTrainingBlock(fields, trainingBlockId, trainingBlocks)
         if (result === "Valid") {
             updateTrainingBlock()

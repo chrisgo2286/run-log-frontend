@@ -40,7 +40,9 @@ export default function TrainingBlockHeader ({
             <PrevArrow 
                 className={ ( trainingBlocks.length > 1 ) ? "": "text-gray-200"}
                 handleClick={() => handleClick("prev")} />
-            <span className="text-center mt-5 text-xl font-bold">{ title }</span>          
+            <span 
+                className="text-center mt-5 text-xl font-bold"
+                data-cy="training-block-title">{ title }</span>          
             <NextArrow 
                 className={ ( trainingBlocks.length > 1 ) ? "": "text-gray-200"}
                 handleClick={() => handleClick("next")} />

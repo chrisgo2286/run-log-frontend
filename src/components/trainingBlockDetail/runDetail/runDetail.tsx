@@ -56,7 +56,7 @@ export default function RunDetail (): JSX.Element {
     return (
         <main className="">
             <div className="border border-gray-200 w-120 flex flex-col justify-center items-center mx-auto mt-5 rounded-md p-5">
-                <div className="">Add Run</div>
+                <div className="" data-cy="header">Add Run</div>
                 <Validation
                     className=""
                     errors={ errors } />
