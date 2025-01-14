@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { PeriodTypes } from "../../components/calendar/calendarTypes";
+
+export type PeriodTypes = {
+    month: number,
+    year: number
+}
 
 type UseGetPeriodReturnType = {
     period: PeriodTypes,

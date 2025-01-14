@@ -3,7 +3,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Home from './components/home/home';
 import Profile from './components/profile/profile';
-import Calendar from './components/calendar/calendarPage';
+import Calendar from './components/calendarNew/calendarPage';
 import TrainingBlockListPage from './components/trainingBlockList/trainingBlockListPage';
 import TrainingBlockDetail from './components/trainingBlockDetail/trainingBlockDetail';
 import Login from './components/login/login';

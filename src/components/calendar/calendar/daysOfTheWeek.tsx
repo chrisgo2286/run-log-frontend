@@ -1,8 +1,5 @@
 export default function DaysOfTheWeek (): JSX.Element {
-    const daysOfWeek = [
-        "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
-        "Saturday"
-    ]
+    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
     return (
         <section className="grid grid-cols-7">

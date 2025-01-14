@@ -51,7 +51,7 @@ function CycleTotal ({ ndx, total }: { ndx: number, total: string}): JSX.Element
             <div className="">Total</div>
             <div
                 className=""
-                data-cy={ `cycle-totals-${ndx}`}>
+                data-cy={ `cycle-total-${ndx}`}>
                 { total }
             </div>
             

@@ -8,8 +8,8 @@ const TrainingBlockSchema = z.object({
     cycleLength: z
         .string()
         .min(1, { message: "Please enter the cycle length!"})
-        .refine((value) => parseInt(value) <= 14, {
-            message: "Max cycle length is 14!"
+        .refine((value) => parseInt(value) <= 14 && parseInt(value) >= 3, {
+            message: "Please choose a cycle length between 3 and 14!"
         }),
     startDate: z
         .string()

@@ -8,7 +8,7 @@ export default function MobileNavbar (): JSX.Element {
     const { user } = useContext(UserContext)
 
     return (
-        <nav className="sm:hidden fixed top-0 w-screen">
+        <nav className="sm:hidden fixed top-0 w-screen z-50">
             <div className="bg-blue-100 flex flex-col items-end justify-center pr-10 h-10">
                 <i 
                     className="material-icons hover:cursor-pointer hover:text-gray-400"
